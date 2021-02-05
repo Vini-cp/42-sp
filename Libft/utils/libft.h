@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 22:49:20 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/04 23:36:54 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/05 00:26:55 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr(char *str);
 int		ft_strlen(char *str);
-char    *ft_substr(char const *s, unsigned int start, size_t len)l=;
+char    *ft_substr(char const *s, unsigned int start, size_t len);
 int     ft_tolower(int c);
 int		ft_toupper(int c);
 

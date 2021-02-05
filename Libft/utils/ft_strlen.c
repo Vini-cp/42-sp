@@ -6,9 +6,11 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:55:13 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/04 23:37:19 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/04 23:40:14 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stddef.h>
 
 size_t	ft_strlen(const char *s)
 {

@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:55:11 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/04 23:37:17 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/04 23:39:40 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_putstr_fd(char *s, int fd)
 	i = 0;
 	while (s[i] != '\0')
 	{
-		ft_putchar_fd(s[i], fd)
+		ft_putchar_fd(s[i], fd);
 		i++;
 	}
 }

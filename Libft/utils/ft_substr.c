@@ -6,9 +6,12 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 22:52:42 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/04 22:48:04 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/04 23:41:12 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stddef.h>
+#include <stdlib.h>
 
 char *ft_substr(char const *s, unsigned int start, size_t len)
 {
