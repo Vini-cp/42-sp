@@ -6,11 +6,13 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:54:38 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/02 22:01:11 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/04 23:36:07 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_memcmp(const void *s1, const void *s2, unsigned int n)
+#include <stddef.h>
+
+int ft_memcmp(const void *s1, const void *s2, size_t n)
 {
     char *cs1;
     char *cs2;

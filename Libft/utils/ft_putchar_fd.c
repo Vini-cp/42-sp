@@ -6,9 +6,11 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:54:50 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/04 22:47:35 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/04 23:36:58 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <unistd.h>
 
 void	ft_putchar_fd(char c, int fd)
 {
