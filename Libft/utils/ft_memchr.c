@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/02 21:54:46 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/02 21:54:47 by vcordeir         ###   ########.fr       */
+/*   Created: 2021/02/02 21:54:36 by vcordeir          #+#    #+#             */
+/*   Updated: 2021/02/02 21:54:36 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void    *ft_memset(void *s, int c, unsigned int n)
+void    *ft_memchr(const void *s, int c, unsigned int n)
 {
-    unsigned char *p = s;
+    const unsigned char *p = s;
     while (n--)
-        *p++ = c;
-    return s;
+    {
+        if (*p++ == c)
+            return (void *) (p - 1);
+    }
+    return NULL;
 }

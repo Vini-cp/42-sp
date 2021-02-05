@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/02 21:54:46 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/02 21:54:47 by vcordeir         ###   ########.fr       */
+/*   Created: 2021/02/02 22:52:42 by vcordeir          #+#    #+#             */
+/*   Updated: 2021/02/04 22:48:04 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void    *ft_memset(void *s, int c, unsigned int n)
+char *ft_substr(char const *s, unsigned int start, size_t len)
 {
-    unsigned char *p = s;
-    while (n--)
-        *p++ = c;
-    return s;
+    char *str;
+    unsigned int i;
+
+    str = (char*) malloc(len*sizeof(char));
+    i = start;
+    while(s[i] != '\0' && len--)
+    {
+        str[i - start] = s[i];
+        i++;
+    }
+    return str;
 }
