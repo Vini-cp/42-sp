@@ -1,28 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/02 21:54:06 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/06 01:27:33 by vcordeir         ###   ########.fr       */
+/*   Created: 2021/02/06 11:11:47 by vcordeir          #+#    #+#             */
+/*   Updated: 2021/02/06 11:41:54 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-static  void    *ft_memset(void *s, int c, size_t n);
+static size_t  ft_strlen(const char *s);
 
-void    ft_bzero(void *s, size_t n)
+char    *ft_strrchr(const char *s, int c)
 {
-    ft_memset(s, 0, n);
+    char    *str;
+    int     len;
+    
+    str = (char *) s;
+    len = ft_strlen(s);
+    str += (len);
+    while (len-- >= 0)
+    {
+        if (*str-- == c)
+            return (char *) (str + 1);
+    }
+    return NULL;
 }
 
-static  void    *ft_memset(void *s, int c, size_t n)
+static size_t  ft_strlen(const char *s)
 {
-    unsigned char *p = s;
-    while (n--)
-        *p++ = c;
-    return s;
+	size_t length;
+
+	length = 0;
+	while (s[length] != '\0')
+	{
+		length++;
+	}
+	return (length);
 }

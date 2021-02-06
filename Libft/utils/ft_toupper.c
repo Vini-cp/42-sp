@@ -6,13 +6,13 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:55:19 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/04 23:37:23 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/06 01:03:29 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_toupper(int c)
 {
-	if (c >= 'A' && c <= 'Z')
+	if (c >= 'a' && c <= 'z')
 		c -= 32;
 	return (c);
 }

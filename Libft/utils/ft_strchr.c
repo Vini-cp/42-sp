@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/02 21:54:50 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/05 23:22:00 by vcordeir         ###   ########.fr       */
+/*   Created: 2021/02/06 10:58:33 by vcordeir          #+#    #+#             */
+/*   Updated: 2021/02/06 11:08:47 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stddef.h>
 
-void	ft_putchar_fd(char c, int fd)
+char    *ft_strchr(const char *s, int c)
 {
-	write(fd, &c, 1);
+    unsigned char c1;
+
+    c1 = ' ';    
+    while (c1 != '\0')
+    {
+        c1 = (unsigned char) *s++;
+        if (c1 == c)
+            return (char *) (s - 1);
+    }
+    return NULL;
 }

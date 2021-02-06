@@ -6,11 +6,11 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:54:26 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/02 21:54:27 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/06 01:02:11 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int     isascii(int c)
+int     ft_isascii(int c)
 {
     if (c >= 0 && c <= 127)
         return (1);

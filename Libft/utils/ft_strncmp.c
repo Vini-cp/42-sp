@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/02 21:54:41 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/06 01:06:00 by vcordeir         ###   ########.fr       */
+/*   Created: 2021/02/06 02:23:46 by vcordeir          #+#    #+#             */
+/*   Updated: 2021/02/06 10:49:55 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-void    *ft_memcpy(void *dest, const void *src, size_t n)
+int ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-    char *csrc = (char *)src;
-    char *cdest = (char *)dest;
+    unsigned char c1;
+    unsigned char c2;
 
+    if (n == 0)
+        return (0);
+    n--;
     while (n--)
-        *cdest++ = *csrc++;
-    return dest;
+    {
+        c1 = (unsigned char) *s1++;
+        c2 = (unsigned char) *s2++;
+        if (c1 == '\0' || c1 != c2)
+            return c1 - c2;
+    }
+    c1 = (unsigned char) *s1++;
+    c2 = (unsigned char) *s2++;
+    return c1 - c2;
 }
