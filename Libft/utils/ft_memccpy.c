@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 23:26:46 by vcordeir          #+#    #+#             */
-/*   Updated: 2020/11/26 23:22:45 by vcordeir         ###   ########.fr       */
+/*   Created: 2021/02/06 14:54:42 by vcordeir          #+#    #+#             */
+/*   Updated: 2021/02/06 15:20:12 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
-{
-	unsigned int i;
+#include <stddef.h>
 
-	i = 0;
-	while (i < n && src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+void *ft_memccpy(void *dest, const void *src, int c, size_t n)
+{
+    char *csrc;
+    char *cdest;
+    size_t i;
+
+    csrc = (char *)src;
+    cdest = (char *)dest;
+    i = n;
+    while (n--)
+    {
+        if (*csrc == c)
+        {
+            i -= n;
+            *cdest++ = *csrc;
+            return dest + i;
+        }
+        *cdest++ = *csrc++;
+    }
+    return NULL;
 }
