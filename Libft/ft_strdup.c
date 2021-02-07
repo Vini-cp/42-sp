@@ -6,14 +6,13 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:31:58 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/06 14:52:33 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/06 17:33:42 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strcpy(char *dest, const char *src);
+static	char	*ft_strcpy(char *dest, const char *src);
 
 char 	*ft_strdup(const char *s)
 {
@@ -30,7 +29,7 @@ char 	*ft_strdup(const char *s)
 	return (dest);
 }
 
-char	*ft_strcpy(char *dest, const char *src)
+static	char	*ft_strcpy(char *dest, const char *src)
 {
 	int i;
 

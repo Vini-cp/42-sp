@@ -6,11 +6,11 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:26:14 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/06 14:28:29 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/06 17:27:04 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 char    *ft_strnstr(const char	*big, const char *little, size_t len)
 {

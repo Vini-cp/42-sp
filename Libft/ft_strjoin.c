@@ -6,13 +6,11 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 23:13:06 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/05 23:30:48 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/06 17:26:09 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-int		ft_strlen(char const *str);
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -38,16 +36,4 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	strjoin[i] = '\0';
 	return (strjoin);
-}
-
-int		ft_strlen(char const *str)
-{
-	int length;
-
-	length = 0;
-	while (str[length] != '\0')
-	{
-		length++;
-	}
-	return (length);
 }

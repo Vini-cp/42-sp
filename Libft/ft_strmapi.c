@@ -6,13 +6,11 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 12:06:25 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/06 13:33:36 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/06 17:26:50 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-static  size_t	ft_strlen(const char *s);
+#include "libft.h"
 
 char    *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
@@ -30,16 +28,4 @@ char    *ft_strmapi(char const *s, char (*f)(unsigned int, char))
         i++;
     }
     return str;
-}
-
-static  size_t	ft_strlen(const char *s)
-{
-	size_t length;
-
-	length = 0;
-	while (s[length] != '\0')
-	{
-		length++;
-	}
-	return (length);
 }

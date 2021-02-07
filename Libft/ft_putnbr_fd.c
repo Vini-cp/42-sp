@@ -6,13 +6,12 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:55:05 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/04 23:37:12 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/06 17:23:06 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-static	void	ft_putchar_fd(char c, int fd);
 static	void	rev_array(char *str);
 static	int		check_neg(int nb);
 static	void	nb_to_char(char *str, unsigned int nb, int neg);
@@ -42,11 +41,6 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd(str[i], fd);
 		i++;
 	}
-}
-
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
 }
 
 void	rev_array(char *str)

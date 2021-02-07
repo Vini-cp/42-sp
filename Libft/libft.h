@@ -6,14 +6,22 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 22:49:20 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/06 14:55:09 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/06 19:10:11 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H_
 #define LIBFT_H_
 
-#include <string.h>
+#include <stddef.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+typedef struct      s_list
+{
+    void            *content;
+    struct s_list   *next;
+}                   t_list;
 
 int		ft_atoi(const char *str);
 void    ft_bzero(void *s, size_t n);
@@ -23,6 +31,11 @@ int 	ft_isalpha(int c);
 int     ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
+void    ft_lstadd_back(t_list **lst, t_list *new);
+void    ft_lstadd_front(t_list **lst, t_list *new);
+t_list  *ft_lstlast(t_list *lst);
+t_list  *ft_lstnew(void *content);
+int     ft_lstsize(t_list *lst);
 void    *ft_memccpy(void *dest, const void *src, int c, size_t n);
 void    *ft_memchr(const void *s, int c, size_t n);
 int     ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -39,7 +52,7 @@ char 	*ft_strdup(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t  ft_strlcat(char *dst, const char *src, size_t size);
 size_t  ft_strlcpy(char *dst, const char *src, size_t size);
-int		ft_strlen(char *str);
+size_t  ft_strlen(const char *s);
 char    *ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int     ft_strncmp(const char *s1, const char *s2, size_t n);
 char    *ft_strnstr(const char	*big, const char *little, size_t len);

@@ -6,13 +6,11 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:55:11 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/04 23:39:40 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/06 17:25:13 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-static	void	ft_putchar_fd(char c, int fd);
+#include "libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {
@@ -24,9 +22,4 @@ void	ft_putstr_fd(char *s, int fd)
 		ft_putchar_fd(s[i], fd);
 		i++;
 	}
-}
-
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
 }
