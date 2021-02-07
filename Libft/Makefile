@@ -6,7 +6,7 @@
 #    By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/04 22:40:41 by vcordeir          #+#    #+#              #
-#    Updated: 2021/02/06 19:10:27 by vcordeir         ###   ########.fr        #
+#    Updated: 2021/02/06 22:49:29 by vcordeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ ft_strdup.c ft_memcmp.c ft_memccpy.c
 OBJ = $(SRC:.c=.o)
 
 SRC_BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-ft_lstadd_back.c
-# ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
+ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c
+#   ft_lstmap.c
 
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
