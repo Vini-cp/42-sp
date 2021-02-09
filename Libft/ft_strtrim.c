@@ -6,90 +6,82 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:35:21 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/06 13:53:48 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/09 00:18:53 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 // #include <stdio.h>
 
-// static  size_t	ft_strlen(const char *s);
-static  size_t	strlen_without_set(const char *s, char const *set);
+static  int     is_set_char(char c, char const *set);
+static  int     get_first_position(char const *str, char const *set);
+static  int     get_last_position(char const *str, char const *set);
 
-char *ft_strtrim(char const *s1, char const *set)
+char    *ft_strtrim(char const *s1, char const *set)
 {
-    char    *str;
-    int     len;
-    int     i;
-    int     j;
-    int     bool_check;
+    char *str;
+    int len;
+    int start;
+    int i;
 
+    start = get_first_position(s1, set);
+    len = get_last_position(s1, set) - start;
+    if (len < 0)
+    {
+        if(!(str = (char *) malloc((sizeof(char)))))
+            return (NULL);
+        return (str);
+    }
+    if(!(str = (char *) malloc((len + 1) * sizeof(char))))
+        return (NULL);
     i = 0;
-    len = strlen_without_set(s1, set);
-    if(!(str = malloc(len * sizeof(char))))
-        return NULL;
-    while (s1[i] != '\0')
-	{
-        j = 0;
-        bool_check = 1;
-        while (set[j] != '\0' && bool_check)
-		{
-            if (set[j] == s1[i])
-                bool_check = 0;
-            j++;
-        }
-        if (bool_check)
-            *str++ = s1[i];
-        i++; 
-	}
-    return str - len;
+    while (i < len)
+    {
+        str[i] = s1[start + i];
+        i++;
+    }
+    str[i] = '\0';
+    return (str);
 }
 
-static  size_t	strlen_without_set(const char *s, char const *set)
+static  int     is_set_char(char c, char const *set)
 {
-	size_t  length;
-    int     i;
-    int     j;
-    int     bool_check;
+    int i;
 
     i = 0;
-    length = 0;
-	while (s[i] != '\0')
-	{
-        j = 0;
-        bool_check = 1;
-        while (set[j] != '\0' && bool_check)
-		{
-            if (set[j] == s[i])
-                bool_check = 0;
-            j++;
-        }
-        if (bool_check)
-            length++;
-        i++; 
-	}
-	return (length);
+    while(set[i] != '\0')
+    {
+        if (c == set[i])
+            return (1);
+        i++;
+    }
+    return (0);
 }
 
-// static  size_t	ft_strlen(const char *s)
-// {
-// 	size_t length;
+static  int     get_first_position(char const *str, char const *set)
+{
+    int i;
+    
+    i = 0;
+    while (is_set_char(str[i], set))
+        i++;
+    return (i);
+}
 
-// 	length = 0;
-// 	while (s[length] != '\0')
-// 	{
-// 		length++;
-// 	}
-// 	return (length);
-// }
+static  int     get_last_position(char const *str, char const *set)
+{
+    int i;
+    
+    i = ft_strlen(str) - 1;
+    while (is_set_char(str[i], set))
+        i--;
+    return (++i);
+}
 
 // int main()
 // {
-//     char str[] = "Oi, eu sou o Goku!";
-//     char set[] = " o";
-    
-//     printf("%zu\n", ft_strlen(str));
-//     printf("%zu\n", strlen_without_set(str, set));
-//     printf("%s\n", str);
-//     printf("%s\n", ft_strtrim(str, set));
+//     char str[] = "          ";
+//     char *c;
+//     c = ft_strtrim(str, "\n \t");
+//     printf("%s\n", c);
 // }

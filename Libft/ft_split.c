@@ -5,132 +5,76 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/05 23:22:30 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/06 00:57:53 by vcordeir         ###   ########.fr       */
+/*   Created: 2021/02/09 00:45:28 by vcordeir          #+#    #+#             */
+/*   Updated: 2021/02/09 00:45:57 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
+
+static  int     get_first_position(char const *str, char c, int start);
+static  int     get_last_position(char const *str, char c, int start);
+static  int     nb_of_strs(char const *s, char c);
 
 char    **ft_split(char const *s, char c)
 {
-    int     i;
-    int     j;
-    int     nb;
-    int     *p;
     char    **strs;
+    int     n;
+    int     i;
+    int     start;
+    int     end;
 
-    i = 0;
-    nb = nb_of_strs(s, c);
-    if(!(strs = (char**) malloc(nb * sizeof(char*))))
+    n = nb_of_strs(s, c);
+    if(!(strs = (char**) malloc((n + 1) * sizeof(char*))))
         return(NULL);
-    p = str_len(s, c, nb);
-    while(i < nb)
-        strs[i] = (char*) malloc(p[i] * sizeof(char))
+    end = 0;
     i = 0;
-    while (s[i] != '\0')
+    while (i < n)
     {
-        if (s[i] == c)
-        {
-            bool_check = 1;
-            i++;   
-        }
-        else if(s[i] != c && bool_check)
-        {
-            p[j] = 1;
-            while(s[i] != c && s[i] != '\0')
-            {
-                p[j]++;
-                i++;
-            }
-            j++;
-            bool_check = 0;
-        }
+        start = get_first_position(s, c, end);
+        end = get_last_position(s, c, start);
+        if(!(strs[i] = (char*) malloc( (end - start + 1) * sizeof(char*))))
+            return (NULL);
+        ft_strlcpy(strs[i], (s + start), (end - start + 1));
+        i++;
+        end++;
     }
+    strs[i] = (char*) malloc(sizeof(char*));
+    strs[i] = NULL;
     return strs;
 }
 
-int		ft_strlen(char const *str)
+static  int     get_first_position(char const *str, char c, int start)
 {
-	int length;
-
-	length = 0;
-	while (str[length] != '\0')
-	{
-		length++;
-	}
-	return (length);
+    while (str[start] == c)
+        start++;
+    return (start);
 }
 
-int     nb_of_strs(char const *s, char c)
+static  int     get_last_position(char const *str, char c, int start)
 {
-    int i;
+    while (str[start] != c)
+        start++;
+    return (start);
+}
+
+static  int     nb_of_strs(char const *s, char c)
+{
     int nb;
     int bool_check;
     
-    i = 0;
     nb = 0;
     bool_check = 1;
-    while (s[i] != '\0')
+    while (*s != '\0')
     {
-        if (s[i] == c)
+        if (*s == c)
             bool_check = 1;
-        else if(s[i] != c && bool_check)
+        else if(*s != c && bool_check)
         {
             nb++;
             bool_check = 0;
         }
-        i++;
+        s++;
     }
     return nb;
 }
-
-int     *strs_len(char const *s, char c, int nb)
-{
-    int i;
-    int j;
-    int *p;
-    int bool_check;
-    
-    p = (int*) malloc(nb * sizeof(int));
-    i = 0;
-    j = 0;
-    bool_check = 1;
-    while (s[i] != '\0')
-    {
-        if (s[i] == c)
-        {
-            bool_check = 1;
-            i++;   
-        }
-        else if(s[i] != c && bool_check)
-        {
-            p[j] = 1;
-            while(s[i] != c && s[i] != '\0')
-            {
-                p[j]++;
-                i++;
-            }
-            j++;
-            bool_check = 0;
-        }
-    }
-    return p;
-}
-
-int main()
-{
-	char str[] = "Hy! my name is Vinicius!";
-    // int len = ft_strlen(str);
-    int nb = nb_of_strs(str, ' ');
-    printf("%d\n\n", nb);
-    int *p = strs_len(str, ' ', nb);
-    int i = 0;
-    while (i < 5)
-    {
-        printf("%d\n", p[i]);
-        i++;
-    }
-}
-
