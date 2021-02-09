@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 22:30:52 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/06 23:09:42 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/09 01:05:51 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 t_list  *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
     t_list * head;
-    t_list * node;
+    // t_list * tmp;
+    t_list * next_node;
     
-    if (lst != NULL)
-        head = ft_lstnew(f(lst->content));
-    lst = lst->next;
+    next_node = NULL;
     while (lst != NULL)
     {
-        node = ft_lstnew(f(lst->content));
-        ft_lstadd_back(&head, node);
-        
+        f(lst->content);
+        head = lst;
+        next_node = lst->next;
+        del(lst);
+        lst = next_node;
     }
-    
-    
+    return head;
 }
