@@ -6,13 +6,13 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:53:57 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/07 13:19:13 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/09 22:12:59 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int	is_white_space(int c);
+int	is_white_space(int c);
 static	int calculate_nb(const char *str, int mult);
 
 int		ft_atoi(const char *str)
@@ -34,13 +34,13 @@ int		ft_atoi(const char *str)
 		else if (ft_isdigit(*str))
 			return (calculate_nb(str, mult));
 		else if (!is_white_space(*str))
-			return(0);
+			return (0);
 		str++;
 	}
 	return (0);
 }
 
-static	int	is_white_space(int c)
+int	is_white_space(int c)
 {
 	if ((c >= 7 && c <= 13) || c == 32)
 		return (1);
@@ -48,7 +48,7 @@ static	int	is_white_space(int c)
 		return (0);
 }
 
-static int calculate_nb(const char *str, int mult)
+static	int	calculate_nb(const char *str, int mult)
 {
 	int res;
 
