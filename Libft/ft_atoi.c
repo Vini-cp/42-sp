@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:53:57 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/10 20:48:27 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 20:50:17 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static	int	calculate_nb(const char *str, int mult)
 	return (mult * res);
 }
 
-int		ft_atoi(const char *str)
+int			ft_atoi(const char *str)
 {
 	int mult;
 	int bool_first;
