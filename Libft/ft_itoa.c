@@ -6,11 +6,26 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 11:36:15 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/10 21:50:09 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 23:24:28 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static	void	rev_array(char *str, int len)
+{
+	int		i;
+	char	c;
+
+	i = 0;
+	while (i < len / 2)
+	{
+		c = str[i];
+		str[i] = str[len - i - 1];
+		str[len - i - 1] = c;
+		i++;
+	}
+}
 
 static	char	*int_to_str(char *s, unsigned int nb, int neg)
 {
@@ -31,21 +46,6 @@ static	char	*int_to_str(char *s, unsigned int nb, int neg)
 	*s = '\0';
 	rev_array(s - len, len);
 	return (s - len);
-}
-
-static	void	rev_array(char *str, int len)
-{
-	int		i;
-	char	c;
-
-	i = 0;
-	while (i < len / 2)
-	{
-		c = str[i];
-		str[i] = str[len - i - 1];
-		str[len - i - 1] = c;
-		i++;
-	}
 }
 
 static	int		check_neg(int n)
