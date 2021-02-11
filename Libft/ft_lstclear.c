@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 22:46:17 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/11 00:15:44 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/11 00:25:45 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	{
 		next_node = (*lst)->next;
 		del((*lst)->content);
-        free(*lst);
+		free(*lst);
 		(*lst) = next_node;
 	}
 }
