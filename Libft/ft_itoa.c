@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 11:36:15 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/10 21:48:13 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 21:50:09 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static	char	*int_to_str(char *s, unsigned int nb, int neg)
 	}
 	*s = '\0';
 	rev_array(s - len, len);
-	return s - len;
+	return (s - len);
 }
 
 static	void	rev_array(char *str, int len)
@@ -58,22 +58,22 @@ static	int		check_neg(int n)
 
 char			*ft_itoa(int n)
 {
-	int             neg;
+	int				neg;
 	unsigned int	nb;
-	char            *s;
+	char			*s;
 
 	neg = check_neg(n);
 	if (neg)
 		nb = n * (-1);
 	else
 		nb = n;
-	if(!(s = (char *) malloc(12 * sizeof(char))))
-		return NULL;
+	if (!(s = (char *)malloc(12 * sizeof(char))))
+		return (NULL);
 	if (nb == 0)
 	{
 		s[0] = '0';
 		s[1] = '\0';
-		return s;
+		return (s);
 	}
-	return int_to_str(s, nb, neg);
+	return (int_to_str(s, nb, neg));
 }
