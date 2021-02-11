@@ -6,15 +6,16 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 22:13:13 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/10 23:16:51 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 23:18:16 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H_
-#define LIBFT_H_
-#include <stddef.h>
-#include <stdlib.h>
-#include <unistd.h>
+# define LIBFT_H_
+
+# include <stddef.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef	struct		s_list
 {
