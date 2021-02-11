@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 00:45:28 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/10 21:34:37 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 22:01:30 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static	int	nb_of_strs(char const *s, char c)
 {
 	int nb;
 	int bool_check;
-	
+
 	nb = 0;
 	bool_check = 1;
 	while (*s != '\0')
@@ -49,11 +49,11 @@ static	int	nb_of_strs(char const *s, char c)
 
 char		**ft_split(char const *s, char c)
 {
-	char    **strs;
-	int     n;
-	int     i;
-	int     start;
-	int     end;
+	char	**strs;
+	int		n;
+	int		i;
+	int		start;
+	int		end;
 
 	n = nb_of_strs(s, c);
 	if(!(strs = (char**) malloc((n + 1) * sizeof(char*))))
@@ -64,13 +64,13 @@ char		**ft_split(char const *s, char c)
 	{
 		start = get_first_position(s, c, end);
 		end = get_last_position(s, c, start);
-		if(!(strs[i] = (char*) malloc( (end - start + 1) * sizeof(char*))))
+		if (!(strs[i] = (char*)malloc((end - start + 1) * sizeof(char*))))
 			return (NULL);
 		ft_strlcpy(strs[i], (s + start), (end - start + 1));
 		i++;
 		end++;
 	}
-	strs[i] = (char*) malloc(sizeof(char*));
+	strs[i] = (char*)malloc(sizeof(char*));
 	strs[i] = NULL;
-	return strs;
+	return (strs);
 }
