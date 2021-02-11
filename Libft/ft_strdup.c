@@ -6,12 +6,11 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:31:58 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/10 21:38:35 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 21:51:41 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 
 static	char	*ft_strcpy(char *dest, const char *src)
 {
@@ -27,8 +26,7 @@ static	char	*ft_strcpy(char *dest, const char *src)
 	return (dest);
 }
 
-
-char 			*ft_strdup(const char *s)
+char			*ft_strdup(const char *s)
 {
 	int		len;
 	char	*dest;
