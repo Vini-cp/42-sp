@@ -6,42 +6,11 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:55:05 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/06 17:23:06 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 21:33:36 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static	void	rev_array(char *str);
-static	int		check_neg(int nb);
-static	void	nb_to_char(char *str, unsigned int nb, int neg);
-
-void	ft_putnbr_fd(int n, int fd)
-{
-	char			str[12];
-	int				neg;
-	int				i;
-	unsigned int	nb;
-
-	neg = check_neg(n);
-	i = 0;
-	if (neg)
-		nb = n * (-1);
-	else
-		nb = n;
-	if (n == 0)
-		ft_putchar_fd('0', fd);
-	else
-	{
-		nb_to_char(str, nb, neg);
-		rev_array(str);
-	}
-	while (str[i] != '\0')
-	{
-		ft_putchar_fd(str[i], fd);
-		i++;
-	}
-}
 
 void	rev_array(char *str)
 {
@@ -89,4 +58,31 @@ void	nb_to_char(char *str, unsigned int nb, int neg)
 	}
 	else
 		str[i] = '\0';
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	char			str[12];
+	int				neg;
+	int				i;
+	unsigned int	nb;
+
+	neg = check_neg(n);
+	i = 0;
+	if (neg)
+		nb = n * (-1);
+	else
+		nb = n;
+	if (n == 0)
+		ft_putchar_fd('0', fd);
+	else
+	{
+		nb_to_char(str, nb, neg);
+		rev_array(str);
+	}
+	while (str[i] != '\0')
+	{
+		ft_putchar_fd(str[i], fd);
+		i++;
+	}
 }

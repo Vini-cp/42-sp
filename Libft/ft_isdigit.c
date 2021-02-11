@@ -6,11 +6,11 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:54:29 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/05 00:27:20 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 21:28:56 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isdigit(int c)
+int ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);

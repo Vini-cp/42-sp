@@ -6,23 +6,23 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:54:38 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/06 17:21:37 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 21:32:18 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-    const unsigned char *str1;
-    const unsigned char *str2;
-    
-    str1 = (const unsigned char*) s1;
-    str2 = (const unsigned char*) s2;
-    while (n--)
-    {
-        if (*str1++ != *str2++)
-            return *(str1 -1) - *(str2 - 1);
-    }
-    return 0;
+	const unsigned char *str1;
+	const unsigned char *str2;
+	
+	str1 = (const unsigned char*) s1;
+	str2 = (const unsigned char*) s2;
+	while (n--)
+	{
+		if (*str1++ != *str2++)
+			return *(str1 -1) - *(str2 - 1);
+	}
+	return 0;
 }

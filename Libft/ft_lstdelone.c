@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 22:13:41 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/06 22:45:00 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 21:31:06 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void    ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-    t_list * next_node;
-    
-    next_node = NULL;
+	t_list * next_node;
+	
+	next_node = NULL;
 
-    if (lst != NULL)
-    {
-        next_node = lst->next;
-        del(lst);
-        lst = next_node;
-    }
+	if (lst != NULL)
+	{
+		next_node = lst->next;
+		del(lst);
+		lst = next_node;
+	}
 }
