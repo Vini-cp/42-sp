@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 00:45:28 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/10 22:01:30 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 22:08:26 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ static	int	nb_of_strs(char const *s, char c)
 	{
 		if (*s == c)
 			bool_check = 1;
-		else if(*s != c && bool_check)
+		else if (*s != c && bool_check)
 		{
 			nb++;
 			bool_check = 0;
 		}
 		s++;
 	}
-	return nb;
+	return (nb);
 }
 
 char		**ft_split(char const *s, char c)
@@ -56,8 +56,8 @@ char		**ft_split(char const *s, char c)
 	int		end;
 
 	n = nb_of_strs(s, c);
-	if(!(strs = (char**) malloc((n + 1) * sizeof(char*))))
-		return(NULL);
+	if (!(strs = (char**)malloc((n + 1) * sizeof(char*))))
+		return (NULL);
 	end = 0;
 	i = 0;
 	while (i < n)

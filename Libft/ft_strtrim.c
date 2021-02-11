@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:35:21 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/10 21:59:55 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 22:06:13 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ static	int	get_last_position(char const *str, char const *set)
 
 char		*ft_strtrim(char const *s1, char const *set)
 {
-	char *str;
-	int len;
-	int start;
-	int i;
+	char	*str;
+	int		len;
+	int		start;
+	int		i;
 
 	start = get_first_position(s1, set);
 	len = get_last_position(s1, set) - start;
