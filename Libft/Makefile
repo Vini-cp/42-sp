@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/02/04 22:40:41 by vcordeir          #+#    #+#              #
-#    Updated: 2021/02/09 00:52:43 by vcordeir         ###   ########.fr        #
+#    Created: 2021/02/10 23:34:30 by vcordeir          #+#    #+#              #
+#    Updated: 2021/02/10 23:34:40 by vcordeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,6 @@ OBJ_BONUS = $(SRC_BONUS:.c=.o)
 CFLAGS += -Wall -Werror -Wextra -I./ -c
 
 RUNFLAGS += -Wall -Werror -Wextra
-
-# ARGS = `arg="$(filter-out $@,$(MAKECMDGOALS))" && echo $${arg:-${1}}`
 
 $(NAME): $(OBJ)
 	gcc $(CFLAGS) $(SRC)
