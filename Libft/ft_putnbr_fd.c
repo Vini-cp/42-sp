@@ -6,13 +6,13 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:55:05 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/10 21:33:36 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 23:39:39 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	rev_array(char *str)
+static	void	rev_array(char *str)
 {
 	int		len;
 	int		i;
@@ -31,7 +31,7 @@ void	rev_array(char *str)
 	}
 }
 
-int		check_neg(int nb)
+static	int		check_neg(int nb)
 {
 	if (nb < 0)
 		return (1);
@@ -39,7 +39,7 @@ int		check_neg(int nb)
 		return (0);
 }
 
-void	nb_to_char(char *str, unsigned int nb, int neg)
+static	void	nb_to_char(char *str, unsigned int nb, int neg)
 {
 	int i;
 
@@ -60,7 +60,7 @@ void	nb_to_char(char *str, unsigned int nb, int neg)
 		str[i] = '\0';
 }
 
-void	ft_putnbr_fd(int n, int fd)
+void			ft_putnbr_fd(int n, int fd)
 {
 	char			str[12];
 	int				neg;
