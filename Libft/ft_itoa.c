@@ -6,22 +6,21 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 11:36:15 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/10 21:30:24 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 21:48:13 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
 static	char	*int_to_str(char *s, unsigned int nb, int neg)
 {
 	int	len;
-	   
+
 	len = 0;
 	while (nb)
 	{
-		*s++ = nb%10 + '0';
-		nb = (nb - nb%10)/10;
+		*s++ = nb % 10 + '0';
+		nb = (nb - nb % 10) / 10;
 		len++;
 	}
 	if (neg)
