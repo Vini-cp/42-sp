@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 18:36:06 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/10 22:37:35 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 23:27:34 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	t_list *last;
 
 	if (*lst == NULL)
-	{
 		*lst = new;
-		return;
+	else
+	{
+		last = ft_lstlast(*lst);
+		last->next = new;
+		new->next = NULL;   
 	}
-	last = ft_lstlast(*lst);
-	last->next = new;
-	new->next = NULL;
 }
