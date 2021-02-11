@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:54:46 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/10 21:32:34 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 22:18:39 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	unsigned char *p = s;
+	unsigned char *p;
+
+	p = s;
 	while (n--)
 		*p++ = c;
 	return s;
