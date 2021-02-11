@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 10:58:33 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/10 21:38:10 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 22:44:31 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ char	*ft_strchr(const char *s, int c)
 {
 	unsigned char c1;
 
-	c1 = ' ';    
+	c1 = ' ';
 	while (c1 != '\0')
 	{
-		c1 = (unsigned char) *s++;
+		c1 = (unsigned char)*s++;
 		if (c1 == c)
-			return (char *) (s - 1);
+			return (char *)(s - 1);
 	}
-	return NULL;
+	return (NULL);
 }
