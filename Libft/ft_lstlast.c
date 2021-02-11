@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 18:30:20 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/10 21:31:18 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 22:37:30 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 t_list	*ft_lstlast(t_list *lst)
 {
 	if (lst->next == NULL)
-		return lst;  
+		return (lst);
 	while (lst != NULL)
 	{
 		lst = lst->next;
 		if (lst->next == NULL)
-			return lst;       
+			return (lst);
 	}
-	return NULL;
+	return (NULL);
 }
