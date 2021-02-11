@@ -6,12 +6,12 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 22:13:13 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/10 22:58:53 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 23:06:30 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	LIBFT_H_
-#define LIBFT_H_
+#ifndef		LIBFT_H_
+#define		LIBFT_H_
 
 #include <stddef.h>
 #include <stdlib.h>
