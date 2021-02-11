@@ -6,20 +6,20 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:54:41 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/10 21:07:21 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 22:27:30 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    *ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-    char *csrc;
-    char *cdest;
+	char	*csrc;
+	char	*cdest;
 
-    csrc = (char *)src;
-    cdest = (char *)dest;
-    while (n--)
-        *cdest++ = *csrc++;
-    return dest;
+	csrc = (char *)src;
+	cdest = (char *)dest;
+	while (n--)
+		*cdest++ = *csrc++;
+	return (dest);
 }

@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 18:22:38 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/10 21:31:54 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/10 22:26:53 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ int	ft_lstsize(t_list *lst)
 		lst = lst->next;
 		lst_size++;
 	}
-	return lst_size;
+	return (lst_size);
 }
