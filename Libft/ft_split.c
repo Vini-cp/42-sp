@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 00:45:28 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/10 22:08:26 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/11 22:56:18 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static	int	get_first_position(char const *str, char c, int start)
 
 static	int	get_last_position(char const *str, char c, int start)
 {
-	while (str[start] != c)
+	while (str[start] != c && str[start] != '\0')
 		start++;
 	return (start);
 }
@@ -64,13 +64,14 @@ char		**ft_split(char const *s, char c)
 	{
 		start = get_first_position(s, c, end);
 		end = get_last_position(s, c, start);
-		if (!(strs[i] = (char*)malloc((end - start + 1) * sizeof(char*))))
+		if (!(strs[i] = (char*)malloc((end - start + 1) * sizeof(char))))
 			return (NULL);
 		ft_strlcpy(strs[i], (s + start), (end - start + 1));
 		i++;
 		end++;
 	}
-	strs[i] = (char*)malloc(sizeof(char*));
+	if (!(strs[i] = (char*)malloc(sizeof(char))))
+		return (NULL);
 	strs[i] = NULL;
 	return (strs);
 }
