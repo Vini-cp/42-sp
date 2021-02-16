@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:54:41 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/10 22:45:12 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/16 01:01:40 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 	csrc = (char *)src;
 	cdest = (char *)dest;
+	if (!dest && !src)
+		return (NULL);
 	while (n--)
 		*cdest++ = *csrc++;
 	return (dest);
