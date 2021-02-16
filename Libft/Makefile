@@ -6,7 +6,7 @@
 #    By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/10 23:34:30 by vcordeir          #+#    #+#              #
-#    Updated: 2021/02/11 15:31:04 by vcordeir         ###   ########.fr        #
+#    Updated: 2021/02/13 22:34:15 by vcordeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,13 @@ OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 CFLAGS += -Wall -Werror -Wextra -I./ -c
 
+RUNFLAGS += -Wall -Werror -Wextra
+
 $(NAME): $(OBJ)
 	gcc $(CFLAGS) $(SRC)
 	ar rc $(NAME) $(OBJ)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re lib run
 
 all:    $(NAME)
 
@@ -47,3 +49,10 @@ fclean: clean
 	rm -f $(NAME)
 
 re:     fclean all
+
+lib:	all clean
+
+run:
+	@gcc $(RUNFLAGS) $(ARGS).c /Users/viniciuscp/Desktop/42-sp/Libft/$(NAME) && ./a.out && rm ./a.out
+
+	gcc -Wall -Werror -Wextra ft_split.c /Users/viniciuscp/Desktop/42-sp/Libft/libft.a && ./a.out && rm ./a.out

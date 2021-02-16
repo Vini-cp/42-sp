@@ -6,11 +6,12 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 00:45:28 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/11 22:56:18 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/12 21:33:33 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static	int	get_first_position(char const *str, char c, int start)
 {
@@ -74,4 +75,18 @@ char		**ft_split(char const *s, char c)
 		return (NULL);
 	strs[i] = NULL;
 	return (strs);
+}
+
+int main ()
+{
+    char str[] = "    Oi    meu nome é Goku!";
+    char c = 'e';
+    char **s;
+    s = ft_split(str, c);
+    int i = 0;
+    while(s[i] != '\0')
+    {
+        printf("%s.\n", s[i]);
+        i++;   
+    }
 }
