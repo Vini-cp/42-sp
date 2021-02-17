@@ -6,18 +6,16 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:26:14 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/13 21:37:11 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/16 22:11:37 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-// #include <stdio.h>
-// #include <string.h>
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -39,17 +37,3 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	return (NULL);
 }
-
-// int main()
-// {
-//     const char *largestring = "Foo Bar Baz";
-//     const char *smallstring = "o B";
-//     char *ptr;
-//     char *ft_ptr;
-
-//     ptr = strnstr(largestring, smallstring, 7);
-//     ft_ptr = ft_strnstr(largestring, smallstring, 7);
-
-//     printf("Funcao original: %s\n", ptr);
-//     printf("FUncao criada: %s\n", ft_ptr);
-// }

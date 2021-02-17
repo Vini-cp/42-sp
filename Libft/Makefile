@@ -6,7 +6,7 @@
 #    By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/10 23:34:30 by vcordeir          #+#    #+#              #
-#    Updated: 2021/02/13 22:34:15 by vcordeir         ###   ########.fr        #
+#    Updated: 2021/02/16 22:12:05 by vcordeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,10 +49,3 @@ fclean: clean
 	rm -f $(NAME)
 
 re:     fclean all
-
-lib:	all clean
-
-run:
-	@gcc $(RUNFLAGS) $(ARGS).c /Users/viniciuscp/Desktop/42-sp/Libft/$(NAME) && ./a.out && rm ./a.out
-
-	gcc -Wall -Werror -Wextra ft_split.c /Users/viniciuscp/Desktop/42-sp/Libft/libft.a && ./a.out && rm ./a.out
