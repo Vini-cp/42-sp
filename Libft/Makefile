@@ -6,7 +6,7 @@
 #    By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/10 23:34:30 by vcordeir          #+#    #+#              #
-#    Updated: 2021/02/16 22:12:05 by vcordeir         ###   ########.fr        #
+#    Updated: 2021/02/17 21:03:18 by vcordeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ $(NAME): $(OBJ)
 	gcc $(CFLAGS) $(SRC)
 	ar rc $(NAME) $(OBJ)
 
-.PHONY: all clean fclean re lib run
+.PHONY: all clean fclean re
 
 all:    $(NAME)
 

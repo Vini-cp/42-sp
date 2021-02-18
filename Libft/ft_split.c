@@ -6,11 +6,12 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 00:45:28 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/16 22:13:18 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/17 21:02:57 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static	int	get_first_position(char const *str, char c, int start)
 {
@@ -75,3 +76,26 @@ char		**ft_split(char const *s, char c)
 	strs[i] = NULL;
 	return (strs);
 }
+
+// int main()
+// {
+// 	char **s;
+// 	char str[] = "                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      .";
+// 	char c = ' ';
+	
+// 	// char str[] = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse";
+// 	// char c = ' ';
+	
+// 	// char str[] = "   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ";
+// 	// char c = ' ';
+	
+// 	// char str[] = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.";
+// 	// char c = 'i';
+	
+// 	// char str[] = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.";
+// 	// char c = 'z';
+
+// 	s = ft_split(str, c);
+// 	while(*s)
+// 		printf("%s|\n", *s++);
+// }
