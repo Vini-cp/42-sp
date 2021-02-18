@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 22:52:42 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/12 21:59:30 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/17 22:43:36 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*str;
 	size_t	i;
 
+	if (!s)
+		return (NULL);
 	if (start >= ft_strlen(s))
 	{
 		if (!(str = (char*)malloc(sizeof(char))))

@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:35:21 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/16 20:23:54 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/17 23:00:35 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ char		*ft_strtrim(char const *s1, char const *set)
 	int		start;
 	int		i;
 
+	if (!s1 || !set)
+		return (NULL);
 	start = get_first_position(s1, set);
 	len = get_last_position(s1, set) - start;
 	if (len < 0)

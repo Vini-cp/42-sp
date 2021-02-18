@@ -6,15 +6,15 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 21:53:57 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/16 21:51:31 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/17 22:41:24 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int	is_white_space(int c)
+static	int	is_white_space(int c, int bool_first)
 {
-	if ((c >= 7 && c <= 13) || c == 32)
+	if (((c >= 7 && c <= 13) || c == 32) && bool_first)
 		return (1);
 	else
 		return (0);
@@ -51,7 +51,7 @@ int			ft_atoi(const char *str)
 			bool_first = 0;
 		else if (ft_isdigit(*str))
 			return (calculate_nb(str, mult));
-		else if (!is_white_space(*str))
+		else if (!is_white_space(*str, bool_first))
 			return (0);
 		str++;
 	}
