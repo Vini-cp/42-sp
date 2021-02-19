@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 14:26:14 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/16 22:11:37 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/18 23:46:15 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,23 @@
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int	i;
-	int	j;
+	size_t little_len;
 
-	i = 0;
-	j = 0;
-	if (little[0] == '\0')
-		return ((char *)big);
-	while (big[i] && len--)
+	little_len = ft_strlen(little);
+	if (little_len == 0)
+		return ((char *)big);	
+	while (*big && little_len <= len)
 	{
-		if (big[i] == little[j])
-			j++;
-		else
-		{
-			if (i)
-				i -= j;
-			j = 0;
-		}
-		if (!little[j])
-			return ((char *)&big[i - j + 1]);
-		i++;
+		if (ft_strncmp(big++, little, little_len) == 0)
+			return ((char *) (big - 1));
+		len--;
 	}
 	return (NULL);
 }
+
+// int main ()
+// {
+// 	char haystack[30] = "aaabcabcd";
+// 	char needle[10] = "aabc";
+// 	ft_putendl_fd(ft_strnstr(haystack, needle, 0),1);
+// }
