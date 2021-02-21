@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strs.c                                         :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/09 00:45:28 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/19 20:02:38 by vcordeir         ###   ########.fr       */
+/*   Created: 2021/02/19 20:47:52 by vcordeir          #+#    #+#             */
+/*   Updated: 2021/02/19 20:48:25 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static	int		nb_of_strs(char const *s, char c)
 	return (nb);
 }
 
-static char		*string(const char *s, int init, int end)
+static	char	*string(const char *s, int init, int end)
 {
 	char	*str;
 
