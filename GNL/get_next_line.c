@@ -6,68 +6,45 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 21:38:33 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/22 00:17:38 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/24 23:04:24 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-#include <stdio.h>
-#include <fcntl.h>
-
-// usar a variável estática "t" para sempre receber o conteúdo de "s"
-// caso o conteúdo de "s" tenha um NEW LINE + algum outro caractere
-// será necessário passar todo o conteúdo excedente para t depois
-// que t for passado para line
-
 int		get_next_line(int fd, char **line)
 {
 	char			*s;
-	// static	char	*t;
-	int				size;
-	int				i;
-	
-	i = 0;
-	s = (char*)malloc(BUFFER_SIZE*sizeof(char));
-	while (read(fd, s, BUFFER_SIZE) > 0)
-	{
-		if (!*s)
-			return (0);
-		size = get_end_line(s);
-		if (size)
-		{
-			if (line)
-			{
-				*(line + i * BUFFER_SIZE) = (char *)malloc(BUFFER_SIZE*sizeof(char));
-				ft_strlcat(*line, s, (i * BUFFER_SIZE + size + 1));
-			}
-			else
-			{
-				*line = (char *)malloc(size*sizeof(char));
-				ft_strlcat(*line, s, size + 1);
-			}
-            return (1);
-		}
-		*(line + i * BUFFER_SIZE) = (char *)malloc(BUFFER_SIZE*sizeof(char));
-		ft_strlcat(*line, s, ((i + 1) * BUFFER_SIZE + 1));
-		// printf("TESTE: %s\n", s);
-		ft_memset(s, 0, BUFFER_SIZE);
-		i++;
-	}
-	return (0);
-}
+	char			*tmp;
+	static	char	*t;
+	size_t			size;
+	int				out;
 
-int main ()
-{
-	int fd;
-	int out;
-	char * line = NULL;
-	
-	fd = open("test.txt", O_RDONLY);
 	out = 1;
-	while (out)
+	s = (char *)malloc(BUFFER_SIZE * sizeof(char));
+	while (out > 0)
 	{
-		out = get_next_line(fd, &line);
-		printf("%s\n", line);
+		out = read(fd, s, BUFFER_SIZE);
+		if (!t)
+			t = ft_strdup(s);
+		else
+			t = ft_strjoin(t, ft_substr(s, 0, out));
+		tmp = ft_strchr(t, '\n');
+		if (tmp)
+		{
+			size = ft_strlen(t) - ft_strlen(tmp) + 1;
+			*line = (char *)malloc(size * sizeof(char));
+			ft_strlcpy(*line, t, size);
+			t = ft_strdup(tmp + 1);
+			return (1);
+		}
+		if (out == 0)
+		{
+			size = ft_strlen(t) + 1;
+			*line = (char *)malloc(size * sizeof(char));
+			ft_strlcpy(*line, t, size);
+			return (0);
+		}
 	}
+	return (out);
 }
