@@ -6,7 +6,7 @@
 #    By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/10 23:34:30 by vcordeir          #+#    #+#              #
-#    Updated: 2021/02/22 00:46:43 by vcordeir         ###   ########.fr        #
+#    Updated: 2021/02/26 20:46:03 by vcordeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,8 +37,8 @@ fclean: clean
 re:     fclean all
 
 run:
-	@gcc -Wall -Wextra -Werror -D BUFFER_SIZE=$(BF) get_next_line.c \
-	get_next_line_utils.c && ./a.out && rm ./a.out
+	@gcc -g3 -fsanitize=address -Wall -Wextra -Werror -D BUFFER_SIZE=$(BF) \
+	get_next_line.c get_next_line_utils.c && ./a.out && rm ./a.out
 
 test:
 	@gcc -Wall -Wextra -Werror test.c && ./a.out && rm ./a.out

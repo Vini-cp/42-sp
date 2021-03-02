@@ -6,45 +6,67 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 21:38:33 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/24 23:04:24 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/01 22:57:44 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
+
+static	char	*init_pointer(char *s, char *t, int size)
+{
+	s[size] = '\0';
+	if (!t)
+		return(ft_strdup(s));
+	else
+		return(ft_strjoin(t, ft_substr(s, 0, size + 1)));
+}
+
+static	char	*allocate_line(char *t, char *tmp)
+{
+	size_t	size;
+	
+	size = ft_strlen(t) - ft_strlen(tmp) + 1;
+	return(ft_substr(t, 0, size - 1));
+}
 
 int		get_next_line(int fd, char **line)
 {
 	char			*s;
 	char			*tmp;
 	static	char	*t;
-	size_t			size;
 	int				out;
-
-	out = 1;
-	s = (char *)malloc(BUFFER_SIZE * sizeof(char));
-	while (out > 0)
+	
+	if (line == 0 || fd < 0 || BUFFER_SIZE == 0)
+		return (-1);
+	s = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));	
+	while ((out = read(fd, s, BUFFER_SIZE)) >= 0)
 	{
-		out = read(fd, s, BUFFER_SIZE);
-		if (!t)
-			t = ft_strdup(s);
-		else
-			t = ft_strjoin(t, ft_substr(s, 0, out));
-		tmp = ft_strchr(t, '\n');
-		if (tmp)
+		t = init_pointer(s, t, out);
+		if ((tmp = ft_strchr(t, '\n')))
 		{
-			size = ft_strlen(t) - ft_strlen(tmp) + 1;
-			*line = (char *)malloc(size * sizeof(char));
-			ft_strlcpy(*line, t, size);
+			*line = allocate_line(t, tmp);
 			t = ft_strdup(tmp + 1);
 			return (1);
 		}
 		if (out == 0)
 		{
-			size = ft_strlen(t) + 1;
-			*line = (char *)malloc(size * sizeof(char));
-			ft_strlcpy(*line, t, size);
+			*line = ft_strdup(t);
 			return (0);
 		}
 	}
 	return (out);
 }
+
+// int main ()
+// {
+// 	int fd = open("test.txt", O_RDONLY);
+// 	int out = 1;
+// 	char *line = NULL;
+// 	while (out)
+// 	{
+// 		out = get_next_line(fd, &line);
+// 		printf("%s.\n", line);
+// 	}
+// 	free(line);
+// }

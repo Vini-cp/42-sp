@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 21:23:11 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/24 23:05:50 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/02/26 20:43:09 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ size_t	ft_strlen(const char *s)
 
 	length = 0;
 	while (s[length] != '\0')
-	{
 		length++;
-	}
 	return (length);
 }
 

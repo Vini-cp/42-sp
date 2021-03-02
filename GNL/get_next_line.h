@@ -7,7 +7,6 @@
 # include <fcntl.h>
 
 int		get_next_line(int fd, char **line);
-int		get_end_line (char *s);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
