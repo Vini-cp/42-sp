@@ -6,12 +6,12 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 21:38:33 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/02 03:12:42 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/02 03:16:56 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
+// #include <stdio.h>
 
 void		*ft_memset(void *s, int c, size_t n)
 {
@@ -84,15 +84,15 @@ int		get_next_line(int fd, char **line)
 	return (out == 0 ? 0 * del((void **)&t) : 1);
 }
 
-int main ()
-{
-	int fd = open("test.txt", O_RDONLY);
-	int out = 1;
-	char *line = NULL;
-	while (out)
-	{
-		out = get_next_line(fd, &line);
-		printf("%s.\n", line);
-	}
-	free(line);
-}
+// int main ()
+// {
+// 	int fd = open("test.txt", O_RDONLY);
+// 	int out = 1;
+// 	char *line = NULL;
+// 	while (out)
+// 	{
+// 		out = get_next_line(fd, &line);
+// 		printf("%s.\n", line);
+// 	}
+// 	free(line);
+// }
