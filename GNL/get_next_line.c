@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 21:38:33 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/02 00:20:36 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/02 00:59:04 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,13 @@ int		get_next_line(int fd, char **line)
 		{
 			*line = allocate_line(t, tmp);
 			t = ft_strdup(tmp + 1);
+			free(tmp);
 			return (1);
 		}
 		if (out == 0)
 		{
 			*line = ft_strdup(t);
+			free(s);
 			return (0);
 		}
 	}
