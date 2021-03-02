@@ -6,58 +6,82 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 21:38:33 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/02 00:59:04 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/02 03:12:42 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-static	char	*init_pointer(char *s, char *t, int size)
+void		*ft_memset(void *s, int c, size_t n)
 {
-	s[size] = '\0';
-	if (!t)
-		return(ft_strdup(s));
-	else
-		return(ft_strjoin(t, ft_substr(s, 0, size + 1)));
+	unsigned char *p;
+
+	p = s;
+	while (n--)
+		*p++ = c;
+	return (s);
 }
 
-static	char	*allocate_line(char *t, char *tmp)
+char		*new_array(size_t size)
 {
-	size_t	size;
-	
-	size = ft_strlen(t) - ft_strlen(tmp) + 1;
-	return(ft_substr(t, 0, size - 1));
+	void	*ptr;
+
+	if(!(ptr = malloc((size + 1) * sizeof(char))))
+		return (NULL);
+	ptr = ft_memset(ptr, 0, size);
+	return (ptr);
+}
+
+int			del(void **ptr)
+{
+	if (*ptr)
+	{
+		ft_memset(*ptr, 0, ft_strlen(*ptr));
+		free(*ptr);
+		*ptr = NULL;
+		return (1);
+	}
+	return (0);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t length;
+
+	length = 0;
+	while (s[length] != '\0')
+		length++;
+	return (length);
 }
 
 int		get_next_line(int fd, char **line)
 {
-	char			*s;
+	int				out;
+	char			s[BUFFER_SIZE + 1];
 	char			*tmp;
 	static	char	*t;
-	int				out;
 	
 	if (!line || fd < 0 || BUFFER_SIZE <= 0)
-		return (-1);
-	s = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));	
-	while ((out = read(fd, s, BUFFER_SIZE)) >= 0)
+		return (-1 * del((void **)&t));
+	t == NULL ? t = new_array(0) : NULL;
+	while (!ft_strchr(t, '\n') && (out = read(fd, s, BUFFER_SIZE)) > 0)
 	{
-		t = init_pointer(s, t, out);
-		if ((tmp = ft_strchr(t, '\n')))
-		{
-			*line = allocate_line(t, tmp);
-			t = ft_strdup(tmp + 1);
-			free(tmp);
-			return (1);
-		}
-		if (out == 0)
-		{
-			*line = ft_strdup(t);
-			free(s);
-			return (0);
-		}
+		s[out] = '\0';
+		tmp = ft_strjoin(t, s);
+		del((void **)&t);
+		t = tmp;
 	}
-	return (out);
+	if (out == 0)
+		*line = ft_strdup(t);
+	else if (out > 0)
+		*line = ft_substr(t, 0, (ft_strchr(t, '\n') - t));
+	else
+		return (-1);
+	tmp = ft_strdup(t + (ft_strlen(*line) + ((out > 0) ? +1 : +0)));
+	del((void **)&t);
+	t = tmp;
+	return (out == 0 ? 0 * del((void **)&t) : 1);
 }
 
 int main ()

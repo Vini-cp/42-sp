@@ -6,20 +6,22 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 21:23:11 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/02/26 20:43:09 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/02 03:05:09 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_strdup(const char *s)
 {
-	size_t length;
+	int		len;
+	char	*dest;
 
-	length = 0;
-	while (s[length] != '\0')
-		length++;
-	return (length);
+	len = ft_strlen(s);
+	if (!(dest = (char*)malloc((len + 1) * sizeof(char))))
+		return (NULL);
+	ft_strlcpy(dest, s, (len + 1));
+	return (dest);
 }
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
@@ -44,18 +46,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		j++;
 	}
 	return (j);
-}
-
-char	*ft_strdup(const char *s)
-{
-	int		len;
-	char	*dest;
-
-	len = ft_strlen(s);
-	if (!(dest = (char*)malloc((len + 1) * sizeof(char))))
-		return (NULL);
-	ft_strlcpy(dest, s, (len + 1));
-	return (dest);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
