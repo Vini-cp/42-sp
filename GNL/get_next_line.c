@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 21:38:33 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/03 19:42:13 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/03 19:45:53 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@ size_t	ft_strlen(const char *s)
 	return (length);
 }
 
-char		*zeroed_array(size_t size)
+char	*zeroed_array(size_t size)
 {
 	void	*ptr;
 	size_t	malloc_size;
 
 	malloc_size = (size + 1) * sizeof(char);
-	if(!(ptr = malloc(malloc_size)))
+	if (!(ptr = malloc(malloc_size)))
 		return (NULL);
 	ft_memset(ptr, 0, malloc_size);
 	return (ptr);
 }
 
-void		*ft_memset(void *s, int c, size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	unsigned char *p;
 
@@ -44,7 +44,7 @@ void		*ft_memset(void *s, int c, size_t n)
 	return (s);
 }
 
-int			del(void **ptr)
+int		del(void **ptr)
 {
 	if (*ptr)
 	{
@@ -61,7 +61,7 @@ int		get_next_line(int fd, char **line)
 	char			s[BUFFER_SIZE + (out = 1)];
 	char			*tmp;
 	static	char	*t;
-	
+
 	if (!line || fd < 0 || BUFFER_SIZE <= 0)
 		return (-1 * del((void **)&t));
 	t == NULL ? t = zeroed_array(0) : NULL;
