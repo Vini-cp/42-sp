@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 21:23:11 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/02 03:05:09 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/02 21:04:15 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,20 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	return (j);
 }
 
+char	*ft_strchr(const char *s, int c)
+{
+	unsigned char c1;
+
+	c1 = ' ';
+	while (c1 != '\0')
+	{
+		c1 = (unsigned char)*s++;
+		if (c1 == c)
+			return (char *)(s - 1);
+	}
+	return (NULL);
+}
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	int		i;
@@ -74,20 +88,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	strjoin[i] = '\0';
 	return (strjoin);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	unsigned char c1;
-
-	c1 = ' ';
-	while (c1 != '\0')
-	{
-		c1 = (unsigned char)*s++;
-		if (c1 == c)
-			return (char *)(s - 1);
-	}
-	return (NULL);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
