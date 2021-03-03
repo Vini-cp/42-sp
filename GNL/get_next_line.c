@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 21:38:33 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/02 21:04:17 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/03 19:42:13 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ int			del(void **ptr)
 
 int		get_next_line(int fd, char **line)
 {
-	char			s[BUFFER_SIZE + 1];
+	int				out;
+	char			s[BUFFER_SIZE + (out = 1)];
 	char			*tmp;
 	static	char	*t;
-	int				out;
 	
 	if (!line || fd < 0 || BUFFER_SIZE <= 0)
 		return (-1 * del((void **)&t));
