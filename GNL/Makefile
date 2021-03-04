@@ -6,7 +6,7 @@
 #    By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/10 23:34:30 by vcordeir          #+#    #+#              #
-#    Updated: 2021/03/02 00:20:32 by vcordeir         ###   ########.fr        #
+#    Updated: 2021/03/04 10:10:35 by vcordeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,10 +37,9 @@ fclean: clean
 re:     fclean all
 
 run:
-	@gcc -g3 -fsanitize=address -Wall -Wextra -Werror -D BUFFER_SIZE=$(BF) \
-    get_next_line.c get_next_line_utils.c && \
-    valgrind --leak-check=full --show-leak-kinds=all -s ./a.out \
-    && rm ./a.out
+	@gcc -Wall -Wextra -Werror -D BUFFER_SIZE=$(BF) \
+    get_next_line.c get_next_line_utils.c \
+	&& ./a.out && rm ./a.out
 	
 test:
 	@gcc -Wall -Wextra -Werror test.c && ./a.out && rm ./a.out
