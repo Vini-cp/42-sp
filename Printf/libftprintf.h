@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:14:56 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/04 10:23:23 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/04 11:01:01 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include <stdarg.h>
 
-int	ft_printf(const char *, ...)
+int	ft_printf(const char *fmt, ...);
 
 #endif

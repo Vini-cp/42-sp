@@ -6,36 +6,46 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:13:06 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/04 10:23:17 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/04 11:09:12 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
 
-int	ft_printf(const char *, ...)
+int	ft_printf(const char *fmt, ...)
 {
-    va_list ap;
+    va_list args;
     int d;
     char c, *s;
 
-   va_start(ap, fmt);
+   va_start(args, fmt);
     while (*fmt)
         switch (*fmt++) {
         case 's':              /* string */
-            s = va_arg(ap, char *);
-            printf("string %s\n", s);
+            s = va_arg(args, char *);
+            printf("string: %s\n", s);
             break;
         case 'd':              /* int */
-            d = va_arg(ap, int);
-            printf("int %d\n", d);
+            d = va_arg(args, int);
+            printf("int: %d\n", d);
             break;
         case 'c':              /* char */
             /* need a cast here since va_arg only
                takes fully promoted types */
-            c = (char) va_arg(ap, int);
-            printf("char %c\n", c);
+            c = (char) va_arg(args, int);
+            printf("char: %c\n", c);
             break;
         }
-    va_end(ap);
+    va_end(args);
+	return (0);
+}
+
+int main()
+{
+	char s[] = "Oi, meu nome é goku";
+	char c = 'A';
+	int d = 1234;
+	char t[] = "Oi, tudo bom?";
+	ft_printf("%s %c %s %d", s, c, t, d);
 }
