@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf_puthex.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/26 23:14:56 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/04 21:05:29 by vcordeir         ###   ########.fr       */
+/*   Created: 2021/03/04 20:30:29 by vcordeir          #+#    #+#             */
+/*   Updated: 2021/03/04 20:31:24 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libftprintf.h"
 
-# include <stdarg.h>
-# include <stdint.h>
-# include <unistd.h>
-
-int		ft_printf(const char *fmt, ...);
-void	ft_putchar(char c);
-void	ft_putnbr(int n);
-void	ft_putstr(char *s);
-void	ft_put_unsignednbr(unsigned int n);
-void	ft_puthex(unsigned int n, int bool_lower);
-void	ft_putpointer(uintptr_t n);
-
-#endif
+void	ft_puthex(unsigned int n, int bool_lower)
+{
+	if (n > 15)
+	{
+		ft_puthex((n / 16), bool_lower);
+		ft_puthex((n % 16), bool_lower);
+	}
+	else
+	{
+		if (n > 9)
+			if (bool_lower)
+				ft_putchar((n - 10 + 'a'));
+			else
+				ft_putchar((n - 10 + 'A'));
+		else
+			ft_putchar((n + '0'));
+	}
+}
