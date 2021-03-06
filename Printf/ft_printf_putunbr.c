@@ -6,19 +6,23 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 23:39:26 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/04 23:39:33 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/05 23:44:35 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putunbr(unsigned int n)
+int	ft_putunbr(unsigned int n)
 {
+	int i;
+
+	i = 0;
 	if (n > 9)
 	{
-		ft_putunbr((n / 10));
-		ft_putunbr((n % 10));
+		i += ft_putunbr((n / 10));
+		i += ft_putunbr((n % 10));
 	}
 	else
-		ft_putchar((n + '0'));
+		i += ft_putchar((n + '0'));
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:14:56 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/04 23:39:03 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/06 16:25:55 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@
 # include <stdarg.h>
 # include <stdint.h>
 # include <unistd.h>
+#include <stdio.h>
 
-int		ft_printf(const char *fmt, ...);
-void	ft_putchar(char c);
-void	ft_putstr(char *s);
-void	ft_putnbr(int n);
-void	ft_putunbr(unsigned int n);
-void	ft_puthex(unsigned int n, int bool_lower);
-void	ft_putptr(uintptr_t n);
+int	ft_printf(const char *fmt, ...);
+int	ft_strlen(const char *s);
+int	ft_putchar(char c);
+int	ft_putstr(char *s);
+int	ft_putnbr(int n);
+int	ft_putunbr(unsigned int n);
+int	ft_puthex(unsigned int n, int bool_lower);
+int	ft_putptr(uintptr_t n);
 
 #endif

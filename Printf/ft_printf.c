@@ -6,49 +6,72 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:13:06 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/04 23:10:07 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/06 16:38:05 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
-int	ft_printf(const char *fmt, ...)
+int	ft_strlen(const char *s)
+{
+	int length;
+
+	length = 0;
+	while (s[length] != '\0')
+		length++;
+	return (length);
+}
+
+int	ft_aux(const char *f, va_list args)
+{
+	int i;
+
+	i = 0;
+	// if (isdigit || == '.' || == '-')
+	// 	FUNCTION DEF
+	if (*f == 's')							/* string */
+		i += ft_putstr(va_arg(args, char *));
+	else if (*f == 'd' || *f == 'i')		/* int */
+		i += ft_putnbr(va_arg(args, int));
+	else if (*f == 'u')						/* unsigned int */
+		i += ft_putunbr(va_arg(args, unsigned int));
+	else if (*f == 'x')						/* hex lower */
+		i += ft_puthex(va_arg(args, unsigned int), 1);
+	else if (*f == 'X')						/* hex lower */
+		i += ft_puthex(va_arg(args, unsigned int), 0);
+	else if (*f == 'c')						/* char */
+		i += ft_putchar((char) va_arg(args, int));
+	else if (*f == 'p')						/* pointer */
+	{
+		i += ft_putstr("0x");
+		i += ft_putptr(va_arg(args, uintptr_t));
+	}
+	return (i);
+}
+
+int		ft_printf(const char *fmt, ...)
 {
 	va_list args;
+	int i;
 
+	i = 0;
 	va_start(args, fmt);
 	while (*fmt)
 	{
 		if (*fmt == '%')
 		{
 			fmt += 1;
-			if (*fmt == 's')							/* string */
-				ft_putstr(va_arg(args, char *));
-			else if (*fmt == 'd' || *fmt == 'i')		/* int */
-				ft_putnbr(va_arg(args, int));
-			else if (*fmt == 'u')						/* unsigned int */
-				ft_put_unsignednbr(va_arg(args, unsigned int));
-			else if (*fmt == 'x')						/* hex lower */
-				ft_puthex(va_arg(args, unsigned int), 1);
-			else if (*fmt == 'X')						/* hex lower */
-				ft_puthex(va_arg(args, unsigned int), 0);
-			else if (*fmt == 'c')						/* char */
-				ft_putchar((char) va_arg(args, int));
-			else if (*fmt == '%')						/* % */
-				ft_putchar(*(fmt));
-			else if (*fmt == 'p')						/* pointer */
-			{
-				ft_putstr("0x");
-				ft_putpointer(va_arg(args, uintptr_t));
-			}
+			if (*fmt == '%')
+				i += ft_putchar(*(fmt));						/* % */
+			else
+				i += ft_aux(fmt, args);							/* see above */
 			fmt += 1;
 		}
-		else											/* type from user */
-			ft_putchar(*(fmt++));
+		else
+			i += ft_putchar(*(fmt++));							/* letter */
 	}
 	va_end(args);
-	return (0);
+	return (i);
 }
 
 int main()
@@ -85,10 +108,10 @@ int main()
 	// ft_printf("%X\n", 112450);
 	// ft_printf("ABC = ABC %% DEF\n");
 
-	printf("\t%d \n", 10);
-	printf(" %-d \n", 10);
-    printf("%010d \n", 10);
+	// printf("\t%d \n", 10);
+	// printf(" %-d \n", 10);
+    // printf("%010d \n", 10);
 
 
-	printf("%020i        .\n", 10);
+	// printf("%020i        .\n", 10);
 }

@@ -6,15 +6,19 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 14:14:22 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/04 23:41:59 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/06 16:29:11 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putstr(char *s)
+int	ft_putstr(char *s)
 {
+	int i;
+
+	i = ft_strlen(s);
 	if (s)
 		while (*s != '\0')
 			ft_putchar(*s++);
+	return (i);
 }

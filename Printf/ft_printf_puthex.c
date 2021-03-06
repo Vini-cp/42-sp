@@ -6,27 +6,31 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 20:30:29 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/04 23:38:34 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/05 23:54:00 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_puthex(unsigned int n, int bool_lower)
+int	ft_puthex(unsigned int n, int bool_lower)
 {
+	int i;
+
+	i = 0;
 	if (n > 15)
 	{
-		ft_puthex((n / 16), bool_lower);
-		ft_puthex((n % 16), bool_lower);
+		i += ft_puthex((n / 16), bool_lower);
+		i += ft_puthex((n % 16), bool_lower);
 	}
 	else
 	{
 		if (n > 9)
 			if (bool_lower)
-				ft_putchar((n - 10 + 'a'));
+				i += ft_putchar((n - 10 + 'a'));
 			else
-				ft_putchar((n - 10 + 'A'));
+				i += ft_putchar((n - 10 + 'A'));
 		else
-			ft_putchar((n + '0'));
+			i += ft_putchar((n + '0'));
 	}
+	return (i);
 }
