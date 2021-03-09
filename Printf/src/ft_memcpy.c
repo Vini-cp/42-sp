@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_putstr.c                                 :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 14:14:22 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/06 16:29:11 by vcordeir         ###   ########.fr       */
+/*   Created: 2021/02/02 21:54:41 by vcordeir          #+#    #+#             */
+/*   Updated: 2021/03/08 21:22:45 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../include/libftprintf.h"
 
-int	ft_putstr(char *s)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int i;
+	char	*csrc;
+	char	*cdest;
 
-	i = ft_strlen(s);
-	if (s)
-		while (*s != '\0')
-			ft_putchar(*s++);
-	return (i);
+	csrc = (char *)src;
+	cdest = (char *)dest;
+	if (!dest && !src)
+		return (NULL);
+	while (n--)
+		*cdest++ = *csrc++;
+	return (dest);
 }

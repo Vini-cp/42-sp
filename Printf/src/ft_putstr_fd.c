@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_puthex.c                                 :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 20:30:29 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/05 23:54:00 by vcordeir         ###   ########.fr       */
+/*   Created: 2021/02/02 21:55:11 by vcordeir          #+#    #+#             */
+/*   Updated: 2021/03/08 21:22:45 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../include/libftprintf.h"
 
-int	ft_puthex(unsigned int n, int bool_lower)
+void	ft_putstr_fd(char *s, int fd)
 {
 	int i;
 
-	i = 0;
-	if (n > 15)
+	if (s)
 	{
-		i += ft_puthex((n / 16), bool_lower);
-		i += ft_puthex((n % 16), bool_lower);
+		i = 0;
+		while (s[i] != '\0')
+		{
+			ft_putchar_fd(s[i], fd);
+			i++;
+		}
 	}
-	else
-	{
-		if (n > 9)
-			if (bool_lower)
-				i += ft_putchar((n - 10 + 'a'));
-			else
-				i += ft_putchar((n - 10 + 'A'));
-		else
-			i += ft_putchar((n + '0'));
-	}
-	return (i);
 }

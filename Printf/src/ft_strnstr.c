@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_putunbr.c                                :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 23:39:26 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/05 23:44:35 by vcordeir         ###   ########.fr       */
+/*   Created: 2021/02/06 14:26:14 by vcordeir          #+#    #+#             */
+/*   Updated: 2021/03/08 21:22:45 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../include/libftprintf.h"
 
-int	ft_putunbr(unsigned int n)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int i;
+	size_t little_len;
 
-	i = 0;
-	if (n > 9)
+	little_len = ft_strlen(little);
+	if (little_len == 0)
+		return ((char *)big);
+	while (*big && little_len <= len)
 	{
-		i += ft_putunbr((n / 10));
-		i += ft_putunbr((n % 10));
+		if (ft_strncmp(big++, little, little_len) == 0)
+			return ((char *)(big - 1));
+		len--;
 	}
-	else
-		i += ft_putchar((n + '0'));
-	return (i);
+	return (NULL);
 }
