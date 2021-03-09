@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_ptoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/07 11:36:15 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/09 10:19:09 by vcordeir         ###   ########.fr       */
+/*   Created: 2021/03/09 10:22:35 by vcordeir          #+#    #+#             */
+/*   Updated: 2021/03/09 10:33:23 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libftprintf.h"
 
-char	*ft_itoa(int num)
+char	*ft_ptoa(uintptr_t num)
 { 
-	int i;
-	int isNegative;
-	char *str;
+    int         i;
+	uintptr_t   rem;
+	char        *s;
 
-	if (num == 0)
-		return (str = ft_strdup("0\0"));
-	else if (num == -2147483648)
-		return (str = ft_strdup("-2147483648\0"));
+    if (num == 0)
+		return (s = ft_strdup("0\0"));
 	i = 0;
-	str = (char *)malloc(12 * sizeof(char));
-	isNegative = (num < 0)? 1 : 0;
-	num *= (isNegative)? -1 : 1;
-	while (num != 0)
-	{
-		str[i++] = num % 10 + '0';
-		num = num / 10;
-	}
-	if (isNegative)
-		str[i++] = '-';
-	str[i] = '\0';
-	ft_strrev(str);
-	return (str);
+	s = (char *)malloc(9 * sizeof(char));
+    while (num != 0)
+    {
+        rem = num % 16;
+        s[i++] = (rem > 9)? (rem - 10) + 'a' : rem + '0';
+        num = num / 16;
+    }
+    s[i++] = 'x';
+    s[i++] = '0';
+    s[i] = '\0';
+    ft_strrev(s);
+    return (s);
 }

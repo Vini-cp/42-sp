@@ -1,54 +1,53 @@
 #include <stdio.h>
 #include "include/libftprintf.h"
 
-char* itoa(int num) 
+char	*ft_ptoa(uintptr_t num)
 { 
-    int i; 
-    int isNegative;
-	int rem;
-	char *str;
+    int         i;
+	uintptr_t   rem;
+	char        *s;
 
     if (num == 0)
-		return ("0\0");
-	if (num == -2147483648)
-		return ("-2147483648\0");
+		return (s = ft_strdup("0\0"));
 	i = 0;
-	str = (char *)malloc(12 * sizeof(char));
-	isNegative = (num < 0)? 1 : 0;
-	num *= (isNegative)? -1 : 1;
+	s = (char *)malloc(9 * sizeof(char));
     while (num != 0)
     {
-        rem = num % base;
-        str[i++] = (rem > 9)? (rem - 10) + 'a' : rem + '0';
-        num = num / base;
+        rem = num % 16;
+        s[i++] = (rem > 9)? (rem - 10) + 'a' : rem + '0';
+        num = num / 16;
     }
-    if (isNegative)
-        str[i++] = '-';
-    str[i] = '\0';
-    ft_strrev(str);
-    return str;
+    s[i++] = 'x';
+    s[i++] = '0';
+    s[i] = '\0';
+    ft_strrev(s);
+    return (s);
 }
 
-
-
-
-
-
-
-
-
-
-int main ()
+int main()
 {
-	printf("%5d.\n", 10);
-	printf("%*d\n", 5, 10);
-	printf("%-5d.\n", 10);
-	printf("%.5d\n", 10);
-	printf("%.*d\n", 5, 10);
-	printf("%05d\n", 10);
-	printf("%00d\n", 10);
-	printf("%.0d\n", 10);
+	char *s;
+	int d = 10;
+	s = ft_ptoa((uintptr_t)&d);
+	printf("%s\n", s);
+	printf("%p\n", &d);
+	// s = ft_utoa(112450, 16, 0);
+	// printf("%s\n", s);
+	// printf("%x\n", 112450);
 }
+
+
+// int main ()
+// {
+// 	printf("%5d.\n", 10);
+// 	printf("%*d\n", 5, 10);
+// 	printf("%-5d.\n", 10);
+// 	printf("%.5d\n", 10);
+// 	printf("%.*d\n", 5, 10);
+// 	printf("%05d\n", 10);
+// 	printf("%00d\n", 10);
+// 	printf("%.0d\n", 10);
+// }
 
 // 1) Testar se c == '-'
 // 	- Print no número e se sobrar espaço, completar com ' ';
