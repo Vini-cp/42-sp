@@ -1,33 +1,33 @@
 #include <stdio.h>
-#include "includes/libftprintf.h"
+#include "include/libftprintf.h"
 
-// char	*ft_putnbr(int n)
-// {
-// 	int i;
-// 	char *s;
+char* itoa(int num) 
+{ 
+    int i; 
+    int isNegative;
+	int rem;
+	char *str;
 
-// 	s = 
-// 	i = 0;
-// 	if (n == -2147483648)
-// 		i += ft_putstr("-2147483648");
-// 	else
-// 	{
-// 		if (n < 0)
-// 		{
-// 			i += ft_putchar('-');
-// 			n = n * (-1);
-// 		}
-// 		if (n > 9)
-// 		{
-// 			i += ft_putnbr((n / 10));
-// 			i += ft_putnbr((n % 10));
-// 		}
-// 		else
-// 			i += ft_putchar((n + '0'));
-// 	}
-// 	return (i);
-// }
-
+    if (num == 0)
+		return ("0\0");
+	if (num == -2147483648)
+		return ("-2147483648\0");
+	i = 0;
+	str = (char *)malloc(12 * sizeof(char));
+	isNegative = (num < 0)? 1 : 0;
+	num *= (isNegative)? -1 : 1;
+    while (num != 0)
+    {
+        rem = num % base;
+        str[i++] = (rem > 9)? (rem - 10) + 'a' : rem + '0';
+        num = num / base;
+    }
+    if (isNegative)
+        str[i++] = '-';
+    str[i] = '\0';
+    ft_strrev(str);
+    return str;
+}
 
 
 
@@ -40,8 +40,7 @@
 
 int main ()
 {
-	ft_printf("%d\n", 10);
-	printf("%5d\n", 10);
+	printf("%5d.\n", 10);
 	printf("%*d\n", 5, 10);
 	printf("%-5d.\n", 10);
 	printf("%.5d\n", 10);
