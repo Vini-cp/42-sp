@@ -6,13 +6,13 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:53:18 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/08 21:22:45 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/11 16:49:23 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libftprintf.h"
 
-int	ft_putchar(char c)
+int	ft_printf_putchar(char c)
 {
 	write(1, &c, 1);
 	return (1);

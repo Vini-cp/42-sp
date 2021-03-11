@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:14:56 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/09 10:27:01 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/11 19:35:04 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ typedef	struct		s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+typedef	struct		p_list
+{
+	char			*flag;
+	char			*string;
+	int				flag_len;
+	int				str_len;
+}					to_print;
 
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t nelem, size_t elsize);
@@ -54,6 +62,7 @@ int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_itoa(int n);
 char				*ft_utoa(size_t num, int base, int capitalize);
 char				*ft_ptoa(uintptr_t num);
+char				*ft_ctoa(char c);
 char				**ft_split(char const *s, char c);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strdup(const char *s);
@@ -80,11 +89,6 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 		void (*del)(void *));
 int					get_next_line(int fd, char **line);
 int					ft_printf(const char *fmt, ...);
-int					ft_putchar(char c);
-int					ft_putstr(char *s);
-int					ft_putnbr(int n);
-int					ft_putunbr(unsigned int n);
-int					ft_puthex(unsigned int n, int bool_lower);
-int					ft_putptr(uintptr_t n);
+int					ft_printf_putchar(char c);
 
 #endif

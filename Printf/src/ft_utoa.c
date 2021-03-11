@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 10:01:32 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/09 10:14:25 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/09 20:04:52 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,3 @@ char	*ft_utoa(size_t num, int base, int capitalize)
     ft_strrev(s);
     return (s);
 }
-
-// int main()
-// {
-// 	char *s;
-// 	s = ft_utoa(4294967295);
-// 	printf("%s\n", s);
-// }

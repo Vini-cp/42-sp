@@ -6,7 +6,7 @@
 #    By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/26 23:08:03 by vcordeir          #+#    #+#              #
-#    Updated: 2021/03/09 10:26:22 by vcordeir         ###   ########.fr        #
+#    Updated: 2021/03/11 17:12:56 by vcordeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,10 @@ ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_strlen.c \
 ft_substr.c ft_tolower.c ft_toupper.c ft_strjoin.c ft_calloc.c ft_strlcpy.c \
 ft_strlcat.c ft_strncmp.c ft_strchr.c ft_strrchr.c ft_strmapi.c ft_strnstr.c \
 ft_strdup.c ft_memcmp.c ft_memccpy.c ft_memdel.c ft_split.c ft_atoi.c \
-ft_itoa.c ft_utoa.c ft_ptoa.c ft_strrev.c \
+ft_itoa.c ft_utoa.c ft_ptoa.c ft_ctoa.c ft_strrev.c \
 ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
-get_next_line.c \
-ft_printf_putchar.c ft_printf_puthex.c ft_printf_putnbr.c ft_printf_putptr.c \
-ft_printf_putstr.c ft_printf_putunbr.c ft_printf.c
+get_next_line.c ft_printf_putchar.c ft_printf.c
 
 SRCS = $(addprefix ${FOLDER}/, ${SRCS_LIST})
 
@@ -53,10 +51,10 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 
-re:     fclean all
+re:		fclean all
 
 run:
-	@gcc $(RUNFLAGS) ft_printf.c /Users/viniciuscp/Desktop/42-sp/Printf/$(NAME) \
+	@gcc $(RUNFLAGS) src/ft_printf.c /Users/viniciuscp/Desktop/42-sp/Printf/$(NAME) \
 	&& ./a.out \
 	&& rm ./a.out
 

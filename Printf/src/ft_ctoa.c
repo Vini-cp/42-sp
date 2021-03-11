@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_putstr.c                                 :+:      :+:    :+:   */
+/*   ft_ctoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 14:14:22 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/08 21:22:45 by vcordeir         ###   ########.fr       */
+/*   Created: 2021/03/09 20:10:50 by vcordeir          #+#    #+#             */
+/*   Updated: 2021/03/09 20:10:52 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libftprintf.h"
 
-int	ft_putstr(char *s)
+char	*ft_ctoa(char c)
 {
-	int i;
-
-	i = ft_strlen(s);
-	if (s)
-		while (*s != '\0')
-			ft_putchar(*s++);
-	return (i);
+	char *s;
+	
+	s = (char *)malloc(2 * sizeof(char));
+	s[0] = c;
+	s[1] = '\0';
+	return (s);
 }
