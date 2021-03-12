@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:14:56 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/11 19:35:04 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/11 21:51:53 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef	struct		p_list
 	char			*string;
 	int				flag_len;
 	int				str_len;
+	int				just;
 }					to_print;
 
 void				ft_bzero(void *s, size_t n);

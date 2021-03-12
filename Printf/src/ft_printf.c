@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:13:06 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/11 19:30:46 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/11 23:32:12 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,27 @@ int		check_flag(const char *fmt, va_list args, to_print **lst)
 	return (0);
 }
 
+int		ft_isflag(int c)
+{
+	if (c == '*' || c == '.' || c == '-')
+		return (1);
+	else
+		return (0);
+}
+
+char	*flag_array(const char *fmt)
+{
+	int	i;
+	char *s;
+
+	i = 0;
+	while(ft_isflag(fmt[i]) || ft_isdigit(fmt[i]))
+		i++;
+	s = ft_substr(fmt, 0, i);
+	return (s);
+}
+
+
 to_print	*lstnew()
 {
 	to_print *lst;
@@ -69,7 +90,7 @@ to_print	*lstnew()
 	return (lst);
 }
 
-int	ft_aux(const char *f, va_list args, to_print *lst, int just)
+int	ft_aux(const char *f, va_list args, to_print *lst)
 {
 	if (*f == 'd' || *f == 'i')				/* int */
 		lst->string = ft_itoa(va_arg(args, int));
@@ -85,17 +106,19 @@ int	ft_aux(const char *f, va_list args, to_print *lst, int just)
 		lst->string = ft_utoa(va_arg(args, unsigned int), 16, 1);
 	else if (*f == 'p')						/* pointer */
 		lst->string = ft_ptoa(va_arg(args, uintptr_t));
+	else if (*f == '%')						/* pointer */
+		lst->string = ft_ctoa(*f);
 	lst->flag_len = (lst->flag)? ft_strlen(lst->flag) : 0;
 	lst->str_len = ft_strlen(lst->string);
-	if (!just)
+	if (!lst->just)
 		if (lst->flag && (lst->flag_len > lst->str_len))
 			ft_putstr_fd(ft_substr(lst->flag, 0, lst->flag_len - lst->str_len), 1);
 	ft_putstr_fd(lst->string, 1);
-	if (just && lst->flag[0] == ' ')
+	if (lst->just && lst->flag[0] == ' ')
 		if (lst->flag && (lst->flag_len > lst->str_len))
 			ft_putstr_fd(ft_substr(lst->flag, 0, lst->flag_len - lst->str_len), 1);
-	return ((lst->flag && (lst->flag_len > lst->str_len) && (!just  || (just \
-	&& lst->flag[0] == ' ')))? lst->flag_len : lst->str_len);
+	return ((lst->flag && (lst->flag_len > lst->str_len) && (!lst->just  || \
+	(lst->just && lst->flag[0] == ' ')))? lst->flag_len : lst->str_len);
 }
 
 int		ft_printf(const char *fmt, ...)
@@ -104,6 +127,7 @@ int		ft_printf(const char *fmt, ...)
 	to_print *node;
 	int i;
 	int just;
+	int num;
 
 	i = 0;
 	va_start(args, fmt);
@@ -113,21 +137,22 @@ int		ft_printf(const char *fmt, ...)
 		node = lstnew();
 		if (*fmt == '%')
 		{
+			if (!*(fmt + 1))
+				return (0);
 			fmt += 1;
-			if (*fmt == '-')
-			{
-				just = 1;
-				fmt += 1;
-			}
 			if (*fmt == '%')
 				i += ft_printf_putchar(*fmt);
-			else if (ft_isdigit(*fmt) || *fmt == '*' || *fmt == '.')
+			else if (ft_isdigit(*fmt) || ft_isflag(*fmt))
 			{
-				fmt += check_flag(fmt, args, &node);
-				i += ft_aux(fmt, args, node, just);
+				flag_array(fmt);
+				num = check_flag(fmt, args, &node);
+				if (!*(fmt + num))
+					return (0);
+				fmt += num;
+				i += ft_aux(fmt, args, node);
 			}
 			else
-				i += ft_aux(fmt, args, node, just);
+				i += ft_aux(fmt, args, node);
 			fmt += 1;
 		}
 		else
@@ -137,18 +162,18 @@ int		ft_printf(const char *fmt, ...)
 	return (i);
 }
 
-int main()
-{
-	int d = 10; // 7
-	// text= dado 4 + 1 = 5
-	int i = 48523756; // 8
-	// text= inteligente 11 + 1 = 12
-	char c = 'A'; // 1 + 1 = 2
-	char s[11] = "AbCdEfGhIj\0"; //12 + 1 = 13
-	size_t u = 4294967295; // 15 + 1 + 1= 16
-	size_t x = 4294967295; // 8 + 1 = 9
-	size_t X = 4294967295; // 8 + 1 = 9
-	int *p = &d;// 20 + 1 = 21
-	//103
-	printf("%d\n", ft_printf("%07ddado\n%iinteligente\n%c\n%.*s\n%-*u.\n%x\n%X\n%*p\n", d, i, c, 12, s, 15, u, x, X, 20, p));
-}
+// int main()
+// {
+// 	int d = 10; // 7
+// 	// text= dado 4 + 1 = 5
+// 	int i = 48523756; // 8
+// 	// text= inteligente 11 + 1 = 12
+// 	char c = 'A'; // 1 + 1 = 2
+// 	char s[11] = "AbCdEfGhIj\0"; //12 + 1 = 13
+// 	size_t u = 4294967295; // 15 + 1 + 1= 16
+// 	size_t x = 4294967295; // 8 + 1 = 9
+// 	size_t X = 4294967295; // 8 + 1 = 9
+// 	int *p = &d;// 20 + 1 = 21
+// 	//103
+// 	printf("%d\n", ft_printf("%07ddado\n%iinteligente\n%c\n%.*s\n%-*u.\n%x\n%X\n%*p\n", d, i, c, 12, s, 15, u, x, X, 20, p));
+// }

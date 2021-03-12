@@ -1,38 +1,32 @@
 #include <stdio.h>
 #include "include/libftprintf.h"
 
-char	*ctoa(char c)
-{
-	char *s;
-	
-	s = (char *)malloc(2 * sizeof(char));
-	s[0] = c;
-	s[1] = '\0';
-	return (s);
-}
-
 int main()
 {
-	char c = 'A';
-	char *s;
-	s = ctoa(c);
-	printf("%s.\n", s);
+	// printf("%-05%.\n");
+	ft_printf("%-05%.\n");
+	// printf(" .%-15d. \n", 7);
+	// printf("%-.5%.\n");
+	// ft_printf("%");
+	// printf("%5");
+	// printf("%05");
+	// printf("%-05");
+	// printf("%-5");
 	// printf("%p\n", &d);
 	// s = ft_utoa(112450, 16, 0);
 	// printf("%s\n", s);
 	// printf("%x\n", 112450);
 }
 
-
-int main ()
-{
-	printf("%5d.\n", 10);
-	printf("%*d\n", 5, 10);
-	printf("%-5d.\n", 10);
-	printf("%.5d\n", 10);
-	printf("%.*d\n", 5, 10);
-	printf("%05d\n", 10);
-}
+// int main ()
+// {
+// 	printf("%5d.\n", 10);
+// 	printf("%*d\n", 5, 10);
+// 	printf("%-5d.\n", 10);
+// 	printf("%.5d\n", 10);
+// 	printf("%.*d\n", 5, 10);
+// 	printf("%05d\n", 10);
+// }
 
 // Left or Rigth			
 // 	- num > 0			(printa num espaços)						OK
