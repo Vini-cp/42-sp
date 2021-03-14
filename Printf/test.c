@@ -5,10 +5,27 @@ int main()
 {
 	// char *s_hidden = "hi low\0don't print me lol\0";
 	// printf("|%30.20s|\n", "Oi seu vinao, tudo certo?");
-	printf("%d\n", printf("%2.9p\n", 1234));
-	ft_printf("%d\n", ft_printf("%2.9p\n", 1234));
+	// printf("%d\n", printf("%2.9p\n", 1234));
+	// ft_printf("%d\n", ft_printf("%2.9p\n", 1234));
+	printf("%d\n", printf("|%10.5d|\n", -123));
+	ft_printf("%d\n", ft_printf("|%10d|\n", -123));
+	printf("%c\n", 0);
+	ft_printf("%c\n", 0);
+	printf("%d\n", printf("ABC%"));
+	printf("%d\n", printf("%x\n", 0x1234abcdfu));
+	printf("%d\n", ft_printf("%x\n", 0x1234abcdfu));
+	printf("%d\n", ft_printf("%p\n", 1234));
+	// 0 -> 9
+	// abcdef
+	// 5299
+	// char c = 'a';
+	// ft_printf("%i\n", c);
 	// char *s = NULL;
 	// ft_atoi(s);
+	// 1) -
+	// 2) NUM => (0)NUM / *
+	// 3) .
+	// 4) NUM / *
 
 	// IGNORAR FLAG 0
 
