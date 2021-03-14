@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 20:10:50 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/09 20:10:52 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/14 18:16:54 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_ctoa(char c)
 {
 	char *s;
-	
+
 	s = (char *)malloc(2 * sizeof(char));
 	s[0] = c;
 	s[1] = '\0';

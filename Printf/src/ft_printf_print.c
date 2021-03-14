@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 22:30:32 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 14:53:42 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/14 18:16:38 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static	int	print_just(to_print *lst)
 {
-	lst->str = (lst->prec == 0 && ft_atoi(lst->str) == 0)? NULL : lst->str;
-	lst->s_len = (lst->str)? lst->s_len : 0;
+	lst->str = (lst->prec == 0 && ft_atoi(lst->str) == 0) ? NULL : lst->str;
+	lst->s_len = (lst->str) ? lst->s_len : 0;
 	if (lst->prec > lst->s_len)
 		ft_putstr_fd(ft_substr(lst->f, 0, lst->prec - lst->s_len), 1);
 	ft_putstr_fd(lst->str, 1);
@@ -35,8 +35,8 @@ static	int	print_just(to_print *lst)
 
 static	int	print_not_just(to_print *lst)
 {
-	lst->str = (lst->prec == 0 && ft_atoi(lst->str) == 0)? NULL : lst->str;
-	lst->s_len = (lst->str)? lst->s_len : 0;
+	lst->str = (lst->prec == 0 && ft_atoi(lst->str) == 0) ? NULL : lst->str;
+	lst->s_len = (lst->str) ? lst->s_len : 0;
 	if (lst->prec > 0)
 	{
 		if (lst->prec > lst->s_len)
@@ -126,8 +126,6 @@ int 		ft_printf_print(to_print *lst)
 		else
 			i = print_neg_not_just(lst);
 	}
-	// else if (lst->print_c == 0)
-		// i = ft_printf_print_c(lst);
 	else
 	{
 		if (lst->just)

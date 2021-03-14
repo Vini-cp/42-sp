@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 01:00:12 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 13:43:40 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/14 18:13:39 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ static	int	print_p_not_just(to_print *lst)
 				ft_putstr_fd(ft_substr(lst->f, 0, lst->width - lst->s_len), 1);
 		if (!lst->zero)
 			if (lst->width > lst->s_len)
-				ft_putstr_fd(ft_substr(lst->spaces, 0, lst->width - lst->s_len), 1);
+				ft_putstr_fd(ft_substr(lst->spaces, 0, \
+				lst->width - lst->s_len), 1);
 		ft_putstr_fd(lst->str, 1);
 	}
 	return (ft_max(ft_max(lst->prec + 2, lst->s_len), lst->width));
@@ -64,15 +65,15 @@ static	int	print_str_just(to_print *lst)
 	{
 		ft_putstr_fd(ft_substr(lst->str, 0, lst->prec), 1);
 		if (lst->width > ft_min(lst->prec, lst->s_len))
-				ft_putstr_fd(ft_substr(lst->spaces, 0, \
-				lst->width - ft_min(lst->prec, lst->s_len)), 1);
+			ft_putstr_fd(ft_substr(lst->spaces, 0, \
+			lst->width - ft_min(lst->prec, lst->s_len)), 1);
 	}
 	else
 	{
 		ft_putstr_fd(lst->str, 1);
 		if (lst->width > lst->s_len)
-				ft_putstr_fd(ft_substr(lst->spaces, 0, \
-				lst->width - lst->s_len), 1);
+			ft_putstr_fd(ft_substr(lst->spaces, 0, \
+			lst->width - lst->s_len), 1);
 	}
 	if (lst->prec >= 0)
 		return (ft_max(ft_min(lst->prec, lst->s_len), lst->width));
@@ -94,7 +95,8 @@ static	int	print_str_not_just(to_print *lst)
 		if (lst->width > lst->s_len)
 		{
 			if (!lst->zero)
-				ft_putstr_fd(ft_substr(lst->spaces, 0, lst->width - lst->s_len), 1);
+				ft_putstr_fd(ft_substr(lst->spaces, 0, \
+				lst->width - lst->s_len), 1);
 			else
 				ft_putstr_fd(ft_substr(lst->f, 0, lst->width - lst->s_len), 1);
 		}
