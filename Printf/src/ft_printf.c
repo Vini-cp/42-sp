@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:13:06 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 18:26:10 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/14 18:37:06 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,14 @@ int					ft_printf(const char *fmt, ...)
 				if (!*fmt)
 					return (i);
 				to_string(fmt, args, &node);
-				i += (node->c == ' ') ? ft_printf_print(node) : ft_printf_print_p_str(node);
+				i += (node->c == ' ') ? ft_printf_print(node) : \
+				ft_printf_print_p_str(node);
 			}
 			else
 			{
 				to_string(fmt, args, &node);
-				i += (node->c == ' ') ? ft_printf_print(node) : ft_printf_print_p_str(node);
+				i += (node->c == ' ') ? ft_printf_print(node) : \
+				ft_printf_print_p_str(node);
 			}
 			fmt += 1;
 		}
