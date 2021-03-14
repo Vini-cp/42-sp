@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 01:00:12 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 01:20:03 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/14 13:43:40 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,17 @@ static	int	print_p_just(to_print *lst)
 
 static	int	print_p_not_just(to_print *lst)
 {
-	if (lst->prec > 0)
+	if (lst->prec > lst->s_len)
 	{
-		if (lst->prec > lst->s_len)
+		if (lst->prec > 0)
 		{
 			ft_putstr_fd(ft_substr(lst->spaces, 0, lst->width - lst->prec), 1);
-			ft_putstr_fd(ft_substr(lst->f, 0, lst->prec - lst->s_len), 1);
+			ft_putstr_fd(ft_substr(lst->str, 0, 2), 1);
+			ft_putstr_fd(ft_substr(lst->f, 0, lst->prec - lst->s_len + 2), 1);
 		}
 		else if (lst->width > lst->s_len)
 			ft_putstr_fd(ft_substr(lst->spaces, 0, lst->width - lst->s_len), 1);
-		ft_putstr_fd(lst->str, 1);
+		ft_putstr_fd(ft_substr(lst->str, 2, ft_strlen(lst->str)), 1);
 	}
 	else
 	{
@@ -54,7 +55,7 @@ static	int	print_p_not_just(to_print *lst)
 				ft_putstr_fd(ft_substr(lst->spaces, 0, lst->width - lst->s_len), 1);
 		ft_putstr_fd(lst->str, 1);
 	}
-	return (ft_max(ft_max(lst->prec, lst->s_len), lst->width));
+	return (ft_max(ft_max(lst->prec + 2, lst->s_len), lst->width));
 }
 
 static	int	print_str_just(to_print *lst)

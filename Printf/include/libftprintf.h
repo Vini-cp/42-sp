@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:14:56 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 01:09:24 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/14 14:49:02 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef	struct		p_list
 {
 	char			*f;
 	char			*str;
-	char			*print;
+	char			print_c;
 	char			*spaces;
 	int				s_len;
 	int				just;
@@ -101,5 +101,6 @@ int					ft_printf(const char *fmt, ...);
 int					ft_printf_putchar(char c);
 int 				ft_printf_print(to_print *lst);
 int					ft_printf_print_p_str(to_print *lst);
+int					ft_printf_print_c(to_print *lst);
 
 #endif

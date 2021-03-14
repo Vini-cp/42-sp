@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:13:06 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 01:21:09 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/14 14:58:35 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,9 @@ void	flag(to_print **lst)
 	int		i;
 	int		size;
 	
+	(*lst)->just = ((*lst)->width < -1)? 1 : (*lst)->just;
+	(*lst)->width *= ((*lst)->width < -1)? -1 : 1;
+	// (*lst)->prec *= ((*lst)->prec < -1)? -1 : 1;
 	size = ((*lst)->width >= (*lst)->prec)? (*lst)->width : (*lst)->prec;
 	s = (char *)malloc((size + 1) * sizeof(char));
 	t = (char *)malloc((size + 1) * sizeof(char));
@@ -96,7 +99,6 @@ to_print	*lstnew()
 	lst = (to_print *)malloc(sizeof(to_print));
 	lst->f = NULL;
 	lst->str = NULL;
-	lst->print = NULL;
 	lst->spaces = NULL;
 	lst->just = 0;
 	lst->prec = -1;

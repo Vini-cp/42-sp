@@ -5,8 +5,10 @@ int main()
 {
 	// char *s_hidden = "hi low\0don't print me lol\0";
 	// printf("|%30.20s|\n", "Oi seu vinao, tudo certo?");
-	printf("%d\n", printf("%.6i", -3));
-	ft_printf("%d\n", ft_printf("%.6i", -3));
+	printf("%d\n", printf("%2.9p\n", 1234));
+	ft_printf("%d\n", ft_printf("%2.9p\n", 1234));
+	// char *s = NULL;
+	// ft_atoi(s);
 
 	// IGNORAR FLAG 0
 
