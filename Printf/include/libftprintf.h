@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:14:56 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 18:02:30 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/14 18:04:46 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef	struct		s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
-
 typedef	struct		p_list
 {
 	char			*f;
@@ -97,7 +96,7 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 int					get_next_line(int fd, char **line);
 int					ft_printf(const char *fmt, ...);
 int					ft_printf_putchar(char c);
-int 				ft_printf_print(to_print *lst);
+int					ft_printf_print(to_print *lst);
 int					ft_printf_print_p_str(to_print *lst);
 int					ft_printf_print_c(to_print *lst);
 int					ft_printf_isflag(int c);
