@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:14:56 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/11 21:51:53 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/14 01:09:24 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,17 @@ typedef	struct		s_list
 
 typedef	struct		p_list
 {
-	char			*flag;
-	char			*string;
-	int				flag_len;
-	int				str_len;
+	char			*f;
+	char			*str;
+	char			*print;
+	char			*spaces;
+	int				s_len;
 	int				just;
+	int				prec;
+	int				width;
+	int				zero;
+	int				neg;
+	char			c;
 }					to_print;
 
 void				ft_bzero(void *s, size_t n);
@@ -62,7 +68,7 @@ void				ft_putstr_fd(char *s, int fd);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_itoa(int n);
 char				*ft_utoa(size_t num, int base, int capitalize);
-char				*ft_ptoa(uintptr_t num);
+char				*ft_ptoa(uintptr_t num, int prec);
 char				*ft_ctoa(char c);
 char				**ft_split(char const *s, char c);
 char				*ft_strchr(const char *s, int c);
@@ -80,6 +86,8 @@ size_t				ft_strlen(const char *s);
 void				ft_strrev(char *str);
 t_list				*ft_lstnew(void *content);
 int					ft_lstsize(t_list *lst);
+int					ft_max(int a, int b);
+int					ft_min(int a, int b);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 void				ft_lstclear(t_list **lst, void (*del)(void*));
@@ -91,5 +99,7 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 int					get_next_line(int fd, char **line);
 int					ft_printf(const char *fmt, ...);
 int					ft_printf_putchar(char c);
+int 				ft_printf_print(to_print *lst);
+int					ft_printf_print_p_str(to_print *lst);
 
 #endif

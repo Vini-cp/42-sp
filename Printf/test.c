@@ -3,8 +3,15 @@
 
 int main()
 {
-	// printf("%-05%.\n");
-	ft_printf("%-05%.\n");
+	// char *s_hidden = "hi low\0don't print me lol\0";
+	// printf("|%30.20s|\n", "Oi seu vinao, tudo certo?");
+	printf("%d\n", printf("%.6i", -3));
+	ft_printf("%d\n", ft_printf("%.6i", -3));
+
+	// IGNORAR FLAG 0
+
+
+	// ft_printf("%05%");
 	// printf(" .%-15d. \n", 7);
 	// printf("%-.5%.\n");
 	// ft_printf("%");
@@ -71,3 +78,7 @@ int main()
 // 			* : The width is not specified in the format string, 
 // 				but as an additional integer value argument preceding 
 // 				the argument that has to be formatted.
+
+
+// PRECISÃO tem preferência no justify
+// PRECISÃO em string é diferente do resto

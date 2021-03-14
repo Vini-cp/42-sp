@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:13:06 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/11 23:32:12 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/14 01:21:09 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,47 +18,6 @@
 // zeros: bool
 // 		1: complete with zero
 // 		0: complete with spaces
-
-char	*flag(int size, int zeros)
-{
-	char		c;
-	char		*s;
-	int			i;
-	
-	c = (zeros)? '0': ' ';
-	s = (char *)malloc((size + 1) * sizeof(char));
-	i = 0;
-	while(i < size)
-		s[i++] = c;
-	s[i] = '\0';
-	return (s);
-}
-
-int		check_flag(const char *fmt, va_list args, to_print **lst)
-{
-	if (ft_isdigit(*fmt) && *fmt > '0')
-	{
-		(*lst)->flag = flag((*fmt - '0'), 0);
-		return (1);
-	}
-	else if (*fmt == '*')
-	{
-		(*lst)->flag = flag(va_arg(args, int), 0);
-		return (1);
-	}
-	else if (*fmt == '.' && *(fmt + 1) == '*')
-	{
-		fmt += 1;
-		(*lst)->flag = flag(va_arg(args, int), 1);
-		return (2);
-	}
-	else if ((*fmt == '.' || *fmt == '0') && ft_isdigit(*(fmt + 1)))
-	{
-		(*lst)->flag = flag((*(fmt + 1) - '0'), 1);
-		return (2);
-	}
-	return (0);
-}
 
 int		ft_isflag(int c)
 {
@@ -80,60 +39,113 @@ char	*flag_array(const char *fmt)
 	return (s);
 }
 
+void	flag_to_print(char *s, va_list args, to_print **lst)
+{
+	int i;
+
+	i = 0;
+	while (s[i])
+	{
+		(*lst)->just = (s[i] == '-')? 1 : (*lst)->just;
+		(*lst)->prec = (s[i] == '.')? 0 : (*lst)->prec;
+		if (s[i] == '*' && (*lst)->prec >= 0)
+			(*lst)->prec = va_arg(args, int);
+		else if (s[i] == '*' && (*lst)->prec < 0)
+			(*lst)->width = va_arg(args, int);
+		if (ft_isdigit(*(s + i)))
+		{
+			(*lst)->zero = (s[i] == '0' && (*lst)->prec < 0)? 1 : (*lst)->zero;
+			if ((*lst)->prec >= 0)
+				(*lst)->prec = ft_atoi((s + i));
+			else
+				(*lst)->width = ft_atoi((s + i));
+			while (ft_isdigit(s[i]))
+				i++;
+			i--;
+		}
+		i++;
+	}
+}
+
+void	flag(to_print **lst)
+{
+	char	*s;
+	char	*t;
+	int		i;
+	int		size;
+	
+	size = ((*lst)->width >= (*lst)->prec)? (*lst)->width : (*lst)->prec;
+	s = (char *)malloc((size + 1) * sizeof(char));
+	t = (char *)malloc((size + 1) * sizeof(char));
+	i = 0;
+	while(i < size)
+	{
+		s[i] = '0';
+		t[i] = ' ';
+		i++;
+	}
+	s[i] = '\0';
+	t[i] = '\0';
+	(*lst)->f = s;
+	(*lst)->spaces = t;
+}
 
 to_print	*lstnew()
 {
 	to_print *lst;
 	lst = (to_print *)malloc(sizeof(to_print));
-	lst->flag = NULL;
-	lst->string = NULL;
+	lst->f = NULL;
+	lst->str = NULL;
+	lst->print = NULL;
+	lst->spaces = NULL;
+	lst->just = 0;
+	lst->prec = -1;
+	lst->width = -1;
+	lst->zero = 0;
 	return (lst);
 }
 
-int	ft_aux(const char *f, va_list args, to_print *lst)
+void	string(const char *f, va_list args, to_print **lst)
 {
+	(*lst)->c = ' ';
 	if (*f == 'd' || *f == 'i')				/* int */
-		lst->string = ft_itoa(va_arg(args, int));
+		(*lst)->str = ft_itoa(va_arg(args, int));
 	else if (*f == 'c')						/* char */
-		lst->string = ft_ctoa((char) va_arg(args, int));
+		(*lst)->str = ft_ctoa((char) va_arg(args, int));
 	else if (*f == 's')						/* string */
-		lst->string = va_arg(args, char *);
+	{
+		(*lst)->str = va_arg(args, char *);
+		(*lst)->c = 's';
+		(*lst)->str = ((*lst)->str)? (*lst)->str : "(null)\0";
+	}
 	else if (*f == 'u')						/* unsigned int */
-		lst->string = ft_utoa(va_arg(args, unsigned int), 10, 0);
+		(*lst)->str = ft_utoa(va_arg(args, unsigned int), 10, 0);
 	else if (*f == 'x')						/* hex lower */
-		lst->string = ft_utoa(va_arg(args, unsigned int), 16, 0);
+		(*lst)->str = ft_utoa(va_arg(args, unsigned int), 16, 0);
 	else if (*f == 'X')						/* hex lower */
-		lst->string = ft_utoa(va_arg(args, unsigned int), 16, 1);
+		(*lst)->str = ft_utoa(va_arg(args, unsigned int), 16, 1);
 	else if (*f == 'p')						/* pointer */
-		lst->string = ft_ptoa(va_arg(args, uintptr_t));
-	else if (*f == '%')						/* pointer */
-		lst->string = ft_ctoa(*f);
-	lst->flag_len = (lst->flag)? ft_strlen(lst->flag) : 0;
-	lst->str_len = ft_strlen(lst->string);
-	if (!lst->just)
-		if (lst->flag && (lst->flag_len > lst->str_len))
-			ft_putstr_fd(ft_substr(lst->flag, 0, lst->flag_len - lst->str_len), 1);
-	ft_putstr_fd(lst->string, 1);
-	if (lst->just && lst->flag[0] == ' ')
-		if (lst->flag && (lst->flag_len > lst->str_len))
-			ft_putstr_fd(ft_substr(lst->flag, 0, lst->flag_len - lst->str_len), 1);
-	return ((lst->flag && (lst->flag_len > lst->str_len) && (!lst->just  || \
-	(lst->just && lst->flag[0] == ' ')))? lst->flag_len : lst->str_len);
+	{
+		(*lst)->str = ft_ptoa(va_arg(args, uintptr_t), (*lst)->prec);
+		(*lst)->c = 'p';
+	}
+	else if (*f == '%')
+		(*lst)->str = ft_ctoa(*f);
+	(*lst)->s_len = ((*lst)->str)? ft_strlen((*lst)->str) : 0;
 }
+
+
 
 int		ft_printf(const char *fmt, ...)
 {
 	va_list args;
 	to_print *node;
 	int i;
-	int just;
-	int num;
 
 	i = 0;
 	va_start(args, fmt);
 	while (*fmt)
 	{
-		just = 0;
 		node = lstnew();
 		if (*fmt == '%')
 		{
@@ -144,15 +156,26 @@ int		ft_printf(const char *fmt, ...)
 				i += ft_printf_putchar(*fmt);
 			else if (ft_isdigit(*fmt) || ft_isflag(*fmt))
 			{
-				flag_array(fmt);
-				num = check_flag(fmt, args, &node);
-				if (!*(fmt + num))
+				flag_to_print(flag_array(fmt), args, &node);
+				flag(&node);
+				fmt += ft_strlen(flag_array(fmt));
+				if (!*fmt)
 					return (0);
-				fmt += num;
-				i += ft_aux(fmt, args, node);
+				string(fmt, args, &node);
+				// printf("f: %s\n", node->f);
+				// printf("s_len: %d\n", node->s_len);
+				// printf("Just: %d\n", node->just);
+				// printf("prec: %d\n", node->prec);
+				// printf("width: %d\n", node->width);
+				// printf("zero: %d\n", node->zero);
+				// printf("char: %c\n", node->c);
+				i += (node->c == ' ')? ft_printf_print(node) : ft_printf_print_p_str(node);
 			}
 			else
-				i += ft_aux(fmt, args, node);
+			{
+				string(fmt, args, &node);
+				i += (node->c == ' ')? ft_printf_print(node) : ft_printf_print_p_str(node);
+			}
 			fmt += 1;
 		}
 		else
@@ -169,11 +192,11 @@ int		ft_printf(const char *fmt, ...)
 // 	int i = 48523756; // 8
 // 	// text= inteligente 11 + 1 = 12
 // 	char c = 'A'; // 1 + 1 = 2
-// 	char s[11] = "AbCdEfGhIj\0"; //12 + 1 = 13
-// 	size_t u = 4294967295; // 15 + 1 + 1= 16
+// 	char s[11] = "AbCdEfGhIj\0"; //5 + 1 = 6
+// 	size_t u = 4294967295; // 15 + 1 + 1= 17
 // 	size_t x = 4294967295; // 8 + 1 = 9
 // 	size_t X = 4294967295; // 8 + 1 = 9
 // 	int *p = &d;// 20 + 1 = 21
-// 	//103
-// 	printf("%d\n", ft_printf("%07ddado\n%iinteligente\n%c\n%.*s\n%-*u.\n%x\n%X\n%*p\n", d, i, c, 12, s, 15, u, x, X, 20, p));
+// 	printf("%d\n", ft_printf("%07ddado\n%iinteligente\n%c\n%.*s\n%-*u.\n%x\n%X\n%*p\n", d, i, c, 5, s, 15, u, x, X, 20, p));
+// 	// ft_printf("%05d|\n", d);
 // }
