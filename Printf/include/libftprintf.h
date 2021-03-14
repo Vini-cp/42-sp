@@ -6,20 +6,18 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:14:56 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 17:26:35 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/14 18:02:30 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 
 # include <stdarg.h>
 # include <stdint.h>
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
-
-# include <stdio.h>
 
 # define BUFFER_SIZE 32
 
