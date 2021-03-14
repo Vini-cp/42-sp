@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:17:42 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 17:20:28 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/14 18:09:13 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void	ft_printf_empty_zeros(to_print **lst)
 	char	*t;
 	int		i;
 	int		size;
-	
-	(*lst)->just = ((*lst)->width < -1)? 1 : (*lst)->just;
-	(*lst)->width *= ((*lst)->width < -1)? -1 : 1;
-	size = ((*lst)->width >= (*lst)->prec)? (*lst)->width : (*lst)->prec;
+
+	(*lst)->just = ((*lst)->width < -1) ? 1 : (*lst)->just;
+	(*lst)->width *= ((*lst)->width < -1) ? -1 : 1;
+	size = ((*lst)->width >= (*lst)->prec) ? (*lst)->width : (*lst)->prec;
 	s = (char *)malloc((size + 1) * sizeof(char));
 	t = (char *)malloc((size + 1) * sizeof(char));
 	i = 0;
-	while(i < size)
+	while (i < size)
 	{
 		s[i] = '0';
 		t[i] = ' ';
