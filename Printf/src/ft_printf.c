@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:13:06 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 18:24:11 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/14 18:26:10 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ static	void		to_string(const char *f, va_list args, to_print **lst)
 	if (*f == 'd' || *f == 'i')
 		(*lst)->str = ft_itoa(va_arg(args, int));
 	else if (*f == 'c')
-		(*lst)->str = ft_ctoa((char) va_arg(args, int));
+		(*lst)->str = ft_ctoa((char)va_arg(args, int));
 	else if (*f == 's')
 	{
 		(*lst)->str = va_arg(args, char *);
 		(*lst)->c = 's';
-		(*lst)->str = ((*lst)->str)? (*lst)->str : "(null)\0";
+		(*lst)->str = ((*lst)->str) ? (*lst)->str : "(null)\0";
 	}
 	else if (*f == 'u')
 		(*lst)->str = ft_utoa(va_arg(args, unsigned int), 10, 0);
@@ -56,6 +56,7 @@ static	void		to_string(const char *f, va_list args, to_print **lst)
 static	to_print	*lstnew(void)
 {
 	to_print *lst;
+
 	lst = (to_print *)malloc(sizeof(to_print));
 	lst->f = NULL;
 	lst->str = NULL;
