@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:13:06 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 17:42:31 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/14 18:24:11 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static	char		*create_flag_array(const char *fmt)
 {
-	int	i;
-	char *s;
+	int		i;
+	char	*s;
 
 	i = 0;
-	while(ft_printf_isflag(fmt[i]) || ft_isdigit(fmt[i]))
+	while (ft_printf_isflag(fmt[i]) || ft_isdigit(fmt[i]))
 		i++;
 	s = ft_substr(fmt, 0, i);
 	return (s);
@@ -27,33 +27,33 @@ static	char		*create_flag_array(const char *fmt)
 static	void		to_string(const char *f, va_list args, to_print **lst)
 {
 	(*lst)->c = ' ';
-	if (*f == 'd' || *f == 'i')				/* int */
+	if (*f == 'd' || *f == 'i')
 		(*lst)->str = ft_itoa(va_arg(args, int));
-	else if (*f == 'c')						/* char */
+	else if (*f == 'c')
 		(*lst)->str = ft_ctoa((char) va_arg(args, int));
-	else if (*f == 's')						/* string */
+	else if (*f == 's')
 	{
 		(*lst)->str = va_arg(args, char *);
 		(*lst)->c = 's';
 		(*lst)->str = ((*lst)->str)? (*lst)->str : "(null)\0";
 	}
-	else if (*f == 'u')						/* unsigned int */
+	else if (*f == 'u')
 		(*lst)->str = ft_utoa(va_arg(args, unsigned int), 10, 0);
-	else if (*f == 'x')						/* hex lower */
+	else if (*f == 'x')
 		(*lst)->str = ft_utoa(va_arg(args, unsigned int), 16, 0);
-	else if (*f == 'X')						/* hex lower */
+	else if (*f == 'X')
 		(*lst)->str = ft_utoa(va_arg(args, unsigned int), 16, 1);
-	else if (*f == 'p')						/* pointer */
+	else if (*f == 'p')
 	{
 		(*lst)->str = ft_ptoa(va_arg(args, uintptr_t), (*lst)->prec);
 		(*lst)->c = 'p';
 	}
 	else if (*f == '%')
 		(*lst)->str = ft_ctoa(*f);
-	(*lst)->s_len = ((*lst)->str)? ft_strlen((*lst)->str) : 0;
+	(*lst)->s_len = ((*lst)->str) ? ft_strlen((*lst)->str) : 0;
 }
 
-static	to_print	*lstnew()
+static	to_print	*lstnew(void)
 {
 	to_print *lst;
 	lst = (to_print *)malloc(sizeof(to_print));
@@ -69,9 +69,9 @@ static	to_print	*lstnew()
 
 int					ft_printf(const char *fmt, ...)
 {
-	va_list args;
-	to_print *node;
-	int i;
+	va_list		args;
+	to_print	*node;
+	int			i;
 
 	i = 0;
 	va_start(args, fmt);
@@ -93,12 +93,12 @@ int					ft_printf(const char *fmt, ...)
 				if (!*fmt)
 					return (i);
 				to_string(fmt, args, &node);
-				i += (node->c == ' ')? ft_printf_print(node) : ft_printf_print_p_str(node);
+				i += (node->c == ' ') ? ft_printf_print(node) : ft_printf_print_p_str(node);
 			}
 			else
 			{
 				to_string(fmt, args, &node);
-				i += (node->c == ' ')? ft_printf_print(node) : ft_printf_print_p_str(node);
+				i += (node->c == ' ') ? ft_printf_print(node) : ft_printf_print_p_str(node);
 			}
 			fmt += 1;
 		}

@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 01:00:12 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 18:13:39 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/14 18:20:41 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ static	int	print_str_not_just(to_print *lst)
 		return (ft_max(lst->s_len, lst->width));
 }
 
-int 		ft_printf_print_p_str(to_print *lst)
+int			ft_printf_print_p_str(to_print *lst)
 {
 	int i;
 

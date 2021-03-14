@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 11:36:15 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 18:15:41 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/14 18:19:40 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_itoa(int num)
 {
-	int i;
-	int is_negative;
-	char *str;
+	int		i;
+	int		is_negative;
+	char	*str;
 
 	if (num == 0)
 		return (str = ft_strdup("0\0"));
