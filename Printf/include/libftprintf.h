@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:14:56 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 21:40:40 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/15 19:55:05 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,26 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-#include <stdio.h>
-
-# define BUFFER_SIZE 32
-
 typedef	struct		s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
-typedef	struct		p_list
-{
-	char			*f;
-	char			*str;
-	char			*spaces;
-	char			print_c;
-	int				s_len;
-	int				just;
-	int				prec;
-	int				width;
-	int				zero;
-	int				neg;
-	char			c;
-}					to_print;
+
+// typedef	struct		p_list
+// {
+// 	char			*f;
+// 	char			*str;
+// 	char			*spaces;
+// 	char			print_c;
+// 	int				s_len;
+// 	int				just;
+// 	int				prec;
+// 	int				width;
+// 	int				zero;
+// 	int				neg;
+// 	char			c;
+// }					to_print;
 
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t nelem, size_t elsize);
