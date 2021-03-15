@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 10:22:35 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 18:19:15 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/15 19:41:01 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_ptoa(uintptr_t num, int prec)
 	else if (num == 0 && prec == 0)
 		return (s = ft_strdup("0x\0"));
 	i = 0;
-	s = (char *)malloc(9 * sizeof(char));
+	s = (char *)malloc(19 * sizeof(char));
 	while (num != 0)
 	{
 		rem = num % 16;

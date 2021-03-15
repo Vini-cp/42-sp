@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 22:30:32 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/15 17:17:53 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/15 19:34:20 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static	int	print_just(to_print *lst)
 {
-	lst->str = (lst->prec == 0 && ft_atoi(lst->str) == 0) ? NULL : lst->str;
-	lst->s_len = (lst->str) ? lst->s_len : 0;
 	if (lst->prec > lst->s_len)
 		ft_putstr_fd(ft_substr(lst->f, 0, lst->prec - lst->s_len), 1);
 	ft_putstr_fd(lst->str, 1);
@@ -35,7 +33,7 @@ static	int	print_just(to_print *lst)
 
 static	int	print_not_just(to_print *lst)
 {
-	if (lst->prec > 0)
+	if (lst->prec >= 0)
 	{
 		if (lst->prec > lst->s_len)
 		{
@@ -70,7 +68,7 @@ static	int	print_neg_just(to_print *lst)
 	}
 	else
 		ft_putstr_fd(lst->str, 1);
-	if (lst->prec > 0)
+	if (lst->prec >= 0)
 	{
 		if (lst->width > ft_max(lst->prec + 1, lst->s_len))
 			ft_putstr_fd(ft_substr(lst->spaces, 0, \
@@ -86,7 +84,7 @@ static	int	print_neg_just(to_print *lst)
 
 static	int	print_neg_not_just(to_print *lst)
 {
-	if (lst->prec > 0)
+	if (lst->prec >= 0)
 	{
 		if (lst->width > ft_max(lst->prec + 1, lst->s_len))
 			ft_putstr_fd(ft_substr(lst->spaces, 0, \
@@ -119,14 +117,10 @@ int			ft_printf_print(to_print *lst)
 	i = 0;
 	if (lst->prec == 0 && lst->str[0] == '0')
 	{
-		// printf("TESTE");
 		lst->str = "\0";
 		lst->s_len = 0;
+		lst->zero = 0;
 	}
-	// printf("width: %d\n", lst->width);
-	// printf("prec: %d\n", lst->prec);
-	// printf("slen: %d\n", lst->s_len);
-	// printf("width: %d\n", lst->width);
 	if (lst->str && ft_atoi(lst->str) < 0 && lst->c != 'u')
 	{
 		if (lst->just)

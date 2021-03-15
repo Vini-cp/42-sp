@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:13:06 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 23:15:22 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/15 19:20:08 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static	to_print	*lstnew(void)
 	lst->spaces = NULL;
 	lst->just = 0;
 	lst->prec = -1;
-	lst->width = -1;
+	lst->width = 0;
 	lst->zero = 0;
 	return (lst);
 }
