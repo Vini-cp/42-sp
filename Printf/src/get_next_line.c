@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 21:38:33 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 17:28:05 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/14 21:16:11 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		get_next_line(int fd, char **line)
 		tmp = ft_strjoin(t, s);
 		ft_memdel((void **)&t);
 		t = tmp;
-	}
+	} 
 	if (out == 0)
 		*line = ft_strdup(t);
 	else if (out > 0)

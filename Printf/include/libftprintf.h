@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:14:56 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 18:06:14 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/14 21:40:40 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+#include <stdio.h>
+
 # define BUFFER_SIZE 32
 
 typedef	struct		s_list
@@ -30,8 +32,8 @@ typedef	struct		p_list
 {
 	char			*f;
 	char			*str;
-	char			print_c;
 	char			*spaces;
+	char			print_c;
 	int				s_len;
 	int				just;
 	int				prec;

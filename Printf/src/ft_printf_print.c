@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 22:30:32 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 18:32:04 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/14 22:11:50 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static	int	print_just(to_print *lst)
 
 static	int	print_not_just(to_print *lst)
 {
-	lst->str = (lst->prec == 0 && ft_atoi(lst->str) == 0) ? NULL : lst->str;
+	lst->str = (lst->prec == 0 && lst->str[0] == '0') ? NULL : lst->str;
 	lst->s_len = (lst->str) ? lst->s_len : 0;
 	if (lst->prec > 0)
 	{
@@ -119,12 +119,16 @@ int			ft_printf_print(to_print *lst)
 	int i;
 
 	i = 0;
-	if (lst->str && ft_atoi(lst->str) < 0)
+	if (lst->str && ft_atoi(lst->str) < 0 && lst->c != 'u')
 	{
 		if (lst->just)
 			i = print_neg_just(lst);
 		else
 			i = print_neg_not_just(lst);
+	}
+	else if (lst->c == 'c')
+	{
+		i = ft_printf_print_c(lst);
 	}
 	else
 	{

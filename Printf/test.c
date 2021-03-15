@@ -3,101 +3,18 @@
 
 int main()
 {
-	// char *s_hidden = "hi low\0don't print me lol\0";
-	// printf("|%30.20s|\n", "Oi seu vinao, tudo certo?");
-	// printf("%d\n", printf("%2.9p\n", 1234));
-	// ft_printf("%d\n", ft_printf("%2.9p\n", 1234));
-	printf("%d\n", printf("|%10.5d|\n", -123));
-	ft_printf("%d\n", ft_printf("|%10d|\n", -123));
-	printf("%c\n", 0);
-	ft_printf("%c\n", 0);
-	printf("%d\n", printf("ABC%"));
-	printf("%d\n", printf("%x\n", 0x1234abcdfu));
-	printf("%d\n", ft_printf("%x\n", 0x1234abcdfu));
-	printf("%d\n", ft_printf("%p\n", 1234));
-	// 0 -> 9
-	// abcdef
-	// 5299
-	// char c = 'a';
-	// ft_printf("%i\n", c);
-	// char *s = NULL;
-	// ft_atoi(s);
-	// 1) -
-	// 2) NUM => (0)NUM / *
-	// 3) .
-	// 4) NUM / *
-
-	// IGNORAR FLAG 0
-
-
-	// ft_printf("%05%");
-	// printf(" .%-15d. \n", 7);
-	// printf("%-.5%.\n");
-	// ft_printf("%");
-	// printf("%5");
-	// printf("%05");
-	// printf("%-05");
-	// printf("%-5");
-	// printf("%p\n", &d);
-	// s = ft_utoa(112450, 16, 0);
-	// printf("%s\n", s);
-	// printf("%x\n", 112450);
+	// ft_printf("%20.0s", "Hallo heimur")
+	// ft_printf("%20.s", "Hallo heimur")
+	printf("%d\n", printf("|%20.d|\n", 0));
+	printf("%d\n", ft_printf("|%20.d|\n", 0));
+	printf("%d\n", printf("|%20.i|\n", 0));
+	printf("%d\n", ft_printf("|%20.i|\n", 0));
+	printf("%d\n", printf("|%20.u|\n", 0u));
+	printf("%d\n", ft_printf("|%20.u|\n", 0u));
+	printf("%d\n", printf("|%20.X|\n", 0u));
+	printf("%d\n", ft_printf("|%20.X|\n", 0u));
+	// ft_printf("%-89c%20p%-33.16X%--11.*s%--25.85u" ,10,(void*)1144206967121894099lu,1538791465u,84,"L;x)-34d4BU9<aJE-\n\r4:[)kMj}Y4",543381790u)
+	// ft_printf("%64p%038.87d%23c%--182.49i%--76.110%" ,(void*)10278319775164267212lu,-1550079501,30,-862355787)
+	// ft_printf("%29p%0151.162x%---53.46u%-139.26X" ,(void*)17894711340605174765lu,1565093748u,662758369u,3536629372u)
+	// ft_printf("%108p%-175.188i" ,(void*)11721873312409420167lu,-653373315)
 }
-
-// int main ()
-// {
-// 	printf("%5d.\n", 10);
-// 	printf("%*d\n", 5, 10);
-// 	printf("%-5d.\n", 10);
-// 	printf("%.5d\n", 10);
-// 	printf("%.*d\n", 5, 10);
-// 	printf("%05d\n", 10);
-// }
-
-// Left or Rigth			
-// 	- num > 0			(printa num espaços)						OK
-// 	- ast				(busca num e printa num espaços)			OK
-// 	- ponto e ast		(busca num e printa num zeros)				OK		
-// 	- ponto e num		(printa num zeros)							OK
-// 	- zero e num		(printa num zeros)							
-
-
-
-
-// 1) Testar se c == '-'
-// 	- Print no número e se sobrar espaço, completar com ' ';
-// 2) Testar se c é um dígito
-// 	- Se c == 0
-// 		- Tester se c + 1 != dígito
-// 			- /* Preencher com espaços */
-// 		- Tester se c + 1 == dígito
-// 			- /* Preencher com zeros */
-// 	- Se c > 0
-// 		- /* Preencher com espaços */
-// 3) Testar se c == '*'
-// 	- Buscar nos args um int;
-// 	- /* Preencher com espaços */
-// 4) Testar se c == '.'
-// 	- 
-
-// .
-// 0
-// -
-// "width"
-
-// - : Left-justify within the given field width;
-// . : precision
-// 	.(number) : specifies the minimum number of digits to be written
-// 	.* : The precision is not specified in the format string, 
-// 		 but as an additional integer value argument preceding 
-// 		 the argument that has to be formatted.
-// 0 : Left-pads the number with zeroes (0) instead of spaces when padding is specified
-// "width" : 
-// 			(number) : Minimum number of characters to be printed.
-// 			* : The width is not specified in the format string, 
-// 				but as an additional integer value argument preceding 
-// 				the argument that has to be formatted.
-
-
-// PRECISÃO tem preferência no justify
-// PRECISÃO em string é diferente do resto
