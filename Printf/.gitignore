@@ -1,4 +1,5 @@
 pft_2019/
 src/tester_printf
-./test.c
+src/*.o
+./*.c
 libftprintf.a
