@@ -6,13 +6,13 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 14:45:20 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 22:34:32 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/15 20:07:10 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libftprintf.h"
 
-static	int	print_just(to_print *lst)
+static	int	print_just(t_flags *lst)
 {
 	if (lst->width > 0)
 	{
@@ -24,7 +24,7 @@ static	int	print_just(to_print *lst)
 	return (ft_max(1, lst->width));
 }
 
-static	int	print_not_just(to_print *lst)
+static	int	print_not_just(t_flags *lst)
 {
 	if (lst->width > 0)
 	{
@@ -39,7 +39,7 @@ static	int	print_not_just(to_print *lst)
 	return (ft_max(1, lst->width));
 }
 
-int			ft_printf_print_c(to_print *lst)
+int			ft_printf_print_c(t_flags *lst)
 {
 	int i;
 

@@ -6,13 +6,13 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:22:39 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/14 18:14:22 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/15 20:07:03 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libftprintf.h"
 
-void	ft_printf_get_flag(char *s, va_list args, to_print **lst)
+void	ft_printf_get_flag(char *s, va_list args, t_flags **lst)
 {
 	int i;
 

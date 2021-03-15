@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:13:06 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/15 19:20:08 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/15 20:06:29 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static	char		*create_flag_array(const char *fmt)
 	return (s);
 }
 
-static	void		to_string(const char *f, va_list args, to_print **lst)
+static	void		to_string(const char *f, va_list args, t_flags **lst)
 {
 	(*lst)->c = ' ';
 	if (*f == 'd' || *f == 'i')
@@ -51,11 +51,11 @@ static	void		to_string(const char *f, va_list args, to_print **lst)
 	(*lst)->s_len = ((*lst)->str) ? ft_strlen((*lst)->str) : 0;
 }
 
-static	to_print	*lstnew(void)
+static	t_flags	*lstnew(void)
 {
-	to_print *lst;
+	t_flags *lst;
 
-	lst = (to_print *)malloc(sizeof(to_print));
+	lst = (t_flags *)malloc(sizeof(t_flags));
 	lst->f = NULL;
 	lst->str = NULL;
 	lst->spaces = NULL;
@@ -69,7 +69,7 @@ static	to_print	*lstnew(void)
 int					ft_printf(const char *fmt, ...)
 {
 	va_list		args;
-	to_print	*node;
+	t_flags		*node;
 	int			i;
 
 	i = 0;

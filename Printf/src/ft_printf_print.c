@@ -6,13 +6,13 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 22:30:32 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/15 19:57:09 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/15 20:07:15 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libftprintf.h"
 
-static	int	print_just(to_print *lst)
+static	int	print_just(t_flags *lst)
 {
 	if (lst->prec > lst->s_len)
 		ft_putstr_fd(ft_substr(lst->f, 0, lst->prec - lst->s_len), 1);
@@ -31,7 +31,7 @@ static	int	print_just(to_print *lst)
 	return (ft_max(ft_max(lst->prec, lst->s_len), lst->width));
 }
 
-static	int	print_not_just(to_print *lst)
+static	int	print_not_just(t_flags *lst)
 {
 	if (lst->prec >= 0)
 	{
@@ -58,7 +58,7 @@ static	int	print_not_just(to_print *lst)
 	return (ft_max(ft_max(lst->prec, lst->s_len), lst->width));
 }
 
-static	int	print_neg_just(to_print *lst)
+static	int	print_neg_just(t_flags *lst)
 {
 	if (lst->prec > lst->s_len - 1)
 	{
@@ -82,7 +82,7 @@ static	int	print_neg_just(to_print *lst)
 	return (ft_max(ft_max(lst->prec + 1, lst->s_len), lst->width));
 }
 
-static	int	print_neg_not_just(to_print *lst)
+static	int	print_neg_not_just(t_flags *lst)
 {
 	if (lst->prec >= 0)
 	{
@@ -110,7 +110,7 @@ static	int	print_neg_not_just(to_print *lst)
 	return (ft_max(ft_max(lst->prec + 1, lst->s_len), lst->width));
 }
 
-int			ft_printf_print(to_print *lst)
+int			ft_printf_print(t_flags *lst)
 {
 	if (lst->prec == 0 && lst->str[0] == '0')
 	{
