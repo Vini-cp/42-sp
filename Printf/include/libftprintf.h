@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:14:56 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/15 20:02:33 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/15 20:04:40 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ typedef	struct		s_list
 {
 	void			*content;
 	struct s_list	*next;
-}						t_list;
+}					t_list;
 
-typedef	struct		p_list
+typedef	struct		s_flags
 {
 	char			*f;
 	char			*str;
@@ -38,7 +38,7 @@ typedef	struct		p_list
 	int				zero;
 	int				neg;
 	char			c;
-}						to_print;
+}					t_flags;
 
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t nelem, size_t elsize);
