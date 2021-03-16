@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 22:30:32 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/15 20:07:15 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/15 20:10:25 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,17 +121,17 @@ int			ft_printf_print(t_flags *lst)
 	if (lst->str && ft_atoi(lst->str) < 0 && lst->c != 'u')
 	{
 		if (lst->just)
-			return(print_neg_just(lst));
+			return (print_neg_just(lst));
 		else
-			return(print_neg_not_just(lst));
+			return (print_neg_not_just(lst));
 	}
 	else if (lst->c == 'c')
-		return(ft_printf_print_c(lst));
+		return (ft_printf_print_c(lst));
 	else
 	{
 		if (lst->just)
-			return(print_just(lst));
+			return (print_just(lst));
 		else
-			return(print_not_just(lst));
+			return (print_not_just(lst));
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:14:56 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/15 20:08:15 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/15 21:26:34 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int					ft_printf_print(t_flags *lst);
 int					ft_printf_print_p_str(t_flags *lst);
 int					ft_printf_print_c(t_flags *lst);
 int					ft_printf_isflag(int c);
-void				ft_printf_empty_zeros(t_flags **lst);
-void				ft_printf_get_flag(char *s, va_list args, t_flags **lst);
+void				ft_printf_empty_zeros(t_flags ***lst);
+void				ft_printf_get_flag(char *s, va_list args, t_flags ***lst);
 
 #endif

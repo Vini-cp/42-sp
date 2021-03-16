@@ -6,22 +6,22 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:17:42 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/15 20:06:56 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/15 21:25:48 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libftprintf.h"
 
-void	ft_printf_empty_zeros(t_flags **lst)
+void	ft_printf_empty_zeros(t_flags ***lst)
 {
 	char	*s;
 	char	*t;
 	int		i;
 	int		size;
 
-	(*lst)->just = ((*lst)->width < 0) ? 1 : (*lst)->just;
-	(*lst)->width *= ((*lst)->width < 0) ? -1 : 1;
-	size = ((*lst)->width >= (*lst)->prec) ? (*lst)->width : (*lst)->prec;
+	(**lst)->just = ((**lst)->width < 0) ? 1 : (**lst)->just;
+	(**lst)->width *= ((**lst)->width < 0) ? -1 : 1;
+	size = ((**lst)->width >= (**lst)->prec) ? (**lst)->width : (**lst)->prec;
 	s = (char *)malloc((size + 1) * sizeof(char));
 	t = (char *)malloc((size + 1) * sizeof(char));
 	i = 0;
@@ -33,6 +33,6 @@ void	ft_printf_empty_zeros(t_flags **lst)
 	}
 	s[i] = '\0';
 	t[i] = '\0';
-	(*lst)->f = ft_strdup(s);
-	(*lst)->spaces = ft_strdup(t);
+	(**lst)->f = ft_strdup(s);
+	(**lst)->spaces = ft_strdup(t);
 }
