@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:13:06 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/15 21:50:09 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/15 21:50:47 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int				ft_printf(const char *fmt, ...)
 		node = ft_printf_newflag();
 		if (*fmt == '%')
 		{
-			if(!check_specifier(&fmt))
+			if (!check_specifier(&fmt))
 				return (i);
 			if (*fmt == '%')
 				i += ft_printf_putchar(*fmt);
