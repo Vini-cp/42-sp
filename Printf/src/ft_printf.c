@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:13:06 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/15 21:47:13 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/15 21:50:09 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static	int		iter(const char **fmt, t_flags **node, va_list args, int *i)
 		ft_printf_empty_zeros(&node);
 		*fmt += ft_strlen(create_flag_array(*fmt));
 		if (!**fmt)
-			return (0); // CHANGE HERE
+			return (0);
 		to_string(*fmt, args, &node);
 		*i += ((*node)->c == ' ' || (*node)->c == 'c' || (*node)->c == 'u') ? \
 		ft_printf_print(*node) : ft_printf_print_p_str(*node);
@@ -98,9 +98,8 @@ int				ft_printf(const char *fmt, ...)
 				return (i);
 			if (*fmt == '%')
 				i += ft_printf_putchar(*fmt);
-			else
-				if(!iter(&fmt, &node, args, &i))
-					return (i);
+			else if (!iter(&fmt, &node, args, &i))
+				return (i);
 			fmt += 1;
 		}
 		else
