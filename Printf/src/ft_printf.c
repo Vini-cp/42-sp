@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 23:13:06 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/15 21:34:44 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/03/15 21:47:13 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ static	char	*create_flag_array(const char *fmt)
 		i++;
 	s = ft_substr(fmt, 0, i);
 	return (s);
+}
+
+static	int		check_specifier(const char **fmt)
+{
+	if (!*(*fmt + 1))
+		return (0);
+	*fmt += 1;
+	return (1);
 }
 
 static	void	to_string(const char *f, va_list args, t_flags ***lst)
@@ -51,22 +59,7 @@ static	void	to_string(const char *f, va_list args, t_flags ***lst)
 	(**lst)->s_len = ((**lst)->str) ? ft_strlen((**lst)->str) : 0;
 }
 
-static	t_flags	*lstnew(void)
-{
-	t_flags *lst;
-
-	lst = (t_flags *)malloc(sizeof(t_flags));
-	lst->f = NULL;
-	lst->str = NULL;
-	lst->spaces = NULL;
-	lst->just = 0;
-	lst->prec = -1;
-	lst->width = 0;
-	lst->zero = 0;
-	return (lst);
-}
-
-int		TESTE(const char **fmt, t_flags **node, va_list args, int *i)
+static	int		iter(const char **fmt, t_flags **node, va_list args, int *i)
 {
 	if (ft_isdigit(**fmt) || ft_printf_isflag(**fmt))
 	{
@@ -88,7 +81,7 @@ int		TESTE(const char **fmt, t_flags **node, va_list args, int *i)
 	return (1);
 }
 
-int					ft_printf(const char *fmt, ...)
+int				ft_printf(const char *fmt, ...)
 {
 	va_list		args;
 	t_flags		*node;
@@ -98,16 +91,15 @@ int					ft_printf(const char *fmt, ...)
 	va_start(args, fmt);
 	while (*fmt)
 	{
-		node = lstnew();
+		node = ft_printf_newflag();
 		if (*fmt == '%')
 		{
-			if (!*(fmt + 1))
+			if(!check_specifier(&fmt))
 				return (i);
-			fmt += 1;
 			if (*fmt == '%')
 				i += ft_printf_putchar(*fmt);
 			else
-				if(!TESTE(&fmt, &node, args, &i))
+				if(!iter(&fmt, &node, args, &i))
 					return (i);
 			fmt += 1;
 		}
