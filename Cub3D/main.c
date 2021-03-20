@@ -1,16 +1,37 @@
 #include <mlx.h>
+#include "include/cub.h"
+
+void	*g_mlx;
+void	*g_win;
+
+void init()
+{
+	g_mlx = mlx_init();
+	g_win = mlx_new_window(g_mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
+}
+
+void display()
+{
+	int i;
+	int j;
+
+	i = 1;
+	j = 1;
+	while (i < WIN_WIDTH)
+	{
+		while (j < WIN_HEIGHT)
+		{
+			mlx_pixel_put(g_mlx, g_win, 500, 250, 0x00FFFFFF);
+			j++;
+		}
+		i++;
+	}
+}
 
 int     main(void)
 {
-    void    *mlx;
-    void    *mlx_win;
-
-    mlx = mlx_init();
-    mlx_win = mlx_new_window(mlx, 1024, 512, "Cub3D");
-    for (int i = 100; i <= 300; i++)
-    {
-        for (int j = 100; j <= 300; j++)
-            mlx_pixel_put(mlx, mlx_win, i, j, 0x00FFFFFF);
-    }
-    mlx_loop(mlx);
+	init();
+	display();
+	mlx_pixel_put(g_mlx, g_win, 512, 256, 0x00FFFFFF);
+	mlx_loop(g_mlx);
 }
