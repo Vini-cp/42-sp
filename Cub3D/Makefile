@@ -68,9 +68,9 @@ ctest:
 	@rm ./a.out
 
 cub:
-	@gcc main.c -Lmlx -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o cub3d
+	@gcc main.c -Lmlx -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz libft.a -o cub
 
 ccub:
-	@rm cub3d
+	@rm cub
 
 # gcc -Wall -Werror -Wextra ./libft.a test.c
