@@ -1,12 +1,6 @@
 #include "../include/cub.h"
 #include <stdio.h>
 
-void	*g_mlx;
-void	*g_win;
-int		px;
-int		py;
-double	pa;
-
 int map[8][8] = {
 	{1, 1, 1, 1, 1, 1, 1, 1},
 	{1, 0, 1, 0, 0, 0, 1, 1},
@@ -17,6 +11,11 @@ int map[8][8] = {
 	{1, 0, 0, 0, 0, 0, 0, 1},
 	{1, 1, 1, 1, 1, 1, 1, 1}
 };
+
+
+/* -------------------------------------------------------------------------- */
+/* ---------------------------------- DRAW ---------------------------------- */
+/* -------------------------------------------------------------------------- */
 
 void draw_square (int x, int y, int size, int color)
 {
@@ -34,14 +33,6 @@ void draw_square (int x, int y, int size, int color)
 		}
 		i++;
 	}
-}
-
-int ft_abs(int a, int b)
-{
-	if (a >= b)
-		return (a - b);
-	else
-		return (b - a);
 }
 
 void draw_line (double alpha, int len, int color)
@@ -76,6 +67,33 @@ void draw_line (double alpha, int len, int color)
 	}
 }
 
+void    draw_map()
+{
+    int i;
+    int j;
+
+    i = 0;
+    while (i < 8)
+    {
+		j = 0;
+        while (j < 8)
+        {
+            if (map[i][j] == 1)
+                draw_square((j * TILE_SIZE) + 1, (i * TILE_SIZE) + 1, TILE_SIZE, 0x00FFFFFF);
+            else
+            	draw_square((j * TILE_SIZE) + 1, (i * TILE_SIZE) + 1, TILE_SIZE, 0x00000000);
+            j++;
+        }
+		i++;
+    }
+}
+
+void draw_player()
+{
+	draw_square(px, py, PLAYER_SIZE, 0x00FFFF00);
+	draw_line(pa, 25, 0x00FFFF00);
+}
+
 // int get_distance(float alpha)
 // {
 // 	int i;
@@ -108,103 +126,112 @@ void draw_line (double alpha, int len, int color)
 // void draw_fov(float alpha, float fov, int color)
 // {
 // 	int len;
-
 // 	len = get_distance(alpha);
 // }
 
-void    draw_map()
+/* -------------------------------------------------------------------------- */
+/* --------------------------------- UTILS ---------------------------------- */
+/* -------------------------------------------------------------------------- */
+
+int has_wall(int x, int y) 
 {
-    int i;
-    int j;
+	int mapGridIndexX;
+	int mapGridIndexY;
 
-    i = 0;
-    while (i < 8)
-    {
-		j = 0;
-        while (j < 8)
-        {
-            if (map[i][j] == 1)
-                draw_square((j * TILE_SIZE) + 1, (i * TILE_SIZE) + 1, TILE_SIZE, 0x00FFFFFF);
-            else
-            	draw_square((j * TILE_SIZE) + 1, (i * TILE_SIZE) + 1, TILE_SIZE, 0x00000000);
-            j++;
-        }
-		i++;
-    }
-}
+	if (x < 0 || x > WINDOW_WIDTH || y < 0 || y > WINDOW_HEIGHT)
+		return (1);
+	mapGridIndexX = Math.floor(x / TILE_SIZE);
+	mapGridIndexY = Math.floor(y / TILE_SIZE);
 
-void draw_player()
-{
-	draw_square(px, py, PLAYER_SIZE, 0x00FFFF00);
-	draw_line(pa, 25, 0x00FFFF00);
-}
-
-int draw_bkgd()
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < WIN_WIDTH)
-	{
-		j = 0;
-		while (j < WIN_HEIGHT)
-		{
-			mlx_pixel_put(g_mlx, g_win, i, j, 0x006B6E6F);
-			j++;
-		}
-		i++;
-	}
-	return (0);
+	return ((map[mapGridIndexY][mapGridIndexX] == 1) ? 1 : 0);
 }
 
 void display()
 {
-	// draw_bkgd();
 	draw_map();
 	draw_player();
 }
 
-int buttons(int key)
+
+int key_pressed(int key, void *player)
 {
-	if(key == 'a')
-		px -= PLAYER_SIZE;
-	if(key == 'd')
-		px += PLAYER_SIZE;
-	if(key == 'w')
-		py -= PLAYER_SIZE;
-	if(key == 's')
-		py += PLAYER_SIZE;
-	if(key == 65361)
-	{
-		pa += 0.1;
-		pa += (pa > 2 * PI) ? -2 * PI : +0;
-	}
-	if(key == 65363)
-	{
-		pa -= 0.1;
-		pa += (pa < 0) ? 2 * PI : +0;
-	}
-	// printf("%f\n", pa);
-	display();
+	if(key == LEFT)
+		player->incx -= 1;
+	if(key == RIGHT)
+		player->incx += 1;
+	if(key == UP)
+		player->incy -= 1;
+	if(key == DOWN)
+		player->incy += 1;
+	if(key == ROTATE_LEFT)
+		player->inca += 1;
+	if(key == ROTATE_RIGHT)
+		player->inca -= 1;
+	update(&player);
+		// pa += (pa > 2 * PI) ? -2 * PI : +0;
+		// pa += (pa < 0) ? 2 * PI : +0;
 	return (0);
 }
 
-void init()
+int key_released(int key, void *player)
+{
+	if(key == LEFT)
+		player->incx = 0;
+	if(key == RIGHT)
+		player->incx = 0;
+	if(key == UP)
+		player->incy = 0;
+	if(key == DOWN)
+		player->incy = 0;
+	if(key == ROTATE_LEFT)
+		player->inca = 0;
+	if(key == ROTATE_RIGHT)
+		player->inca = 0;
+	update(&player);
+	return (0);
+}
+
+void update(t_player **player)
+{
+	int ;
+	int move_step_y;
+	int new_px;
+	int new_py;
+
+	(*player)->pa += (*player)->pa * (*player)->ang_speed;
+	move_step_x = (*player)->incx *  (*player)->lin_speed;
+	move_step_y = (*player)->incy *  (*player)->lin_speed;
+	new_px = (*player)->px + move_step_x;
+	new_py = (*player)->py + move_step_y;
+	if (!grid.has_wall(new_px, new_py)) {
+		(*player)->px = new_px;
+		(*player)->py = new_py;
+	}
+}
+
+void setup(t_player *player)
 {
 	g_mlx = mlx_init();
 	g_win = mlx_new_window(g_mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
-	px = 300;
-	py = 300;
-	pa = PI/2;
-	// draw_bkgd();
+	player->px = 300;
+	player->py = 300;
+	player->pa = PI/2;
+	player->lin_speed = 4;
+    player->ang_speed = 3 * PI / 180;
 	display();
 }
 
+
+/* -------------------------------------------------------------------------- */
+/* ---------------------------------- MAIN ---------------------------------- */
+/* -------------------------------------------------------------------------- */
+
 int     main(void)
 {
-	init();
-	mlx_hook(g_win, 02, 1L<<0, buttons, 0);
+	t_player *player;
+	setup(&player);
+	mlx_hook(g_win, 02, 1L<<0, key_pressed, &player);
+	mlx_hook(g_win, 03, 1L<<1, key_released, &player);
 	// mlx_key_hook(g_win, buttons, 0);
 	// mlx_loop_hook(g_mlx, draw_bkgd, 0);
 	mlx_loop(g_mlx);
