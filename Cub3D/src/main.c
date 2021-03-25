@@ -1,13 +1,11 @@
-#include <mlx.h>
-#include "include/cub.h"
-#include "include/libft.h"
+#include "../include/cub.h"
 #include <stdio.h>
 
 void	*g_mlx;
 void	*g_win;
 int		px;
 int		py;
-float	pa;
+double	pa;
 
 int map[8][8] = {
 	{1, 1, 1, 1, 1, 1, 1, 1},
@@ -46,7 +44,7 @@ int ft_abs(int a, int b)
 		return (b - a);
 }
 
-void draw_line (float alpha, int len, int color)
+void draw_line (double alpha, int len, int color)
 {
 	int x;
 	int y;
@@ -167,7 +165,7 @@ void display()
 	draw_player();
 }
 
-int buttons(int key, void *param)
+int buttons(int key)
 {
 	if(key == 'a')
 		px -= PLAYER_SIZE;
@@ -199,7 +197,7 @@ void init()
 	px = 300;
 	py = 300;
 	pa = PI/2;
-	draw_bkgd();
+	// draw_bkgd();
 	display();
 }
 

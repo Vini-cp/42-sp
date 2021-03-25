@@ -1,5 +1,7 @@
 a.out
-libft.a
+libft/libft.a
 libft/*.o
+src/*.o
 cub
+cub.a
 test.c

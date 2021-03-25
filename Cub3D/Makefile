@@ -46,7 +46,7 @@ fclean : clean
 re : fclean all
 
 cub:
-	@gcc src/main.c -Lmlx -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz cub.a -o cub
+	@gcc src/main.c -Lmlx -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm cub.a -o cub
 
 ccub:
 	@rm cub
