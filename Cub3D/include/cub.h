@@ -3,6 +3,7 @@
 
 # include <math.h>
 # include <fcntl.h>
+# include "libft.h"
 
 # define TILE_SIZE 64
 # define WIN_WIDTH 1024

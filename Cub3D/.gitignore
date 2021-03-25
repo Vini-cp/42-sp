@@ -2,3 +2,4 @@ a.out
 libft.a
 libft/*.o
 cub
+test.c

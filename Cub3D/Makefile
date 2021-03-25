@@ -6,71 +6,49 @@
 #    By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/26 23:08:03 by vcordeir          #+#    #+#              #
-#    Updated: 2021/03/19 22:11:41 by vcordeir         ###   ########.fr        #
+#    Updated: 2021/03/24 18:22:16 by vcordeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME = cub.a
 
-SRCS_LIST = ft_strtrim.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
-ft_isdigit.c ft_isprint.c ft_memchr.c ft_memcpy.c ft_memmove.c ft_memset.c \
-ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_strlen.c \
-ft_substr.c ft_tolower.c ft_toupper.c ft_strjoin.c ft_calloc.c ft_strlcpy.c \
-ft_strlcat.c ft_strncmp.c ft_strchr.c ft_strrchr.c ft_strmapi.c ft_strnstr.c \
-ft_strdup.c ft_memcmp.c ft_memccpy.c ft_memdel.c ft_split.c ft_atoi.c \
-ft_itoa.c ft_utoa.c ft_ptoa.c ft_ctoa.c ft_strrev.c ft_max.c ft_min.c\
-ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
-ft_printf_putchar.c ft_printf.c ft_printf_print.c ft_printf_print_p_str.c \
-ft_printf_print_c.c ft_printf_empty_zeros.c ft_printf_isflag.c \
-ft_printf_get_flag.c ft_printf_newflag.c \
-get_next_line.c
+SRCS_LIST = main.c
+
+FOLDER = src
 
 SRCS = $(addprefix ${FOLDER}/, ${SRCS_LIST})
 
 OBJS = ${SRCS:.c=.o}
 
-FOLDER = libft
+CC = gcc
 
 CFLAGS = -c -Wall -Werror -Wextra
 
-RUNFLAGS = -Wall -Werror -Wextra
-
 INCLUDE = -I./include
 
-.PHONY: all clean fclean re
-
-all:    $(NAME)
+all : $(NAME)
 
 $(NAME): $(OBJS)
+	@$(MAKE) -C ./libft
+	@cp libft/libft.a $(NAME)
+	@$(CC) $(FLAGS) $(INCLUDES) $(SRCS)
 	@ar -rcs $(NAME) $(OBJS)
 
-%.o: %.c
-	@gcc ${CFLAGS} ${INCLUDE} -o $@ -c $<
+clean :
+	@$(MAKE) clean -C ./libft
+	@rm -rf *.o
+	@rm -rf ./src/*.o
 
-clean:
-	@rm -f $(OBJS)
+fclean : clean
+	@$(MAKE) fclean -C ./libft
+	@rm -rf $(NAME)
 
-fclean: clean
-	@rm -f $(NAME)
-
-re:		fclean all
-
-run:
-	@gcc $(RUNFLAGS) src/ft_printf.c /Users/viniciuscp/Desktop/42-sp/Printf/$(NAME) \
-	&& ./a.out \
-	&& rm ./a.out
-
-test:
-	@gcc $(RUNFLAGS) ./$(NAME) test.c && ./a.out $(MAP)
-
-ctest:
-	@rm ./a.out
+re : fclean all
 
 cub:
-	@gcc main.c -Lmlx -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz libft.a -o cub
+	@gcc src/main.c -Lmlx -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz cub.a -o cub
 
 ccub:
 	@rm cub
 
-# gcc -Wall -Werror -Wextra ./libft.a test.c
+.PHONY: all clean fclean re
