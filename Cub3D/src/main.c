@@ -13,6 +13,7 @@ int map[8][8] = {
 };
 
 t_screen *g_screen;
+t_player *g_player;
 
 /* -------------------------------------------------------------------------- */
 /* ---------------------------------- DRAW ---------------------------------- */
@@ -36,7 +37,7 @@ void draw_square (int x, int y, int size, int color)
 	}
 }
 
-void draw_line (t_player *player, double alpha, int len, int color)
+void draw_line (double alpha, int len, int color)
 {
 	int x;
 	int y;
@@ -44,26 +45,26 @@ void draw_line (t_player *player, double alpha, int len, int color)
 	int j;
 	int aux;
 
-	x = player->px + cos(-alpha) * len;
-	y = player->py + sin(-alpha) * len;
-	if (ft_abs(player->px, x) >= ft_abs(player->py, y))
+	x = g_player->px + cos(-alpha) * len;
+	y = g_player->py + sin(-alpha) * len;
+	if (ft_abs(g_player->px, x) >= ft_abs(g_player->py, y))
 	{
-		i = player->px;
-		aux = (x > player->px) ? 1 : -1;
+		i = g_player->px;
+		aux = (x > g_player->px) ? 1 : -1;
 		while ((i += aux) != x)
 		{
-			j = tan(-alpha) * i + (player->py - tan(-alpha) * player->px);
+			j = tan(-alpha) * i + (g_player->py - tan(-alpha) * g_player->px);
 			mlx_pixel_put(g_screen->mlx, g_screen->win, i, j, color);
 		}
 	}
 	else
 	{
-		i = player->py;
-		aux = (y > player->py) ? 1 : -1;
+		i = g_player->py;
+		aux = (y > g_player->py) ? 1 : -1;
 		while ((i += aux) != y)
 		{
-			j = (1 / tan(-alpha)) * i + (player->px - (1 / tan(-alpha)) * player->py);
-			mlx_pixel_put(g_mlx, g_win, j, i, color);
+			j = (1 / tan(-alpha)) * i + (g_player->px - (1 / tan(-alpha)) * g_player->py);
+			mlx_pixel_put(g_screen->mlx, g_screen->win, j, i, color);
 		}
 	}
 }
@@ -91,10 +92,10 @@ void    draw_map()
     }
 }
 
-void draw_player(t_player *player)
+void draw_player()
 {
-	draw_square(player->px, player->py, PLAYER_SIZE, 0x00FFFF00);
-	draw_line(player, player->pa, 25, 0x00FFFF00);
+	draw_square(g_player->px, g_player->py, PLAYER_SIZE, 0x00FFFF00);
+	draw_line(g_player->pa, 25, 0x00FFFF00);
 }
 
 // int get_distance(float alpha)
@@ -141,10 +142,10 @@ int has_wall(int x, int y)
 	int mapGridIndexX;
 	int mapGridIndexY;
 
-	if (x < 0 || x > WINDOW_WIDTH || y < 0 || y > WINDOW_HEIGHT)
+	if (x < 0 || x > WIN_WIDTH || y < 0 || y > WIN_HEIGHT)
 		return (1);
-	mapGridIndexX = Math.floor(x / TILE_SIZE);
-	mapGridIndexY = Math.floor(y / TILE_SIZE);
+	mapGridIndexX = floor(x / TILE_SIZE);
+	mapGridIndexY = floor(y / TILE_SIZE);
 
 	return ((map[mapGridIndexY][mapGridIndexX] == 1) ? 1 : 0);
 }
@@ -153,65 +154,65 @@ int has_wall(int x, int y)
 /* --------------------------------- EVENT ---------------------------------- */
 /* -------------------------------------------------------------------------- */
 
-void display(t_player *player)
+void display()
 {
 	draw_map();
-	draw_player(player);
+	draw_player();
 }
 
-void update(t_player **player)
+void update()
 {
-	int ;
+	int move_step_x;
 	int move_step_y;
 	int new_px;
 	int new_py;
 
-	(*player)->pa += (*player)->pa * (*player)->ang_speed;
-	move_step_x = (*player)->incx *  (*player)->lin_speed;
-	move_step_y = (*player)->incy *  (*player)->lin_speed;
-	new_px = (*player)->px + move_step_x;
-	new_py = (*player)->py + move_step_y;
+	g_player->pa += g_player->pa * g_player->ang_speed;
+	move_step_x = g_player->incx *  g_player->lin_speed;
+	move_step_y = g_player->incy *  g_player->lin_speed;
+	new_px = g_player->px + move_step_x;
+	new_py = g_player->py + move_step_y;
 	if (!grid.has_wall(new_px, new_py)) {
-		(*player)->px = new_px;
-		(*player)->py = new_py;
+		g_player->px = new_px;
+		g_player->py = new_py;
 	}
 }
 
-int key_pressed(int key, void *player)
+int key_pressed(int key)
 {
 	if(key == LEFT)
-		player->incx -= 1;
+		g_player->incx -= 1;
 	if(key == RIGHT)
-		player->incx += 1;
+		g_player->incx += 1;
 	if(key == UP)
-		player->incy -= 1;
+		g_player->incy -= 1;
 	if(key == DOWN)
-		player->incy += 1;
+		g_player->incy += 1;
 	if(key == ROTATE_LEFT)
-		player->inca += 1;
+		g_player->inca += 1;
 	if(key == ROTATE_RIGHT)
-		player->inca -= 1;
-	update(&player);
-	display(player);
+		g_player->inca -= 1;
+	update();
+	display();
 		// pa += (pa > 2 * PI) ? -2 * PI : +0;
 		// pa += (pa < 0) ? 2 * PI : +0;
 	return (0);
 }
 
-int key_released(int key, void *player)
+int key_released(int key, t_player *player)
 {
 	if(key == LEFT)
-		player->incx = 0;
+		g_player->incx = 0;
 	if(key == RIGHT)
-		player->incx = 0;
+		g_player->incx = 0;
 	if(key == UP)
-		player->incy = 0;
+		g_player->incy = 0;
 	if(key == DOWN)
-		player->incy = 0;
+		g_player->incy = 0;
 	if(key == ROTATE_LEFT)
-		player->inca = 0;
+		g_player->inca = 0;
 	if(key == ROTATE_RIGHT)
-		player->inca = 0;
+		g_player->inca = 0;
 	update(&player);
 	display();
 	return (0);
@@ -225,11 +226,11 @@ void setup(t_player *player)
 {
 	g_screen->mlx = mlx_init();
 	g_screen->win = mlx_new_window(g_screen->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
-	player->px = 300;
-	player->py = 300;
-	player->pa = PI/2;
-	player->lin_speed = 4;
-    player->ang_speed = 3 * PI / 180;
+	g_player->px = 300;
+	g_player->py = 300;
+	g_player->pa = PI/2;
+	g_player->lin_speed = 4;
+    g_player->ang_speed = 3 * PI / 180;
 	display();
 }
 
@@ -240,11 +241,10 @@ void setup(t_player *player)
 
 int     main(void)
 {
-	t_player *player;
 	setup(&player);
 	mlx_hook(g_screen->win, 02, 1L<<0, key_pressed, &player);
 	mlx_hook(g_screen->win, 03, 1L<<1, key_released, &player);
 	// mlx_key_hook(g_win, buttons, 0);
 	// mlx_loop_hook(g_mlx, draw_bkgd, 0);
-	mlx_loop(g_mlx);
+	mlx_loop(g_screen->mlx);
 }
