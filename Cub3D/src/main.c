@@ -172,7 +172,7 @@ void update()
 	move_step_y = g_player->incy *  g_player->lin_speed;
 	new_px = g_player->px + move_step_x;
 	new_py = g_player->py + move_step_y;
-	if (!grid.has_wall(new_px, new_py)) {
+	if (!has_wall(new_px, new_py)) {
 		g_player->px = new_px;
 		g_player->py = new_py;
 	}
@@ -213,7 +213,7 @@ int key_released(int key, t_player *player)
 		g_player->inca = 0;
 	if(key == ROTATE_RIGHT)
 		g_player->inca = 0;
-	update(&player);
+	update();
 	display();
 	return (0);
 }
@@ -222,7 +222,7 @@ int key_released(int key, t_player *player)
 /* ---------------------------------- SRC ----------------------------------- */
 /* -------------------------------------------------------------------------- */
 
-void setup(t_player *player)
+void setup()
 {
 	g_screen->mlx = mlx_init();
 	g_screen->win = mlx_new_window(g_screen->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
@@ -241,9 +241,9 @@ void setup(t_player *player)
 
 int     main(void)
 {
-	setup(&player);
-	mlx_hook(g_screen->win, 02, 1L<<0, key_pressed, &player);
-	mlx_hook(g_screen->win, 03, 1L<<1, key_released, &player);
+	setup();
+	mlx_hook(g_screen->win, 02, 1L<<0, key_pressed, 0);
+	mlx_hook(g_screen->win, 03, 1L<<1, key_released, 0);
 	// mlx_key_hook(g_win, buttons, 0);
 	// mlx_loop_hook(g_mlx, draw_bkgd, 0);
 	mlx_loop(g_screen->mlx);
