@@ -146,12 +146,33 @@ int has_wall(int x, int y)
 	return ((map[mapGridIndexY][mapGridIndexX] == 1) ? 1 : 0);
 }
 
+/* -------------------------------------------------------------------------- */
+/* --------------------------------- EVENT ---------------------------------- */
+/* -------------------------------------------------------------------------- */
+
 void display()
 {
 	draw_map();
 	draw_player();
 }
 
+void update(t_player **player)
+{
+	int ;
+	int move_step_y;
+	int new_px;
+	int new_py;
+
+	(*player)->pa += (*player)->pa * (*player)->ang_speed;
+	move_step_x = (*player)->incx *  (*player)->lin_speed;
+	move_step_y = (*player)->incy *  (*player)->lin_speed;
+	new_px = (*player)->px + move_step_x;
+	new_py = (*player)->py + move_step_y;
+	if (!grid.has_wall(new_px, new_py)) {
+		(*player)->px = new_px;
+		(*player)->py = new_py;
+	}
+}
 
 int key_pressed(int key, void *player)
 {
@@ -168,6 +189,7 @@ int key_pressed(int key, void *player)
 	if(key == ROTATE_RIGHT)
 		player->inca -= 1;
 	update(&player);
+	display();
 		// pa += (pa > 2 * PI) ? -2 * PI : +0;
 		// pa += (pa < 0) ? 2 * PI : +0;
 	return (0);
@@ -188,26 +210,13 @@ int key_released(int key, void *player)
 	if(key == ROTATE_RIGHT)
 		player->inca = 0;
 	update(&player);
+	display();
 	return (0);
 }
 
-void update(t_player **player)
-{
-	int ;
-	int move_step_y;
-	int new_px;
-	int new_py;
-
-	(*player)->pa += (*player)->pa * (*player)->ang_speed;
-	move_step_x = (*player)->incx *  (*player)->lin_speed;
-	move_step_y = (*player)->incy *  (*player)->lin_speed;
-	new_px = (*player)->px + move_step_x;
-	new_py = (*player)->py + move_step_y;
-	if (!grid.has_wall(new_px, new_py)) {
-		(*player)->px = new_px;
-		(*player)->py = new_py;
-	}
-}
+/* -------------------------------------------------------------------------- */
+/* ---------------------------------- SRC ----------------------------------- */
+/* -------------------------------------------------------------------------- */
 
 void setup(t_player *player)
 {
