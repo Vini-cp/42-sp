@@ -199,7 +199,7 @@ int key_pressed(int key)
 	return (0);
 }
 
-int key_released(int key, t_player *player)
+int key_released(int key)
 {
 	if(key == LEFT)
 		g_player->incx = 0;
