@@ -15,6 +15,15 @@ int map[8][8] = {
 t_screen *g_screen;
 t_player *g_player;
 
+int ft_abs(int a, int b)
+{
+	if (a >= b)
+		return (a - b);
+	else
+		return (b - a);
+}
+
+
 /* -------------------------------------------------------------------------- */
 /* ---------------------------------- DRAW ---------------------------------- */
 /* -------------------------------------------------------------------------- */
@@ -167,7 +176,11 @@ void update()
 	int new_px;
 	int new_py;
 
-	g_player->pa += g_player->pa * g_player->ang_speed;
+	g_player->pa += g_player->inca * g_player->ang_speed;
+	if (g_player->pa > 2 * PI)
+		g_player->pa -= 2 * PI;
+	if (g_player->pa < 0)
+		g_player->pa += 2 * PI;
 	move_step_x = g_player->incx *  g_player->lin_speed;
 	move_step_y = g_player->incy *  g_player->lin_speed;
 	new_px = g_player->px + move_step_x;
@@ -194,8 +207,6 @@ int key_pressed(int key)
 		g_player->inca -= 1;
 	update();
 	display();
-		// pa += (pa > 2 * PI) ? -2 * PI : +0;
-		// pa += (pa < 0) ? 2 * PI : +0;
 	return (0);
 }
 
@@ -224,6 +235,8 @@ int key_released(int key)
 
 void setup()
 {
+	g_screen = (t_screen *)malloc(sizeof(t_screen));
+	g_player = (t_player *)malloc(sizeof(t_player));
 	g_screen->mlx = mlx_init();
 	g_screen->win = mlx_new_window(g_screen->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
 	g_player->px = 300;
