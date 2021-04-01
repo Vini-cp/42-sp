@@ -12,6 +12,7 @@
 # define RIGHT 100
 # define ROTATE_LEFT 65361
 # define ROTATE_RIGHT 65363
+# define CLOSE_WIN 65307
 # define PI 3.14159265359
 
 #endif

@@ -12,6 +12,11 @@
 
 #include "../include/cub.h"
 
+void	close_window()
+{
+	mlx_destroy_window(g_screen->mlx, g_screen->win);
+}
+
 int key_pressed(int key)
 {
 	if(key == LEFT)
@@ -26,6 +31,8 @@ int key_pressed(int key)
 		g_player->inca += 1;
 	if(key == ROTATE_RIGHT)
 		g_player->inca -= 1;
+	if (key == CLOSE_WIN)
+		close_window();
 	update();
 	display();
 	return (0);

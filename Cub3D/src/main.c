@@ -21,7 +21,7 @@ void display()
 	draw_player();
 }
 
-int     main(void)
+int	main(void)
 {
 	setup();
 	mlx_hook(g_screen->win, 02, 1L<<0, key_pressed, 0);
