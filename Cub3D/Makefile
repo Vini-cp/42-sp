@@ -12,7 +12,7 @@
 
 NAME = cub.a
 
-SRCS_LIST = main.c draw.c update.c setup.c key_press.c
+SRCS_LIST = main.c draw.c update.c setup.c key_touch.c has_wall.c
 
 FOLDER = src
 
@@ -33,13 +33,14 @@ all : $(NAME)
 $(NAME): $(OBJS)
 	@$(MAKE) -C ./libft
 	@cp libft/libft.a $(NAME)
-	@clang  $(SRCS) $(CFLAGS) $(INCLUDES) $(LINUX_FLAGS)
+	@clang  $(SRCS) $(CFLAGS) $(INCLUDES) $(LINUX_FLAGS) cub.a -o cub
 	@ar -rcs $(NAME) $(OBJS)
 
 clean :
 	@$(MAKE) clean -C ./libft
 	@rm -rf *.o
 	@rm -rf ./src/*.o
+	@rm cub
 
 fclean : clean
 	@$(MAKE) fclean -C ./libft

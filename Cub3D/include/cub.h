@@ -27,11 +27,13 @@ typedef	struct		s_screen
 
 extern t_screen *g_screen;
 extern t_player *g_player;
+extern int map[8][8];
 
 void	draw_square (int x, int y, int size, int color);
 void	draw_line (double alpha, int len, int color);
 void    draw_map();
-void	setuo();
+void	setup();
+void	display();
 void	update();
 void	draw_player();
 int		key_pressed(int key);
