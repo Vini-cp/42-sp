@@ -6,13 +6,13 @@
 #    By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/26 23:08:03 by vcordeir          #+#    #+#              #
-#    Updated: 2021/03/24 18:22:16 by vcordeir         ###   ########.fr        #
+#    Updated: 2021/03/31 22:09:41 by vcordeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub.a
 
-SRCS_LIST = main.c draw_square.c 
+SRCS_LIST = main.c draw.c update.c setup.c key_press.c
 
 FOLDER = src
 
