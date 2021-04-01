@@ -12,7 +12,7 @@
 
 NAME = cub.a
 
-SRCS_LIST = main.c
+SRCS_LIST = main.c draw_square.c 
 
 FOLDER = src
 
@@ -33,8 +33,7 @@ all : $(NAME)
 $(NAME): $(OBJS)
 	@$(MAKE) -C ./libft
 	@cp libft/libft.a $(NAME)
-	# @$(CC) -Lmlx -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm $(SRCS)
-	@clang $(FLAGS) $(INCLUDES) $(LINUX_FLAGS) $(SRCS)
+	@clang  $(SRCS) $(CFLAGS) $(INCLUDES) $(LINUX_FLAGS)
 	@ar -rcs $(NAME) $(OBJS)
 
 clean :
