@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 22:02:16 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/31 22:03:04 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/04/03 11:06:34 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,5 @@ void update()
 		g_player->px = new_px;
 		g_player->py = new_py;
 	}
+	display();
 }

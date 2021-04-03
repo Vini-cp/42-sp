@@ -6,7 +6,7 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 21:43:38 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/31 22:12:04 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/04/03 11:03:17 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,12 @@ void draw_player()
 	draw_line(g_player->pa, 25, 0x00FFFF00);
 }
 
+void display()
+{
+	draw_map();
+	draw_player();
+	mlx_do_sync(g_screen->mlx);
+}
 
 // int get_distance(float alpha)
 // {

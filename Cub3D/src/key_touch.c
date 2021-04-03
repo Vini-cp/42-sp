@@ -6,19 +6,16 @@
 /*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 21:58:06 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/31 22:10:30 by vcordeir         ###   ########.fr       */
+/*   Updated: 2021/04/03 11:17:03 by vcordeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
 
-void	close_window()
-{
-	mlx_destroy_window(g_screen->mlx, g_screen->win);
-}
-
 int key_pressed(int key)
 {
+	if (key == ESC)
+		end_game();
 	if(key == LEFT)
 		g_player->incx -= 1;
 	if(key == RIGHT)
@@ -31,10 +28,7 @@ int key_pressed(int key)
 		g_player->inca += 1;
 	if(key == ROTATE_RIGHT)
 		g_player->inca -= 1;
-	if (key == CLOSE_WIN)
-		close_window();
 	update();
-	display();
 	return (0);
 }
 
@@ -53,6 +47,5 @@ int key_released(int key)
 	if(key == ROTATE_RIGHT)
 		g_player->inca = 0;
 	update();
-	display();
 	return (0);
 }
