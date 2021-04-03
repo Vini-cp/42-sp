@@ -25,6 +25,21 @@ typedef	struct		s_screen
 	void			*win;
 }					t_screen;
 
+typedef	struct		s_map
+{
+	char			*resolution;
+	char			*north_text;
+	char			*south_text;
+	char			*west_text;
+	char			*east_text;
+	char			*sprite_text;
+	char			*floor_rgb;
+	char			*ceilling_rgb;
+	char			**map;
+	int				width;
+	int				height;
+}					t_map;
+
 extern t_screen *g_screen;
 extern t_player *g_player;
 extern int map[8][8];

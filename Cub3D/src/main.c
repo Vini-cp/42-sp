@@ -12,8 +12,9 @@ int map[8][8] = {
 	{1, 1, 1, 1, 1, 1, 1, 1}
 };
 
-t_screen *g_screen;
-t_player *g_player;
+t_screen	*g_screen;
+t_player	*g_player;
+t_map		*g_map;
 
 void display()
 {
