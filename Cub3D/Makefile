@@ -22,7 +22,8 @@ OBJS = ${SRCS:.c=.o}
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra
+# -g -fsanitize=address
 
 LINUX_FLAGS = -lXext -lX11 -lm -lmlx -Lmlx -lbsd -L/usr/lib
 
@@ -33,14 +34,14 @@ all : $(NAME)
 $(NAME): $(OBJS)
 	@$(MAKE) -C ./libft
 	@cp libft/libft.a $(NAME)
-	@clang  $(SRCS) $(CFLAGS) $(INCLUDES) $(LINUX_FLAGS) cub.a -o cub
+	@clang  $(SRCS) $(CFLAGS) $(INCLUDES) $(LINUX_FLAGS) cub.a -o cub3D
 	@ar -rcs $(NAME) $(OBJS)
 
 clean :
 	@$(MAKE) clean -C ./libft
 	@rm -rf *.o
 	@rm -rf ./src/*.o
-	@rm cub
+	@rm -f cub
 
 fclean : clean
 	@$(MAKE) fclean -C ./libft

@@ -6,11 +6,10 @@ void	draw_line (double alpha, int len, int color);
 void    draw_map();
 void	setup();
 void	display();
-void	update();
 void	draw_player();
-void	end_game();
-int		key_pressed(int key);
-int		key_released(int key);
+int 	update();
+int 	end_game();
+int     key_touch();
 int		has_wall(int x, int y);
 
 #endif

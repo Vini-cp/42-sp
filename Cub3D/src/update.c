@@ -12,7 +12,7 @@
 
 #include "../include/cub.h"
 
-void update()
+int update()
 {
 	int move_step_x;
 	int move_step_y;
@@ -33,4 +33,5 @@ void update()
 		g_player->py = new_py;
 	}
 	display();
+	return (0);
 }

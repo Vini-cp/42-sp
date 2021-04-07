@@ -12,7 +12,7 @@
 
 #include "../include/cub.h"
 
-int key_pressed(int key)
+static	int		key_pressed(int key)
 {
 	if (key == ESC)
 		end_game();
@@ -28,11 +28,10 @@ int key_pressed(int key)
 		g_player->inca += 1;
 	if(key == ROTATE_RIGHT)
 		g_player->inca -= 1;
-	update();
 	return (0);
 }
 
-int key_released(int key)
+static	int		key_released(int key)
 {
 	if(key == LEFT)
 		g_player->incx = 0;
@@ -46,6 +45,12 @@ int key_released(int key)
 		g_player->inca = 0;
 	if(key == ROTATE_RIGHT)
 		g_player->inca = 0;
-	update();
+	return (0);
+}
+
+int				key_touch()
+{
+	mlx_hook(g_screen->win, 02, 1L<<0, key_pressed, 0);
+	mlx_hook(g_screen->win, 03, 1L<<1, key_released, 0);
 	return (0);
 }

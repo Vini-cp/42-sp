@@ -95,7 +95,7 @@ void display()
 {
 	draw_map();
 	draw_player();
-	mlx_do_sync(g_screen->mlx);
+	// mlx_do_sync(g_screen->mlx);
 }
 
 // int get_distance(float alpha)

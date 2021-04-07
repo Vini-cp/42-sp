@@ -36,15 +36,16 @@ t_map		*g_map;
 // }
 
 int	main(int argc, char **argv)
+// int	main(void)
 {
 	// check_arguments(argc, argv);
 	// check_resolution();
-	// read_map_file(argv[1]);
+	read_map_file(argv[1]);
 	setup();
 	// if (argv[2])
 	// 	save_bmp_image();
-	mlx_hook(g_screen->win, 17, 1L<<17, end_game, 0);
-	mlx_hook(g_screen->win, 02, 1L<<0, key_pressed, 0);
-	mlx_hook(g_screen->win, 03, 1L<<1, key_released, 0);
+	// mlx_hook(g_screen->win, 33, 1L<<17, end_game, 0);
+	mlx_loop_hook(g_screen->mlx, update, 0);
+	key_touch();
 	mlx_loop(g_screen->mlx);
 }
