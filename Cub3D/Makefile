@@ -12,7 +12,8 @@
 
 NAME = cub.a
 
-SRCS_LIST = main.c draw.c update.c setup.c key_touch.c move_player.c end_game.c
+SRCS_LIST = main.c draw.c update.c setup.c key_touch.c move_player.c end_game.c \
+read_map_file.c
 
 FOLDER = src
 
@@ -41,7 +42,7 @@ clean :
 	@$(MAKE) clean -C ./libft
 	@rm -rf *.o
 	@rm -rf ./src/*.o
-	@rm -f cub
+	@rm -f cub3D
 
 fclean : clean
 	@$(MAKE) fclean -C ./libft

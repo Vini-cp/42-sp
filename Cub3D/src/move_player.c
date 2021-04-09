@@ -22,7 +22,7 @@ static	int		has_wall(int x, int y)
 	mapGridIndexX = floor(x / TILE_SIZE);
 	mapGridIndexY = floor(y / TILE_SIZE);
 
-	return ((s_map->map[mapGridIndexY][mapGridIndexX] == 1) ? 1 : 0);
+	return ((g_map->map[mapGridIndexY][mapGridIndexX] == 1) ? 1 : 0);
 }
 
 void			move_player(void)

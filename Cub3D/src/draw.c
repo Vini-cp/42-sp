@@ -23,7 +23,7 @@ void    draw_map()
 		j = 0;
         while (j < 8)
         {
-            if (s_map->map[i][j] == 1)
+            if (g_map->map[i][j] == 1)
                 draw_square((j * TILE_SIZE) + 1, (i * TILE_SIZE) + 1, \
 					TILE_SIZE, 0x00FFFFFF);
             else
