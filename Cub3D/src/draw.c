@@ -14,25 +14,25 @@
 
 void    draw_map()
 {
-    int i;
-    int j;
+	int i;
+	int j;
 
-    i = 0;
-    while (i < 8)
-    {
+	i = 0;
+	while (i < 8)
+	{
 		j = 0;
-        while (j < 8)
-        {
-            if (g_map->map[i][j] == 1)
-                draw_square((j * TILE_SIZE) + 1, (i * TILE_SIZE) + 1, \
+		while (j < 8)
+		{
+			if (g_map->map[i][j] == '1')
+				draw_square((j * TILE_SIZE) + 1, (i * TILE_SIZE) + 1, \
 					TILE_SIZE, 0x00FFFFFF);
-            else
-            	draw_square((j * TILE_SIZE) + 1, (i * TILE_SIZE) + 1, \
+			else
+				draw_square((j * TILE_SIZE) + 1, (i * TILE_SIZE) + 1, \
 					TILE_SIZE, 0x00000000);
-            j++;
-        }
+			j++;
+		}
 		i++;
-    }
+	}
 }
 
 void draw_square (int x, int y, int size, int color)

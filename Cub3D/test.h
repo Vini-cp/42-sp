@@ -10,6 +10,22 @@
 # define FALSE 0
 # define BUFFER_SIZE 32
 
+typedef	struct		s_map
+{
+	char			*resolution_width;
+	char			*resolution_height;
+	char			*north_text;
+	char			*south_text;
+	char			*west_text;
+	char			*east_text;
+	char			*sprite_text;
+	char			*floor_rgb;
+	char			*ceilling_rgb;
+	char			**map;
+	int				width;
+	int				height;
+}					t_map;
+
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	*ft_strdup(const char *s);

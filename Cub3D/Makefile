@@ -50,10 +50,7 @@ fclean : clean
 
 re : fclean all
 
-cub:
-	@gcc src/main.c -Lmlx -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm cub.a -o cub
-
-ccub:
-	@rm cub
+test:
+	gcc test2.c test.c && ./a.out && rm -f ./a.out
 
 .PHONY: all clean fclean re

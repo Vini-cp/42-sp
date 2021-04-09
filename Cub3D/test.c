@@ -1,29 +1,34 @@
 #include "test.h"
 
-void	print_test(char *s)
+t_map		*g_map;
+
+static	void	print_test(char *s)
 {
 	char **str;
 
 	str = ft_split(s, ' ');
 	if (!ft_strncmp(str[0], "R\0", 1))
-		printf("Resolution: %s x %s\n", str[1], str[2]);
+	{
+		g_map->resolution_width = ft_strdup(str[1]);
+		g_map->resolution_height = ft_strdup(str[2]);
+	}
 	else if (!ft_strncmp(str[0], "NO\0", 2))
-		printf("North texture: %s\n", str[1]);
+		g_map->north_text = ft_strdup(str[1]);
 	else if (!ft_strncmp(str[0], "SO\0", 2))
-		printf("South texture: %s\n", str[1]);
+		g_map->south_text = ft_strdup(str[1]);
 	else if (!ft_strncmp(str[0], "WE\0", 2))
-		printf("West texture: %s\n", str[1]);
+		g_map->west_text = ft_strdup(str[1]);
 	else if (!ft_strncmp(str[0], "EA\0", 2))
-		printf("East texture: %s\n", str[1]);
+		g_map->east_text = ft_strdup(str[1]);
 	else if (!ft_strncmp(str[0], "S\0", 2))
-		printf("Sprite texture: %s\n", str[1]);
+		g_map->sprite_text = ft_strdup(str[1]);
 	else if (!ft_strncmp(str[0], "F\0", 1))
-		printf("Floor colors: %s\n", str[1]);
+		g_map->floor_rgb = ft_strdup(str[1]);
 	else if (!ft_strncmp(str[0], "C\0", 1))
-		printf("Ceilling colors: %s\n", str[1]);
+		g_map->ceilling_rgb = ft_strdup(str[1]);
 }
 
-int		get_nb_of_lines(char *file)
+static	int		get_nb_of_lines(char *file)
 {
 	int		fd;
 	int		out;
@@ -47,17 +52,16 @@ int		get_nb_of_lines(char *file)
 	return (nb_of_lines);
 }
 
-int		read_map_file(int size, char *file)
+static	int		read_map(int size, char *file)
 {
 	int		fd;
 	int		out;
 	int		nb_of_lines;
 	char	*s;
-	char	**str;
 
 	if ((fd = open(file, O_RDONLY)) == -1)
 		return (FALSE);
-	str = malloc((size - 8 + 1) * sizeof(char *));
+	g_map->map = malloc((size - 8 + 1) * sizeof(char *));
 	out = 1;
 	nb_of_lines = 0;
 	while (out > 0)
@@ -66,24 +70,53 @@ int		read_map_file(int size, char *file)
 		if (s[0])
 		{
 			if (nb_of_lines >= 8)
-				str[nb_of_lines - 8] = ft_strdup(s);
+				g_map->map[nb_of_lines - 8] = ft_strdup(s);
 			nb_of_lines++;
 		}
 	}
-	str[nb_of_lines - 8] = NULL;
-	printf("TESTANDO ...\n");
-	while (*str)
-		printf("%s\n", *str++);
+	g_map->map[nb_of_lines - 8] = NULL;
 	return (TRUE);
 }
 
-int main (int argc, char **argv)
+void    draw_map()
 {
-	int	i;
-	char *file = ft_strjoin("./maps/\0", argv[1]);
+	int i;
+	int j;
 
-	i = get_nb_of_lines(file);
-	printf("%d\n", i);
-	i = read_map_file(i - 8, file);
-	printf("%d\n", i);
+	i = 0;
+	while (i < 8)
+	{
+		j = 0;
+		while (j < 8)
+		{
+			if (g_map->map[i][j] == '1')
+				printf("1");
+				// draw_square((j * TILE_SIZE) + 1, (i * TILE_SIZE) + 1, \
+					TILE_SIZE, 0x00FFFFFF);
+			else
+				printf("0");
+				// draw_square((j * TILE_SIZE) + 1, (i * TILE_SIZE) + 1, \
+					TILE_SIZE, 0x00000000);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+}
+
+int main (void)
+{
+	int	bool_map;
+	char *file;
+
+	file = "maps/map3.cub\0";
+	g_map = (t_map *)malloc(sizeof(t_map));
+	bool_map = get_nb_of_lines(file);
+	if (!bool_map)
+		return (FALSE);
+	bool_map = read_map(bool_map - 8, file);
+	if (!bool_map)
+		return (FALSE);
+	draw_map();
+	return (TRUE);
 }
