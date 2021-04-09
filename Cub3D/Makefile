@@ -12,7 +12,7 @@
 
 NAME = cub.a
 
-SRCS_LIST = main.c draw.c update.c setup.c key_touch.c has_wall.c end_game.c
+SRCS_LIST = main.c draw.c update.c setup.c key_touch.c move_player.c end_game.c
 
 FOLDER = src
 

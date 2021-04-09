@@ -23,7 +23,7 @@ void    draw_map()
 		j = 0;
         while (j < 8)
         {
-            if (map[i][j] == 1)
+            if (s_map->map[i][j] == 1)
                 draw_square((j * TILE_SIZE) + 1, (i * TILE_SIZE) + 1, \
 					TILE_SIZE, 0x00FFFFFF);
             else
@@ -91,12 +91,7 @@ void draw_player()
 	draw_line(g_player->pa, 25, 0x00FFFF00);
 }
 
-void display()
-{
-	draw_map();
-	draw_player();
-	// mlx_do_sync(g_screen->mlx);
-}
+// mlx_do_sync(g_screen->mlx);
 
 // int get_distance(float alpha)
 // {

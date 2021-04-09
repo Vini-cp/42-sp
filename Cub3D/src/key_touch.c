@@ -50,6 +50,7 @@ static	int		key_released(int key)
 
 int				key_touch()
 {
+	mlx_hook(g_screen->win, 33, 1L<<17, end_game, 0);
 	mlx_hook(g_screen->win, 02, 1L<<0, key_pressed, 0);
 	mlx_hook(g_screen->win, 03, 1L<<1, key_released, 0);
 	return (0);

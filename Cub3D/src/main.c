@@ -1,15 +1,15 @@
 #include "../include/cub.h"
 
-int map[8][8] = {
-	{1, 1, 1, 1, 1, 1, 1, 1},
-	{1, 0, 1, 0, 0, 0, 1, 1},
-	{1, 0, 1, 0, 0, 0, 0, 1},
-	{1, 0, 1, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 0, 0, 1},
-	{1, 0, 0, 0, 0, 1, 0, 1},
-	{1, 0, 0, 0, 0, 0, 0, 1},
-	{1, 1, 1, 1, 1, 1, 1, 1}
-};
+// int map[8][8] = {
+// 	{1, 1, 1, 1, 1, 1, 1, 1},
+// 	{1, 0, 1, 0, 0, 0, 1, 1},
+// 	{1, 0, 1, 0, 0, 0, 0, 1},
+// 	{1, 0, 1, 0, 0, 0, 0, 1},
+// 	{1, 0, 0, 0, 0, 0, 0, 1},
+// 	{1, 0, 0, 0, 0, 1, 0, 1},
+// 	{1, 0, 0, 0, 0, 0, 0, 1},
+// 	{1, 1, 1, 1, 1, 1, 1, 1}
+// };
 
 t_screen	*g_screen;
 t_player	*g_player;
@@ -41,10 +41,10 @@ int	main(int argc, char **argv)
 	// check_arguments(argc, argv);
 	// check_resolution();
 	read_map_file(argv[1]);
+		// if(! ... ERROR!)
 	setup();
 	// if (argv[2])
 	// 	save_bmp_image();
-	// mlx_hook(g_screen->win, 33, 1L<<17, end_game, 0);
 	mlx_loop_hook(g_screen->mlx, update, 0);
 	key_touch();
 	mlx_loop(g_screen->mlx);

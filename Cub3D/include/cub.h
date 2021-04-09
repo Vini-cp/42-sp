@@ -30,7 +30,8 @@ typedef	struct		s_screen
 
 typedef	struct		s_map
 {
-	char			*resolution;
+	char			*resolution_width;
+	char			*resolution_height;
 	char			*north_text;
 	char			*south_text;
 	char			*west_text;
@@ -38,14 +39,14 @@ typedef	struct		s_map
 	char			*sprite_text;
 	char			*floor_rgb;
 	char			*ceilling_rgb;
-	char			**mapmap;
+	char			**map;
 	int				width;
 	int				height;
 }					t_map;
 
 extern t_screen *g_screen;
 extern t_player *g_player;
-extern int map[8][8];
+// extern int map[8][8];
 extern t_map *g_map;
 
 #endif

@@ -28,5 +28,4 @@ void setup()
 	g_player->lin_speed = 4;
     g_player->ang_speed = 3 * PI / 180;
 	g_map = (t_map *)malloc(sizeof(t_map));
-	// display();
 }
