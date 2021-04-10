@@ -58,7 +58,7 @@ void	raycast_all_rays(void)
 	{
 		g_ray->ray_angle = ray_angle;
 		raycast();
-		// draw_line();
+		draw_line (g_ray->ray_angle, g_ray->distance, 0x00ff0000);
 		rayAngle += FOV_ANGLE / NUM_RAYS;
 	}
 }
