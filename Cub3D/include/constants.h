@@ -18,4 +18,7 @@
 # define ESC 65307
 # define PI 3.14159265359
 
+# define FOV_ANGLE (60 * (PI / 180))
+# define NUM_RAYS 60
+
 #endif

@@ -19,7 +19,7 @@ typedef	struct		s_player
 	int				incy;
 	double			inca;
 	int				lin_speed;
-    double			ang_speed;
+	double			ang_speed;
 }					t_player;
 
 typedef	struct		s_screen
@@ -44,9 +44,48 @@ typedef	struct		s_map
 	int				height;
 }					t_map;
 
+typedef	struct		s_ray {
+	float			ray_angle;
+	float			wall_hit_x;
+	float			wall_hit_y;
+	float			horz_hit_distance;
+	float			vert_hit_distance;
+	float			distance;
+	int				was_hit_vertical;
+	int 			was_hit_content;
+	int				is_ray_facing_up;
+	int				is_ray_facing_down;
+	int 			is_ray_facing_left;
+	int 			is_ray_facing_right;
+} 					t_ray;
+
+typedef	struct		s_horz_intercept {
+	float			xintercept;
+	float			yintercept;
+	float			xstep;
+	float			ystep;
+	int				found_horz_wall_hit;
+	float			horz_wall_hit_x;
+	float			horz_wall_hit_y;
+	int				horz_wall_content;
+} 					t_horz_intercept;
+
+typedef	struct		s_vert_intercept {
+	float			xintercept;
+	float			yintercept;
+	float			xstep;
+	float			ystep;
+	int				found_vert_wall_hit;
+	float			vert_wall_hit_x;
+	float			vert_wall_hit_y;
+	int				vert_wall_content;
+} 					t_vert_intercept;
+
 extern t_screen *g_screen;
 extern t_player *g_player;
-// extern int map[8][8];
 extern t_map *g_map;
+extern t_ray *g_ray;
+extern t_horz_intercept *g_horz_inpt;
+extern t_vert_intercept *g_vert_inpt;
 
 #endif

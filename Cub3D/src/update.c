@@ -17,6 +17,6 @@ int update()
 	move_player();
 	draw_map();
 	draw_player();
-	// cast_rays();
+	raycast_all_rays();
 	return (0);
 }

@@ -12,7 +12,7 @@
 
 #include "../include/cub.h"
 
-static	void	print_test(char *s)
+static	void	allocate_textures(char *s)
 {
 	char **str;
 
@@ -55,7 +55,7 @@ static	int		get_nb_of_lines(char *file)
 		if (s[0])
 		{
 			if (nb_of_lines < 8)
-				print_test(s);
+				allocate_textures(s);
 			nb_of_lines++;
 		}
 	}

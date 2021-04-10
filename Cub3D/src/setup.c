@@ -21,10 +21,13 @@ void setup()
 		WIN_WIDTH,
 		WIN_HEIGHT,
 		"Cub3D");
+
 	g_player = (t_player *)malloc(sizeof(t_player));
 	g_player->px = 300;
 	g_player->py = 300;
 	g_player->pa = PI/2;
 	g_player->lin_speed = 4;
     g_player->ang_speed = 3 * PI / 180;
+
+	g_ray = (g_ray *)malloc(sizeof(g_ray));
 }
