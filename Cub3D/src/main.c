@@ -11,9 +11,12 @@
 // 	{1, 1, 1, 1, 1, 1, 1, 1}
 // };
 
-t_screen	*g_screen;
-t_player	*g_player;
-t_map		*g_map;
+t_screen			*g_screen;
+t_player			*g_player;
+t_map				*g_map;
+t_ray				*g_ray;
+t_horz_intercept	*g_horz_inpt;
+t_vert_intercept	*g_vert_inpt;
 
 // static	void	check_arguments(int argc, char **argv)
 // {
