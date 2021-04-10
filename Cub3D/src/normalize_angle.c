@@ -1,3 +1,5 @@
+#include "../include/cub.h"
+
 float	normalize_angle(float angle)
 {
 	if (angle > 2 * PI)

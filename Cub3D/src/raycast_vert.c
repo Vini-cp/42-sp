@@ -31,7 +31,7 @@ static	void	hit_wall(float touch_x, float touch_y, float x, float y)
 	g_vert_inpt->vert_wall_hit_x = touch_x;
 	g_vert_inpt->vert_wall_hit_y = touch_y;
 	g_vert_inpt->vert_wall_content = \
-					map[(int)floor(y / TILE_SIZE)][(int)floor(x / TILE_SIZE)];
+					g_map->map[(int)floor(y / TILE_SIZE)][(int)floor(x / TILE_SIZE)];
 	g_vert_inpt->found_vert_wall_hit = TRUE;
 }
 
@@ -42,10 +42,11 @@ void raycast_vert(void)
 	float x_check;
 	float y_check;
 
+	intercept();
 	next_vert_touch_x = g_vert_inpt->xintercept;
 	next_vert_touch_y = g_vert_inpt->yintercept;
-	while (next_vert_touch_x >= 0 && next_vert_touch_x <= WINDOW_WIDTH \
-			&& next_vert_touch_y >= 0 && next_vert_touch_y <= WINDOW_HEIGHT)
+	while (next_vert_touch_x >= 0 && next_vert_touch_x <= WIN_WIDTH \
+			&& next_vert_touch_y >= 0 && next_vert_touch_y <= WIN_HEIGHT)
 	{
 		x_check = next_vert_touch_x + (g_ray->is_ray_facing_left ? -1 : 0);
 		y_check = next_vert_touch_y;

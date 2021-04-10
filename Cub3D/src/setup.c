@@ -29,5 +29,7 @@ void setup()
 	g_player->lin_speed = 4;
     g_player->ang_speed = 3 * PI / 180;
 
-	g_ray = (g_ray *)malloc(sizeof(g_ray));
+	g_ray = (t_ray *)malloc(sizeof(t_ray));
+	g_horz_inpt = (t_horz_intercept *)malloc(sizeof(t_horz_intercept));
+	g_vert_inpt = (t_vert_intercept *)malloc(sizeof(t_vert_intercept));
 }

@@ -31,7 +31,7 @@ static	void	hit_wall(float touch_x, float touch_y, float x, float y)
 	g_horz_inpt->horz_wall_hit_x = touch_x;
 	g_horz_inpt->horz_wall_hit_y = touch_y;
 	g_horz_inpt->horz_wall_content = \
-					g_map[(int)floor(y / TILE_SIZE)][(int)floor(x / TILE_SIZE)];
+					g_map->map[(int)floor(y / TILE_SIZE)][(int)floor(x / TILE_SIZE)];
 	g_horz_inpt->found_horz_wall_hit = TRUE;
 }
 
@@ -42,10 +42,11 @@ void raycast_horz(void)
 	float x_check;
 	float y_check;
 
+	intercept();
 	next_hor_touch_x = g_horz_inpt->xintercept;
 	next_hor_touch_y = g_horz_inpt->yintercept;
-	while (next_hor_touch_x >= 0 && next_hor_touch_x <= WINDOW_WIDTH \
-			&& next_hor_touch_y >= 0 && next_hor_touch_y <= WINDOW_HEIGHT)
+	while (next_hor_touch_x >= 0 && next_hor_touch_x <= WIN_WIDTH \
+			&& next_hor_touch_y >= 0 && next_hor_touch_y <= WIN_HEIGHT)
 	{
 		x_check = next_hor_touch_x;
 		y_check = next_hor_touch_y + (g_ray->is_ray_facing_up ? -1 : 0);

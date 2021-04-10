@@ -20,5 +20,6 @@
 
 # define FOV_ANGLE (60 * (PI / 180))
 # define NUM_RAYS 60
+# define FLT_MAX 1000000
 
 #endif
