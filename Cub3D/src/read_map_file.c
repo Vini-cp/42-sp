@@ -92,6 +92,7 @@ int read_map_file (char *file)
 {
 	int	bool_map;
 
+	g_map = (t_map *)malloc(sizeof(t_map));
 	bool_map = get_nb_of_lines(file);
 	if (!bool_map)
 		return (FALSE);

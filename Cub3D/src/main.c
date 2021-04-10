@@ -39,10 +39,11 @@ int	main(int argc, char **argv)
 // int	main(void)
 {
 	// check_arguments(argc, argv);
-	if (argc > 2 || argc < 1)
+	if (argc != 2)
 		return (0);
 	// check_resolution();
 	read_map_file(argv[1]);
+	// read_map_file("maps/map3.cub\0");
 		// if(! ... ERROR!)
 	setup();
 	// if (argv[2])
