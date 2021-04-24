@@ -13,8 +13,8 @@
 NAME = cub.a
 
 SRCS_LIST = main.c draw.c end_game.c has_wall.c key_touch.c move_player.c \
-normalize_angle.c raycast_horz.c raycast_vert.c raycast.c \
-read_map_file.c setup.c update.c
+normalize_angle.c raycast_horz.c raycast_vert.c raycast.c read_map_file.c \
+setup.c update.c
 
 FOLDER = src
 

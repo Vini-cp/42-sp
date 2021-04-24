@@ -1,8 +1,8 @@
 #include "../include/libft.h"
 
-int	ft_printf_isflag(int c)
+int	ft_isnegative(int num)
 {
-	if (c == '*' || c == '.' || c == '-')
+	if (num < 0)
 		return (1);
 	else
 		return (0);

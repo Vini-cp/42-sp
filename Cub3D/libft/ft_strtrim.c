@@ -1,20 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/06 13:35:21 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/19 20:43:05 by vcordeir         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/libft.h"
 
 static	int	is_set_char(char c, char const *set)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (set[i] != '\0')
@@ -28,7 +16,7 @@ static	int	is_set_char(char c, char const *set)
 
 static	int	get_first_position(char const *str, char const *set)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (is_set_char(str[i], set))
@@ -38,7 +26,7 @@ static	int	get_first_position(char const *str, char const *set)
 
 static	int	get_last_position(char const *str, char const *set)
 {
-	int i;
+	int	i;
 
 	i = ft_strlen(str) - 1;
 	while (is_set_char(str[i], set))
@@ -46,7 +34,7 @@ static	int	get_last_position(char const *str, char const *set)
 	return (++i);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
 	int		len;
@@ -59,11 +47,11 @@ char		*ft_strtrim(char const *s1, char const *set)
 	len = get_last_position(s1, set) - start;
 	if (len < 0)
 	{
-		if (!(str = (char *)malloc((sizeof(char)))))
-			return (NULL);
+		str = ft_calloc(1, sizeof(char));
 		return (str);
 	}
-	if (!(str = (char *)malloc((len + 1) * sizeof(char))))
+	str = (char *)malloc((len + 1) * sizeof(char));
+	if (!str)
 		return (NULL);
 	i = 0;
 	while (i < len)

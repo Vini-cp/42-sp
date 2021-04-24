@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf_print_p_str.c                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/14 01:00:12 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/19 20:43:05 by vcordeir         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/libft.h"
 
 static	int	print_p_just(t_flags *lst)
@@ -108,9 +96,9 @@ static	int	print_str_not_just(t_flags *lst)
 		return (ft_max(lst->s_len, lst->width));
 }
 
-int			ft_printf_print_p_str(t_flags *lst)
+int	ft_printf_print_p_str(t_flags *lst)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (lst->c == 'p')

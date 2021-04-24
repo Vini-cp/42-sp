@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_ptoa.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/09 10:22:35 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/19 20:43:05 by vcordeir         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/libft.h"
 
 char	*ft_ptoa(uintptr_t num, int prec)
@@ -27,7 +15,10 @@ char	*ft_ptoa(uintptr_t num, int prec)
 	while (num != 0)
 	{
 		rem = num % 16;
-		s[i++] = (rem > 9) ? (rem - 10) + 'a' : rem + '0';
+		if (rem > 9)
+			s[i++] = (rem - 10) + 'a';
+		else
+			s[i++] = rem + '0';
 		num = num / 16;
 	}
 	s[i++] = 'x';

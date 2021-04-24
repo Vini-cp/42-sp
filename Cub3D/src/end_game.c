@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   end_game.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/03 10:49:18 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/04/03 11:49:56 by vcordeir         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/cub.h"
 
 // static	void	free_player()
@@ -38,11 +26,12 @@
 // 	// ft_memdel(g_screen);
 // }
 
-int		end_game()
+// free_player();
+// free_map();
+// free_screen();
+
+int	end_game(void)
 {
-	// free_player();
-	// free_map();
 	mlx_destroy_window(g_screen->mlx, g_screen->win);
-	// free_screen();
 	return (0);
 }

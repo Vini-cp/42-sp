@@ -1,21 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/19 20:47:52 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/19 20:43:05 by vcordeir         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/libft.h"
 
-static	int		nb_of_strs(char const *s, char c)
+static	int	nb_of_strs(char const *s, char c)
 {
-	int nb;
-	int bool_check;
+	int	nb;
+	int	bool_check;
 
 	nb = 0;
 	bool_check = 1;
@@ -37,12 +25,12 @@ static	char	*string(const char *s, int init, int end)
 {
 	char	*str;
 
-	str = (char*)malloc((end - init + 1) * sizeof(char));
+	str = (char *)malloc((end - init + 1) * sizeof(char));
 	ft_strlcpy(str, (s + init), (end - init + 1));
 	return (str);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**strs;
 	int		start;

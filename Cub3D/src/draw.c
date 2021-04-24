@@ -1,21 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/31 21:43:38 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/04/03 11:03:17 by vcordeir         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/cub.h"
 
-void    draw_map()
+void	draw_map(void)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < 8)
@@ -35,10 +23,10 @@ void    draw_map()
 	}
 }
 
-void draw_square (int x, int y, int size, int color)
+void	draw_square(int x, int y, int size, int color)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = x;
 	while (i < x + size)
@@ -53,13 +41,13 @@ void draw_square (int x, int y, int size, int color)
 	}
 }
 
-void draw_line (double alpha, int len, int color)
+void	draw_line(double alpha, int len, int color)
 {
-	int x;
-	int y;
-	int i;
-	int j;
-	int aux;
+	int	x;
+	int	y;
+	int	i;
+	int	j;
+	int	aux;
 
 	x = g_player->px + cos(-alpha) * len;
 	y = g_player->py + sin(-alpha) * len;
@@ -85,18 +73,18 @@ void draw_line (double alpha, int len, int color)
 	}
 }
 
-void draw_player()
+void	draw_player(void)
 {
 	draw_square(g_player->px, g_player->py, PLAYER_SIZE, 0x00FFFF00);
 	draw_line(g_player->pa, 25, 0x00FFFF00);
 }
 
-void draw_ray()
+void draw_ray(void)
 {
-	int iter;
-	int	position;
-	float a;
-	float b;
+	int		iter;
+	int		position;
+	float	a;
+	float	b;
 
 	a = (g_player->py - g_ray->wall_hit_y) / (g_player->px - g_ray->wall_hit_x);
 	b = (g_ray->wall_hit_y) - (a * g_ray->wall_hit_x);
@@ -106,19 +94,21 @@ void draw_ray()
 		position = g_player->px;
 		while (position != g_ray->wall_hit_x)
 		{
-			mlx_pixel_put(g_screen->mlx, g_screen->win, (int)(a * position - b), position, 0x00ff0000);
+			mlx_pixel_put(g_screen->mlx, g_screen->win, (int)(a * position - b), 
+				position, 0x00ff0000);
 			position += iter;
 		}
 	}
 	else
 	{
 		a = 1 / a;
-		b = - b * a;
+		b = -b * a;
 		iter = (g_player->py - g_ray->wall_hit_y > 0) ? +1 : -1;
 		position = g_player->py;
 		while (position != g_ray->wall_hit_y)
 		{
-			mlx_pixel_put(g_screen->mlx, g_screen->win, position, (int)(a * position - b), 0x00ff0000);
+			mlx_pixel_put(g_screen->mlx, g_screen->win, position,
+				(int)(a * position - b), 0x00ff0000);
 			position += iter;
 		}
 	}

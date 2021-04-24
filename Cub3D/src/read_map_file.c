@@ -1,20 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   read_map_file.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 22:16:19 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/04/02 22:40:31 by vcordeir         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/cub.h"
 
 static	void	allocate_textures(char *s)
 {
-	char **str;
+	char	**str;
 
 	str = ft_split(s, ' ');
 	if (!ft_strncmp(str[0], "R\0", 1))
@@ -38,14 +26,15 @@ static	void	allocate_textures(char *s)
 		g_map->ceilling_rgb = ft_strdup(str[1]);
 }
 
-static	int		get_nb_of_lines(char *file)
+static	int	get_nb_of_lines(char *file)
 {
 	int		fd;
 	int		out;
 	int		nb_of_lines;
 	char	*s;
 
-	if ((fd = open(file, O_RDONLY)) == -1)
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
 		return (FALSE);
 	out = 1;
 	nb_of_lines = 0;
@@ -62,14 +51,15 @@ static	int		get_nb_of_lines(char *file)
 	return (nb_of_lines);
 }
 
-static	int		read_map(int size, char *file)
+static	int	read_map(int size, char *file)
 {
 	int		fd;
 	int		out;
 	int		nb_of_lines;
 	char	*s;
 
-	if ((fd = open(file, O_RDONLY)) == -1)
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
 		return (FALSE);
 	g_map->map = malloc((size - 8 + 1) * sizeof(char *));
 	out = 1;
@@ -88,7 +78,7 @@ static	int		read_map(int size, char *file)
 	return (TRUE);
 }
 
-int read_map_file (char *file)
+int	read_map_file(char *file)
 {
 	int	bool_map;
 

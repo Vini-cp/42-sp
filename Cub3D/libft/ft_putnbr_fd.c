@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/02 21:55:05 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/19 20:43:05 by vcordeir         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/libft.h"
 
 static	void	rev_array(char *str)
@@ -31,7 +19,7 @@ static	void	rev_array(char *str)
 	}
 }
 
-static	int		check_neg(int nb)
+static	int	check_neg(int nb)
 {
 	if (nb < 0)
 		return (1);
@@ -41,7 +29,7 @@ static	int		check_neg(int nb)
 
 static	void	nb_to_char(char *str, unsigned int nb, int neg)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (nb > 0)
@@ -60,7 +48,7 @@ static	void	nb_to_char(char *str, unsigned int nb, int neg)
 		str[i] = '\0';
 }
 
-void			ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	char			str[12];
 	int				neg;

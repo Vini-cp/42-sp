@@ -7,15 +7,12 @@ static	void	intercept(void)
 	g_horz_inpt->horz_wall_hit_x = 0;
 	g_horz_inpt->horz_wall_hit_y = 0;
 	g_horz_inpt->horz_wall_content = 0;
-
 	/* Find the y-coordinate of the closest horizontal grid intersection */
 	g_horz_inpt->yintercept = floor(g_player->py / TILE_SIZE) * TILE_SIZE;
 	g_horz_inpt->yintercept += g_ray->is_ray_facing_down ? TILE_SIZE : 0;
-
 	/* Find the x-coordinate of the closest horizontal grid intersection */
 	g_horz_inpt->xintercept = g_player->px + \
 	(g_horz_inpt->yintercept - g_player->py) / tan(g_ray->ray_angle);
-
 	/* Calculate the increment xstep and ystep */
 	g_horz_inpt->ystep = TILE_SIZE;
 	g_horz_inpt->ystep *= g_ray->is_ray_facing_up ? -1 : 1;

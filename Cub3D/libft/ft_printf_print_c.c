@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf_print_c.c                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcordeir <vcordeir@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/14 14:45:20 by vcordeir          #+#    #+#             */
-/*   Updated: 2021/03/19 20:43:05 by vcordeir         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/libft.h"
 
 static	int	print_just(t_flags *lst)
@@ -39,9 +27,9 @@ static	int	print_not_just(t_flags *lst)
 	return (ft_max(1, lst->width));
 }
 
-int			ft_printf_print_c(t_flags *lst)
+int	ft_printf_print_c(t_flags *lst)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	lst->s_len = 1;
