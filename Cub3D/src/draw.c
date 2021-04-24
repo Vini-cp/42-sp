@@ -91,39 +91,35 @@ void draw_player()
 	draw_line(g_player->pa, 25, 0x00FFFF00);
 }
 
-// mlx_do_sync(g_screen->mlx);
+void draw_ray()
+{
+	int iter;
+	int	position;
+	float a;
+	float b;
 
-// int get_distance(float alpha)
-// {
-// 	int i;
-// 	int j;
-// 	int aux;
-// 	int len;
-
-// 	if ((alpha >= PI / 4 && alpha <= 3 * PI / 4) || (alpha >= PI / 4 && alpha <= 3 * PI / 4))
-// 	{
-// 		i = px;
-// 		aux = (x > px) ? 1 : -1;
-// 		while ((i += aux) != x)
-// 		{
-// 			j = tan(-alpha) * i + (py - tan(-alpha) * px);
-// 			mlx_pixel_put(g_mlx, g_win, i, j, color);
-// 		}
-// 	}
-// 	else
-// 	{
-// 		i = py;
-// 		aux = (y > py) ? 1 : -1;
-// 		while ((i += aux) != y)
-// 		{
-// 			j = (1 / tan(-alpha)) * i + (px - (1 / tan(-alpha)) * py);
-// 			mlx_pixel_put(g_mlx, g_win, j, i, color);
-// 		}
-// 	}
-// }
-
-// void draw_fov(float alpha, float fov, int color)
-// {
-// 	int len;
-// 	len = get_distance(alpha);
-// }
+	a = (g_player->py - g_ray->wall_hit_y) / (g_player->px - g_ray->wall_hit_x);
+	b = (g_ray->wall_hit_y) - (a * g_ray->wall_hit_x);
+	if((g_player->px - g_ray->wall_hit_x) > (g_player->py - g_ray->wall_hit_y))
+	{
+		iter = (g_player->px - g_ray->wall_hit_x > 0) ? -1 : 1;
+		position = g_player->px;
+		while (position != g_ray->wall_hit_x)
+		{
+			mlx_pixel_put(g_screen->mlx, g_screen->win, (int)(a * position - b), position, 0x00ff0000);
+			position += iter;
+		}
+	}
+	else
+	{
+		a = 1 / a;
+		b = - b * a;
+		iter = (g_player->py - g_ray->wall_hit_y > 0) ? +1 : -1;
+		position = g_player->py;
+		while (position != g_ray->wall_hit_y)
+		{
+			mlx_pixel_put(g_screen->mlx, g_screen->win, position, (int)(a * position - b), 0x00ff0000);
+			position += iter;
+		}
+	}
+}

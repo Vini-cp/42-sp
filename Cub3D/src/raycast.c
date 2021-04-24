@@ -3,8 +3,8 @@
 static	void	define_ray_properties(void)
 {
 	g_ray->ray_angle = normalize_angle(g_ray->ray_angle);
-	g_ray->is_ray_facing_down = g_ray->ray_angle > 0 && g_ray->ray_angle < PI;
-	g_ray->is_ray_facing_up = !g_ray->is_ray_facing_down;
+	g_ray->is_ray_facing_up = g_ray->ray_angle > 0 && g_ray->ray_angle < PI;
+	g_ray->is_ray_facing_down = !g_ray->is_ray_facing_up;
 	g_ray->is_ray_facing_right = g_ray->ray_angle < 0.5 * PI || \
 								g_ray->ray_angle > 1.5 * PI;
 	g_ray->is_ray_facing_left = !g_ray->is_ray_facing_right;
@@ -52,13 +52,18 @@ static	void	raycast(void)
 void	raycast_all_rays(void)
 {
 	float	ray_angle;
+	int		i;
 
 	ray_angle = g_player->pa - (FOV_ANGLE / 2);
-	while (ray_angle != g_player->pa + (FOV_ANGLE / 2))
+	i = 0;
+	while (i < 60)
 	{
 		g_ray->ray_angle = ray_angle;
 		raycast();
-		draw_line (g_ray->ray_angle, g_ray->distance, 0x00ff0000);
+	// printf("%f, %f\n", g_ray->wall_hit_x, g_ray->wall_hit_y);
+		draw_ray();
+		// draw_line (g_ray->ray_angle, g_ray->distance, 0x00ff0000);
 		ray_angle += FOV_ANGLE / NUM_RAYS;
+		i++;
 	}
 }
